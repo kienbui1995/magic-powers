@@ -5,8 +5,8 @@
   "author": {
     "name": "Magic Powers Contributors"
   },
-  "homepage": "https://github.com/magic-powers/magic-powers",
-  "repository": "https://github.com/magic-powers/magic-powers",
+  "homepage": "https://github.com/kienbui1995/magic-powers",
+  "repository": "https://github.com/kienbui1995/magic-powers",
   "license": "MIT",
   "keywords": ["skills", "agents", "model-routing", "cost-optimization", "tdd", "debugging", "design"]
 }
