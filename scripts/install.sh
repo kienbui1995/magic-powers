@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# install.sh — Install converted agents into target tool
+set -euo pipefail
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
+
+echo "Magic Powers Installer"
+echo "======================"
+echo ""
+echo "Select your tool:"
+echo "  1) Cursor"
+echo "  2) GitHub Copilot"
+echo "  3) Aider"
+echo "  4) Windsurf"
+echo "  5) Gemini CLI"
+echo "  6) Claude Code (plugin — recommended)"
+echo ""
+read -rp "Choice [1-6]: " choice
+
+case "$choice" in
+  1)
+    dest="${CURSOR_RULES:-$PWD/.cursor/rules}"
+    mkdir -p "$dest"
+    bash "$REPO/scripts/convert.sh" cursor
+    cp "$REPO/integrations/cursor/rules/"*.mdc "$dest/"
+    echo "Installed to $dest" ;;
+  2)
+    dest="${COPILOT_AGENTS:-$PWD/.github/copilot/agents}"
+    mkdir -p "$dest"
+    bash "$REPO/scripts/convert.sh" copilot
+    cp "$REPO/integrations/copilot/agents/"*.md "$dest/"
+    echo "Installed to $dest" ;;
+  3)
+    dest="$PWD"
+    bash "$REPO/scripts/convert.sh" aider
+    cp "$REPO/integrations/aider/CONVENTIONS.md" "$dest/"
+    echo "Installed CONVENTIONS.md to $dest" ;;
+  4)
+    dest="$PWD"
+    bash "$REPO/scripts/convert.sh" windsurf
+    cp "$REPO/integrations/windsurf/.windsurfrules" "$dest/"
+    echo "Installed .windsurfrules to $dest" ;;
+  5)
+    dest="${GEMINI_SKILLS:-$HOME/.gemini/skills}"
+    mkdir -p "$dest"
+    bash "$REPO/scripts/convert.sh" gemini
+    cp -r "$REPO/integrations/gemini-cli/skills/"* "$dest/"
+    echo "Installed to $dest" ;;
+  6)
+    echo "For Claude Code, use: /plugin install github:YOUR_USERNAME/magic-powers"
+    echo "No manual install needed." ;;
+  *)
+    echo "Invalid choice"; exit 1 ;;
+esac

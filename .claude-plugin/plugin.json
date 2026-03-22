@@ -1,0 +1,12 @@
+{
+  "name": "magic-powers",
+  "description": "Cost-optimized Claude Code plugin with model-routing agents, workflow skills, and design tools",
+  "version": "0.1.0",
+  "author": {
+    "name": "Magic Powers Contributors"
+  },
+  "homepage": "https://github.com/magic-powers/magic-powers",
+  "repository": "https://github.com/magic-powers/magic-powers",
+  "license": "MIT",
+  "keywords": ["skills", "agents", "model-routing", "cost-optimization", "tdd", "debugging", "design"]
+}
