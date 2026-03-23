@@ -118,6 +118,10 @@ See [`examples/`](examples/) for real-world scenarios:
 | Multi-tool | ❌ | ✅ 7 tools |
 | Examples | ❌ | ✅ 4 scenarios |
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for release history.
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add agents and skills.
