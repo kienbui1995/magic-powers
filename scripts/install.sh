@@ -13,8 +13,9 @@ echo "  3) Aider"
 echo "  4) Windsurf"
 echo "  5) Gemini CLI"
 echo "  6) Claude Code (plugin — recommended)"
+echo "  7) Codex"
 echo ""
-read -rp "Choice [1-6]: " choice
+read -rp "Choice [1-7]: " choice
 
 case "$choice" in
   1)
@@ -48,6 +49,20 @@ case "$choice" in
   6)
     echo "For Claude Code, use: /plugin install github:YOUR_USERNAME/magic-powers"
     echo "No manual install needed." ;;
+  7)
+    skill_dest="${CODEX_SKILLS:-$HOME/.codex/skills}"
+    codex_home="${CODEX_HOME:-$HOME/.codex}"
+    mkdir -p "$skill_dest"
+    bash "$REPO/scripts/convert.sh" codex
+    cp -r "$REPO/integrations/codex/skills/"* "$skill_dest/"
+    if [ -f "$codex_home/AGENTS.md" ]; then
+      echo "Warning: $codex_home/AGENTS.md already exists — skipping (add content from integrations/codex/AGENTS.md manually)"
+    else
+      cp "$REPO/integrations/codex/AGENTS.md" "$codex_home/AGENTS.md"
+      echo "Installed AGENTS.md to $codex_home/AGENTS.md"
+    fi
+    echo "Installed skills to $skill_dest"
+    echo "Restart Codex to pick up new skills." ;;
   *)
     echo "Invalid choice"; exit 1 ;;
 esac
