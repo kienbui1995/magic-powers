@@ -12,10 +12,22 @@ Claude Code defaults to using the most expensive model for everything. Magic Pow
 # Claude Code (recommended)
 /plugin install github:your-username/magic-powers
 
-# Other tools
+# Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex
 git clone https://github.com/your-username/magic-powers.git
 cd magic-powers && bash scripts/install.sh
 ```
+
+### Codex
+
+```bash
+git clone https://github.com/your-username/magic-powers.git
+cd magic-powers && bash scripts/install.sh
+# Select option 7 — Codex
+```
+
+Installs 11 agent skills to `~/.codex/skills/` and `AGENTS.md` to `~/.codex/AGENTS.md`. Restart Codex after installing.
+
+Invoke skills explicitly with `$magic-<name>` (e.g. `$magic-architect`, `$magic-debugger`), or just describe your task and Codex picks the right one.
 
 ## 10 Agents by Division
 
@@ -103,7 +115,7 @@ See [`examples/`](examples/) for real-world scenarios:
 | Model routing | ❌ | ✅ Opus/Sonnet/Haiku |
 | Cost optimization | ❌ | ✅ ~75% reduction |
 | Design tools | ❌ | ✅ Google Stitch SDK |
-| Multi-tool | ❌ | ✅ 6 tools |
+| Multi-tool | ❌ | ✅ 7 tools |
 | Examples | ❌ | ✅ 4 scenarios |
 
 ## Contributing
