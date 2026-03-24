@@ -12,10 +12,15 @@ Claude Code defaults to using the most expensive model for everything. Magic Pow
 # Claude Code (recommended)
 /plugin install github:your-username/magic-powers
 
-# Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro
+# All other tools — one-liner (auto-detects your tool)
+curl -fsSL https://raw.githubusercontent.com/kienbui1995/magic-powers/main/scripts/get.sh | bash
+
+# Or clone manually
 git clone https://github.com/your-username/magic-powers.git
 cd magic-powers && bash scripts/install.sh
 ```
+
+The installer auto-detects Cursor, Windsurf, Kiro, Codex, Gemini CLI, and Claude Code from your environment.
 
 ### Codex
 

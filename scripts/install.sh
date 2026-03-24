@@ -3,9 +3,33 @@
 set -euo pipefail
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 
+detect_tool() {
+  [ -d "$PWD/.kiro" ] || [ -d "$HOME/.kiro" ] && echo 8 && return
+  [ -d "$PWD/.cursor" ] && echo 1 && return
+  command -v windsurf &>/dev/null && echo 4 && return
+  [ -d "$HOME/.codex" ] && echo 7 && return
+  command -v gemini &>/dev/null && echo 5 && return
+  command -v claude &>/dev/null && echo 6 && return
+  echo ""
+}
+
+TOOL_NAMES=("" "Cursor" "GitHub Copilot" "Aider" "Windsurf" "Gemini CLI" "Claude Code" "Codex" "Kiro")
+
 echo "Magic Powers Installer"
 echo "======================"
 echo ""
+
+detected=$(detect_tool)
+choice=""
+if [ -n "$detected" ]; then
+  echo "Detected: ${TOOL_NAMES[$detected]}"
+  read -rp "Install for ${TOOL_NAMES[$detected]}? [Y/n]: " confirm
+  if [[ "${confirm:-Y}" =~ ^[Yy]$ ]]; then
+    choice=$detected
+  fi
+fi
+
+if [ -z "$choice" ]; then
 echo "Select your tool:"
 echo "  1) Cursor"
 echo "  2) GitHub Copilot"
@@ -17,6 +41,7 @@ echo "  7) Codex"
 echo "  8) Kiro"
 echo ""
 read -rp "Choice [1-8]: " choice
+fi
 
 case "$choice" in
   1)
