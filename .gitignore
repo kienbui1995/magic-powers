@@ -6,3 +6,4 @@ integrations/
 *.log
 .DS_Store
 package-lock.json
+.playwright-mcp/
