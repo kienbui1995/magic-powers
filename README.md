@@ -12,7 +12,7 @@ Claude Code defaults to using the most expensive model for everything. Magic Pow
 # Claude Code (recommended)
 /plugin install github:your-username/magic-powers
 
-# Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex
+# Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro
 git clone https://github.com/your-username/magic-powers.git
 cd magic-powers && bash scripts/install.sh
 ```
@@ -28,6 +28,16 @@ cd magic-powers && bash scripts/install.sh
 Installs 11 agent skills to `~/.codex/skills/` and `AGENTS.md` to `~/.codex/AGENTS.md`. Restart Codex after installing.
 
 Invoke skills explicitly with `$magic-<name>` (e.g. `$magic-architect`, `$magic-debugger`), or just describe your task and Codex picks the right one.
+
+### Kiro
+
+```bash
+git clone https://github.com/your-username/magic-powers.git
+cd magic-powers && bash scripts/install.sh
+# Select option 8 — Kiro
+```
+
+Installs 11 agent steering files to `.kiro/steering/`. Each file uses `inclusion: auto` — Kiro automatically loads the right agent when your task matches. Also available as slash commands (e.g. `/magic-architect`, `/magic-debugger`).
 
 ## 10 Agents by Division
 
