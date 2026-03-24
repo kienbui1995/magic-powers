@@ -4,8 +4,9 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Tools](https://img.shields.io/badge/tools-9-green)](README.md#multi-tool-support)
 [![Agents](https://img.shields.io/badge/agents-11-purple)](README.md#10-agents-by-division)
+[![Website](https://img.shields.io/badge/website-magic--powers.pmai.space-orange)](https://magic-powers.pmai.space)
 
-A Claude Code plugin with cost-optimized model routing, 22 workflow skills, 11 specialized agents, and Google Stitch design integration. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
+**[magic-powers.pmai.space](https://magic-powers.pmai.space)** — A Claude Code plugin with cost-optimized model routing, 22 workflow skills, 11 specialized agents, and Google Stitch design integration. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
 
 ## Why Magic Powers?
 
