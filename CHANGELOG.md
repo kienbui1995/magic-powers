@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] - 2026-03-24
+
+### Added
+
+- All 8 tools now receive **both** 11 agents and 22 skills (33 total)
+- Kiro: `using-magic-powers` steering file uses `inclusion: always` — loads every session (session hook equivalent)
+- OpenCode: 3 workflow commands installed to `~/.config/opencode/commands/`: `/magic-review`, `/magic-debug`, `/magic-plan`
+
+### Changed
+
+- Aider: `CONVENTIONS.md` now has separate Agents and Skills sections
+- Windsurf: `.windsurfrules` now has separate Agents and Skills sections
+
 ## [0.5.0] - 2026-03-24
 
 ### Added
@@ -63,6 +76,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Google Stitch SDK integration for UI design generation
 - Multi-tool support: Claude Code (native plugin), Cursor, GitHub Copilot, Aider, Windsurf, Gemini CLI
 
+[0.6.0]: https://github.com/kienbui1995/magic-powers/compare/v0.5.1...v0.6.0
 [0.5.0]: https://github.com/kienbui1995/magic-powers/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/kienbui1995/magic-powers/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/kienbui1995/magic-powers/compare/v0.3.0...v0.3.1
