@@ -146,9 +146,56 @@ convert_kiro() {
   for f in $(find_skills); do
     local name=$(get_field "$f" name)
     local desc=$(get_field "$f" description)
-    { echo "---"; echo "inclusion: auto"; echo "name: ${name}"; echo "description: $desc"; echo "---"; echo ""; strip_frontmatter "$f"; } > "$out/${name}.md"
+    # using-magic-powers loads always (session hook equivalent)
+    local mode="auto"
+    [ "$name" = "using-magic-powers" ] && mode="always"
+    { echo "---"; echo "inclusion: ${mode}"; echo "name: ${name}"; echo "description: $desc"; echo "---"; echo ""; strip_frontmatter "$f"; } > "$out/${name}.md"
   done
   echo "Kiro: $(( $(find_agents | wc -l) + $(find_skills | wc -l) )) steering files → integrations/kiro/steering/"
+}
+
+convert_opencode_commands() {
+  local out="$REPO/integrations/opencode/commands"
+  mkdir -p "$out"
+
+  cat > "$out/magic-review.md" <<'EOF'
+---
+description: Run a full Magic Powers code review on recent changes
+---
+Review my recent changes using the magic-powers systematic approach:
+1. Check correctness, edge cases, and logic errors
+2. Identify security concerns (OWASP top 10)
+3. Review performance and scalability
+4. Verify project conventions are followed
+5. Suggest concrete improvements with code examples
+EOF
+
+  cat > "$out/magic-debug.md" <<'EOF'
+---
+description: Start a systematic debugging session using Magic Powers methodology
+---
+Help me debug this issue using systematic-debugging methodology:
+1. Reproduce the problem and confirm exact symptoms
+2. Form hypotheses about root cause
+3. Binary search to isolate the failure point
+4. Identify root cause before proposing any fix
+5. Propose minimal, targeted fix with verification steps
+EOF
+
+  cat > "$out/magic-plan.md" <<'EOF'
+---
+description: Create a structured implementation plan before coding
+---
+Before writing any code, create a structured implementation plan:
+1. Clarify requirements and constraints
+2. Identify files to create/modify
+3. Break into numbered steps with dependencies
+4. Flag risks and edge cases
+5. Define success criteria
+Only output the plan — no implementation yet.
+EOF
+
+  echo "OpenCode: 3 commands → integrations/opencode/commands/"
 }
 
 convert_opencode() {
@@ -182,6 +229,7 @@ convert_opencode() {
       echo ""
     done
   } > "$REPO/integrations/opencode/AGENTS.md"
+  convert_opencode_commands
   echo "OpenCode: AGENTS.md → integrations/opencode/AGENTS.md"
 }
 

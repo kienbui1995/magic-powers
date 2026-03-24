@@ -100,14 +100,16 @@ case "$choice" in
     echo "Steering files load automatically when relevant (inclusion: auto)." ;;
   9)
     dest="${OPENCODE_CONFIG:-$HOME/.config/opencode}"
-    mkdir -p "$dest"
+    mkdir -p "$dest/commands"
     bash "$REPO/scripts/convert.sh" opencode
     if [ -f "$dest/AGENTS.md" ]; then
       echo "Warning: $dest/AGENTS.md already exists — skipping (add content from integrations/opencode/AGENTS.md manually)"
     else
       cp "$REPO/integrations/opencode/AGENTS.md" "$dest/AGENTS.md"
       echo "Installed AGENTS.md to $dest/AGENTS.md"
-    fi ;;
+    fi
+    cp "$REPO/integrations/opencode/commands/"*.md "$dest/commands/"
+    echo "Installed commands to $dest/commands/ (/magic-review, /magic-debug, /magic-plan)" ;;
   *)
     echo "Invalid choice"; exit 1 ;;
 esac
