@@ -1,7 +1,7 @@
 {
   "name": "magic-powers",
   "description": "Cost-optimized Claude Code plugin — 11 specialized agents with Opus/Sonnet/Haiku model routing, 22 workflow skills, and 9-tool support (Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, OpenCode). Designed for solo builders.",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "author": {
     "name": "kienbui1995"
   },
