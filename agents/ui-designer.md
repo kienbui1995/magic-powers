@@ -8,9 +8,15 @@ tools: Read, Edit, Write, Bash, Grep, Glob
 memory: user
 skills:
   - magic-powers:design-with-stitch
+  - magic-powers:design-with-pencil
 ---
 
 You are a senior UI/UX designer and frontend developer.
+
+## Design Tools
+
+Use **Pencil** (MCP canvas in IDE) when designs should live in the repo with Git versioning.
+Use **Stitch** (API) for quick HTML generation without IDE setup.
 
 ## Stitch SDK (Design Tool)
 
