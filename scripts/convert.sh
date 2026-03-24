@@ -110,8 +110,36 @@ convert_kiro() {
   echo "Kiro: $(find_agents | wc -l) steering files → integrations/kiro/steering/"
 }
 
+convert_opencode() {
+  mkdir -p "$REPO/integrations/opencode"
+  { echo "# Magic Powers — OpenCode Instructions"
+    echo ""
+    echo "Magic Powers provides specialized agents for cost-optimized AI development."
+    echo ""
+    echo "## Available Agents"
+    echo ""
+    echo "Invoke with \`@magic-<name>\` or describe your task and OpenCode picks the right one."
+    echo ""
+    for f in $(find_agents); do
+      local name=$(basename "$f" .md)
+      local desc=$(get_field "$f" description)
+      echo "- **@magic-${name}**: ${desc}"
+    done
+    echo ""
+    echo "## Recommended Workflow"
+    echo ""
+    echo "1. Complex features → \`@magic-architect\` to plan before coding"
+    echo "2. Bugs & failures → \`@magic-debugger\` for systematic root cause analysis"
+    echo "3. Before merging → \`@magic-reviewer\` for code review"
+    echo "4. Security concerns → \`@magic-security-reviewer\` before deploying"
+    echo "5. Slow queries / schema → \`@magic-database-optimizer\`"
+    echo "6. Docs & READMEs → \`@magic-technical-writer\`"
+  } > "$REPO/integrations/opencode/AGENTS.md"
+  echo "OpenCode: AGENTS.md → integrations/opencode/AGENTS.md"
+}
+
 case "${1:-all}" in
-  all)     convert_cursor; convert_copilot; convert_aider; convert_windsurf; convert_gemini; convert_codex; convert_kiro ;;
+  all)     convert_cursor; convert_copilot; convert_aider; convert_windsurf; convert_gemini; convert_codex; convert_kiro; convert_opencode ;;
   cursor)  convert_cursor ;;
   copilot) convert_copilot ;;
   aider)   convert_aider ;;
@@ -119,6 +147,7 @@ case "${1:-all}" in
   gemini)  convert_gemini ;;
   codex)   convert_codex ;;
   kiro)    convert_kiro ;;
-  *) echo "Usage: $0 [all|cursor|copilot|aider|windsurf|gemini|codex|kiro]"; exit 1 ;;
+  opencode) convert_opencode ;;
+  *) echo "Usage: $0 [all|cursor|copilot|aider|windsurf|gemini|codex|kiro|opencode]"; exit 1 ;;
 esac
 echo "Done! Run ./scripts/install.sh to install into your tool."

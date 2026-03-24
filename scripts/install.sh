@@ -9,11 +9,12 @@ detect_tool() {
   command -v windsurf &>/dev/null && echo 4 && return
   [ -d "$HOME/.codex" ] && echo 7 && return
   command -v gemini &>/dev/null && echo 5 && return
+  command -v opencode &>/dev/null && echo 9 && return
   command -v claude &>/dev/null && echo 6 && return
   echo ""
 }
 
-TOOL_NAMES=("" "Cursor" "GitHub Copilot" "Aider" "Windsurf" "Gemini CLI" "Claude Code" "Codex" "Kiro")
+TOOL_NAMES=("" "Cursor" "GitHub Copilot" "Aider" "Windsurf" "Gemini CLI" "Claude Code" "Codex" "Kiro" "OpenCode")
 
 echo "Magic Powers Installer"
 echo "======================"
@@ -39,8 +40,9 @@ echo "  5) Gemini CLI"
 echo "  6) Claude Code (plugin — recommended)"
 echo "  7) Codex"
 echo "  8) Kiro"
+echo "  9) OpenCode"
 echo ""
-read -rp "Choice [1-8]: " choice
+read -rp "Choice [1-9]: " choice
 fi
 
 case "$choice" in
@@ -96,6 +98,16 @@ case "$choice" in
     cp "$REPO/integrations/kiro/steering/"*.md "$dest/"
     echo "Installed to $dest"
     echo "Steering files load automatically when relevant (inclusion: auto)." ;;
+  9)
+    dest="${OPENCODE_CONFIG:-$HOME/.config/opencode}"
+    mkdir -p "$dest"
+    bash "$REPO/scripts/convert.sh" opencode
+    if [ -f "$dest/AGENTS.md" ]; then
+      echo "Warning: $dest/AGENTS.md already exists — skipping (add content from integrations/opencode/AGENTS.md manually)"
+    else
+      cp "$REPO/integrations/opencode/AGENTS.md" "$dest/AGENTS.md"
+      echo "Installed AGENTS.md to $dest/AGENTS.md"
+    fi ;;
   *)
     echo "Invalid choice"; exit 1 ;;
 esac

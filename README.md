@@ -1,6 +1,11 @@
 # ✨ Magic Powers
 
-A Claude Code plugin with cost-optimized model routing, 22 workflow skills, 11 specialized agents, and Google Stitch design integration. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, and Kiro.
+[![npm version](https://img.shields.io/npm/v/magic-powers)](https://www.npmjs.com/package/magic-powers)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![Tools](https://img.shields.io/badge/tools-9-green)](README.md#multi-tool-support)
+[![Agents](https://img.shields.io/badge/agents-11-purple)](README.md#10-agents-by-division)
+
+A Claude Code plugin with cost-optimized model routing, 22 workflow skills, 11 specialized agents, and Google Stitch design integration. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
 
 ## Why Magic Powers?
 
@@ -19,7 +24,7 @@ npx magic-powers@latest
 curl -fsSL https://raw.githubusercontent.com/kienbui1995/magic-powers/main/scripts/get.sh | bash
 ```
 
-The installer auto-detects Cursor, Windsurf, Kiro, Codex, Gemini CLI, and Claude Code from your environment.
+The installer auto-detects Cursor, Windsurf, Kiro, Codex, OpenCode, Gemini CLI, and Claude Code from your environment.
 
 ### Codex
 
@@ -69,12 +74,20 @@ Installs 11 agent steering files to `.kiro/steering/`. Each file uses `inclusion
 | `security-reviewer` | 🛡️ | Haiku | Security audit, vulnerability scanning |
 | `technical-writer` | 📝 | Haiku | Documentation, READMEs, ADRs, changelogs |
 
+### 📣 Product & Growth
+
+| Agent | Emoji | Model | Purpose |
+|-------|-------|-------|---------|
+| `product-strategist` | 📣 | Sonnet | Feature prioritization, PRDs, launch planning |
+| `copywriter` | ✍️ | Haiku | Landing pages, marketing copy, announcements |
+
 ### Cost by Model
 
 | Model | Agents | Cost |
 |-------|--------|------|
 | Opus | 1 (architect) | $$$$$ |
-| Sonnet | 5 (debugger, db-optimizer, sre, git-workflow, ui-designer) | $$ |
+| Sonnet | 6 (debugger, db-optimizer, sre, git-workflow, ui-designer, product-strategist) | $$ |
+| Haiku | 4 (reviewer, security-reviewer, technical-writer, copywriter) | $ |
 
 ## 16 Skills
 
@@ -104,6 +117,7 @@ Installs 11 agent steering files to `.kiro/steering/`. Each file uses `inclusion
 | Gemini CLI | Skills | `bash scripts/install.sh` → select Gemini |
 | Codex | Skills + `AGENTS.md` | `bash scripts/install.sh` → select Codex |
 | Kiro | Steering files | `bash scripts/install.sh` → select Kiro |
+| OpenCode | `AGENTS.md` | `bash scripts/install.sh` → select OpenCode |
 
 ## Stitch Design Integration
 
@@ -130,7 +144,7 @@ See [`examples/`](examples/) for real-world scenarios:
 | Model routing | ❌ | ✅ Opus/Sonnet/Haiku |
 | Cost optimization | ❌ | ✅ ~75% reduction |
 | Design tools | ❌ | ✅ Google Stitch SDK |
-| Multi-tool | ❌ | ✅ 8 tools |
+| Multi-tool | ❌ | ✅ 9 tools |
 | Examples | ❌ | ✅ 4 scenarios |
 
 ## Changelog
