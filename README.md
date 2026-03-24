@@ -6,7 +6,7 @@
 [![Agents](https://img.shields.io/badge/agents-11-purple)](README.md#10-agents-by-division)
 [![Website](https://img.shields.io/badge/website-magic--powers.pmai.space-orange)](https://magic-powers.pmai.space)
 
-**[magic-powers.pmai.space](https://magic-powers.pmai.space)** — A Claude Code plugin with cost-optimized model routing, 23 workflow skills, 11 specialized agents, and Stitch + Pencil design integration. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
+**[magic-powers.pmai.space](https://magic-powers.pmai.space)** — A Claude Code plugin with cost-optimized model routing, 24 workflow skills, 11 specialized agents, and Stitch + Pencil design integration. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
 
 ## Why Magic Powers?
 
@@ -90,9 +90,11 @@ Installs 11 agent steering files to `.kiro/steering/`. Each file uses `inclusion
 | Sonnet | 6 (debugger, db-optimizer, sre, git-workflow, ui-designer, product-strategist) | $$ |
 | Haiku | 4 (reviewer, security-reviewer, technical-writer, copywriter) | $ |
 
-## 16 Skills
+## 24 Skills
 
 **Core Workflow:** `using-magic-powers` · `brainstorming` · `writing-plans` · `executing-plans`
+
+**Planning:** `spec-driven-development`
 
 **Development:** `test-driven-development` · `systematic-debugging` · `verification-before-completion`
 
@@ -102,9 +104,9 @@ Installs 11 agent steering files to `.kiro/steering/`. Each file uses `inclusion
 
 **Review:** `security-review` · `database-optimization` · `infrastructure-review` · `technical-writing`
 
-**Meta:** `writing-skills`
+**Meta:** `writing-skills` · `open-source-project` · `product-strategy`
 
-**Unique:** `cost-aware-routing` · `design-with-stitch`
+**Unique:** `cost-aware-routing` · `design-with-stitch` · `design-with-pencil`
 
 ## Multi-Tool Support
 
