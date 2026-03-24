@@ -14,8 +14,9 @@ echo "  4) Windsurf"
 echo "  5) Gemini CLI"
 echo "  6) Claude Code (plugin — recommended)"
 echo "  7) Codex"
+echo "  8) Kiro"
 echo ""
-read -rp "Choice [1-7]: " choice
+read -rp "Choice [1-8]: " choice
 
 case "$choice" in
   1)
@@ -63,6 +64,13 @@ case "$choice" in
     fi
     echo "Installed skills to $skill_dest"
     echo "Restart Codex to pick up new skills." ;;
+  8)
+    dest="${KIRO_STEERING:-$PWD/.kiro/steering}"
+    mkdir -p "$dest"
+    bash "$REPO/scripts/convert.sh" kiro
+    cp "$REPO/integrations/kiro/steering/"*.md "$dest/"
+    echo "Installed to $dest"
+    echo "Steering files load automatically when relevant (inclusion: auto)." ;;
   *)
     echo "Invalid choice"; exit 1 ;;
 esac

@@ -1,6 +1,6 @@
 # ✨ Magic Powers
 
-A Claude Code plugin with cost-optimized model routing, 22 workflow skills, 11 specialized agents, and Google Stitch design integration. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, and Codex.
+A Claude Code plugin with cost-optimized model routing, 22 workflow skills, 11 specialized agents, and Google Stitch design integration. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, and Kiro.
 
 ## Why Magic Powers?
 
@@ -89,6 +89,7 @@ Invoke skills explicitly with `$magic-<name>` (e.g. `$magic-architect`, `$magic-
 | Windsurf | `.windsurfrules` | `bash scripts/install.sh` → select Windsurf |
 | Gemini CLI | Skills | `bash scripts/install.sh` → select Gemini |
 | Codex | Skills + `AGENTS.md` | `bash scripts/install.sh` → select Codex |
+| Kiro | Steering files | `bash scripts/install.sh` → select Kiro |
 
 ## Stitch Design Integration
 
@@ -115,7 +116,7 @@ See [`examples/`](examples/) for real-world scenarios:
 | Model routing | ❌ | ✅ Opus/Sonnet/Haiku |
 | Cost optimization | ❌ | ✅ ~75% reduction |
 | Design tools | ❌ | ✅ Google Stitch SDK |
-| Multi-tool | ❌ | ✅ 7 tools |
+| Multi-tool | ❌ | ✅ 8 tools |
 | Examples | ❌ | ✅ 4 scenarios |
 
 ## Changelog

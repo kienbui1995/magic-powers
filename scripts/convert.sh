@@ -99,14 +99,26 @@ convert_codex() {
   echo "Codex: AGENTS.md → integrations/codex/AGENTS.md"
 }
 
+convert_kiro() {
+  local out="$REPO/integrations/kiro/steering"
+  mkdir -p "$out"
+  for f in $(find_agents); do
+    local name=$(basename "$f" .md)
+    local desc=$(get_field "$f" description)
+    { echo "---"; echo "inclusion: auto"; echo "name: magic-${name}"; echo "description: $desc"; echo "---"; echo ""; strip_frontmatter "$f"; } > "$out/magic-${name}.md"
+  done
+  echo "Kiro: $(find_agents | wc -l) steering files → integrations/kiro/steering/"
+}
+
 case "${1:-all}" in
-  all)     convert_cursor; convert_copilot; convert_aider; convert_windsurf; convert_gemini; convert_codex ;;
+  all)     convert_cursor; convert_copilot; convert_aider; convert_windsurf; convert_gemini; convert_codex; convert_kiro ;;
   cursor)  convert_cursor ;;
   copilot) convert_copilot ;;
   aider)   convert_aider ;;
   windsurf) convert_windsurf ;;
   gemini)  convert_gemini ;;
   codex)   convert_codex ;;
-  *) echo "Usage: $0 [all|cursor|copilot|aider|windsurf|gemini|codex]"; exit 1 ;;
+  kiro)    convert_kiro ;;
+  *) echo "Usage: $0 [all|cursor|copilot|aider|windsurf|gemini|codex|kiro]"; exit 1 ;;
 esac
 echo "Done! Run ./scripts/install.sh to install into your tool."
