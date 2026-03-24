@@ -1,12 +1,12 @@
 {
   "name": "magic-powers",
-  "description": "Cost-optimized Claude Code plugin with model-routing agents, workflow skills, and design tools",
-  "version": "0.1.0",
+  "description": "Cost-optimized Claude Code plugin — 11 specialized agents with Opus/Sonnet/Haiku model routing, 22 workflow skills, and 9-tool support (Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, OpenCode). Designed for solo builders.",
+  "version": "0.6.0",
   "author": {
-    "name": "Magic Powers Contributors"
+    "name": "kienbui1995"
   },
   "homepage": "https://github.com/kienbui1995/magic-powers",
   "repository": "https://github.com/kienbui1995/magic-powers",
   "license": "MIT",
-  "keywords": ["skills", "agents", "model-routing", "cost-optimization", "tdd", "debugging", "design"]
+  "keywords": ["agents", "skills", "model-routing", "cost-optimization", "multi-tool", "tdd", "debugging", "design", "solo-builder"]
 }
