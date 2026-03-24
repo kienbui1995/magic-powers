@@ -1,0 +1,18 @@
+services:
+  web:
+    image: nginx:alpine
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+    networks:
+      - default
+      - tunnel-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+networks:
+  tunnel-net:
+    external: true
