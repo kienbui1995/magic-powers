@@ -22,37 +22,37 @@ audit_file() {
   # === CRITICAL ===
 
   # 1. Hardcoded secrets/keys/tokens
-  if grep -qPi '(api[_-]?key|secret[_-]?key|access[_-]?token|password)\s*[:=]\s*["\x27][A-Za-z0-9+/=_-]{16,}' "$file"; then
+  if grep -qiE '(api[_-]?key|secret[_-]?key|access[_-]?token|password)\s*[:=]\s*"[A-Za-z0-9+/=_-]{16,}' "$file"; then
     echo -e "${RED}CRITICAL${NC} $file: Hardcoded secret/key"
     CRITICAL=$((CRITICAL + 1)); issues=$((issues + 1))
   fi
 
   # 2. Dangerous shell commands
-  if grep -qPi '(rm\s+-rf\s+/[^a-z]|sudo\s|chmod\s+777|curl.*\|\s*bash|wget.*\|\s*sh)' "$file"; then
+  if grep -qiE '(rm\s+-rf\s+/[^a-z]|sudo\s|chmod\s+777|curl.*\|\s*bash|wget.*\|\s*sh)' "$file"; then
     echo -e "${RED}CRITICAL${NC} $file: Dangerous shell command"
     CRITICAL=$((CRITICAL + 1)); issues=$((issues + 1))
   fi
 
   # 3. Prompt injection patterns
-  if grep -qPi '(ignore\s+(previous|above|all)\s+instructions|you\s+are\s+now|disregard\s+(your|all)|override\s+system\s+prompt)' "$file"; then
+  if grep -qiE '(ignore\s+(previous|above|all)\s+instructions|you\s+are\s+now|disregard\s+(your|all)|override\s+system\s+prompt)' "$file"; then
     echo -e "${RED}CRITICAL${NC} $file: Prompt injection pattern"
     CRITICAL=$((CRITICAL + 1)); issues=$((issues + 1))
   fi
 
   # 4. Environment variable exfiltration
-  if grep -qPi '(process\.env\b|os\.environ|printenv|env\s*\|\s*(grep|sort|curl|wget)|export\s+.*\$\(|echo\s+\$\{?[A-Z_]+\}?\s*\|\s*(curl|wget|nc))' "$file"; then
+  if grep -qiE '(process\.env[^_A-Z]|os\.environ|printenv|env\s*\|\s*(grep|sort|curl|wget))' "$file"; then
     echo -e "${RED}CRITICAL${NC} $file: Env variable exfiltration pattern"
     CRITICAL=$((CRITICAL + 1)); issues=$((issues + 1))
   fi
 
   # 5. Write to sensitive paths (backdoor/persistence)
-  if grep -qPi '(>|>>|tee|write|echo\s+.*>)\s*(~/\.(bashrc|bash_profile|profile|zshrc)|/etc/(crontab|sudoers|hosts|rc\.local)|/usr/local/bin/)' "$file"; then
+  if grep -qiE '(>>?\s*~/\.(bashrc|bash_profile|profile|zshrc)|>>?\s*/etc/(crontab|sudoers|rc\.local)|>>?\s*/usr/local/bin/)' "$file"; then
     echo -e "${RED}CRITICAL${NC} $file: Write to sensitive system path"
     CRITICAL=$((CRITICAL + 1)); issues=$((issues + 1))
   fi
 
   # 6. Crypto wallet / private key patterns
-  if grep -qPi '(wallet\.dat|seed\s*phrase|mnemonic|private[_-]?key\s*[:=]\s*["\x27]0x[0-9a-f]{64}|keystore/UTC)' "$file"; then
+  if grep -qiE '(wallet\.dat|seed\s*phrase|mnemonic|private[_-]?key\s*[:=]\s*"0x[0-9a-f]{64}|keystore/UTC)' "$file"; then
     echo -e "${RED}CRITICAL${NC} $file: Crypto wallet/private key pattern"
     CRITICAL=$((CRITICAL + 1)); issues=$((issues + 1))
   fi
@@ -60,49 +60,49 @@ audit_file() {
   # === WARNINGS ===
 
   # 7. Overly broad file access
-  if grep -qPi '(read|write|access|open)\s+any\s+file|/etc/(passwd|shadow)|~\/\.(ssh|aws|gnupg|kube)' "$file"; then
+  if grep -qiE '(read|write|access|open)\s+any\s+file|/etc/(passwd|shadow)|~/\.(ssh|aws|gnupg|kube)' "$file"; then
     echo -e "${YELLOW}WARNING${NC} $file: Broad file access pattern"
     WARNINGS=$((WARNINGS + 1)); issues=$((issues + 1))
   fi
 
   # 8. Data exfiltration (POST to external URLs)
-  if grep -qPi 'curl\s+(-X\s+POST|--data)\s+https?://(?!localhost|127\.0\.0\.1|example\.com)' "$file"; then
+  if grep -qiE 'curl\s+(-X\s+POST|--data)\s+https?://' "$file"; then
     echo -e "${YELLOW}WARNING${NC} $file: Data exfiltration pattern"
     WARNINGS=$((WARNINGS + 1)); issues=$((issues + 1))
   fi
 
-  # 9. Eval/exec calls
-  if grep -qP '(?<![a-zA-Z_])(eval|exec)\s*\(' "$file"; then
+  # 9. Eval/exec calls (word boundary via space/paren)
+  if grep -qE '(^|[^a-zA-Z_])(eval|exec)\s*\(' "$file"; then
     echo -e "${YELLOW}WARNING${NC} $file: eval/exec usage"
     WARNINGS=$((WARNINGS + 1)); issues=$((issues + 1))
   fi
 
   # 10. Large encoded payloads
-  if grep -qP '[A-Za-z0-9+/]{100,}={0,2}' "$file"; then
+  if grep -qE '[A-Za-z0-9+/]{100,}=?=?' "$file"; then
     echo -e "${YELLOW}WARNING${NC} $file: Large encoded payload"
     WARNINGS=$((WARNINGS + 1)); issues=$((issues + 1))
   fi
 
   # 11. Malicious package install (from URL/git, not registry)
-  if grep -qPi '(npm\s+install|pip\s+install)\s+(https?://|git\+|git://)' "$file"; then
+  if grep -qiE '(npm\s+install|pip\s+install)\s+(https?://|git\+|git://)' "$file"; then
     echo -e "${YELLOW}WARNING${NC} $file: Package install from URL/git"
     WARNINGS=$((WARNINGS + 1)); issues=$((issues + 1))
   fi
 
   # 12. Network recon tools
-  if grep -qPi '\b(nmap|netcat|nc\s+-[a-z]*l|masscan|ncat)\b' "$file"; then
+  if grep -qiE '\b(nmap|netcat|masscan|ncat)\b' "$file"; then
     echo -e "${YELLOW}WARNING${NC} $file: Network recon tool"
     WARNINGS=$((WARNINGS + 1)); issues=$((issues + 1))
   fi
 
-  # 13. Obfuscated strings (hex/unicode escapes)
-  if grep -qP '(\\x[0-9a-fA-F]{2}){8,}|(\\u[0-9a-fA-F]{4}){6,}' "$file"; then
+  # 13. Obfuscated strings (hex escapes)
+  if grep -qE '(\\x[0-9a-fA-F]{2}){8,}' "$file"; then
     echo -e "${YELLOW}WARNING${NC} $file: Obfuscated string"
     WARNINGS=$((WARNINGS + 1)); issues=$((issues + 1))
   fi
 
   # 14. Overly permissive instructions (jailbreak enablers)
-  if grep -qPi '(no\s+restrictions|do\s+anything\s+(the\s+)?user\s+asks|bypass\s+(all\s+)?safety|ignore\s+(all\s+)?guardrails|unlimited\s+access)' "$file"; then
+  if grep -qiE '(no\s+restrictions|do\s+anything\s+(the\s+)?user\s+asks|bypass\s+(all\s+)?safety|ignore\s+(all\s+)?guardrails|unlimited\s+access)' "$file"; then
     echo -e "${YELLOW}WARNING${NC} $file: Overly permissive instruction"
     WARNINGS=$((WARNINGS + 1)); issues=$((issues + 1))
   fi
@@ -122,9 +122,9 @@ scan_dir() {
   fi
 }
 
-echo "🔒 Magic Powers Security Audit (v2)"
+echo "Magic Powers Security Audit (v2)"
 echo "====================================="
-echo "14 checks · Based on Snyk ToxicSkills study"
+echo "14 checks - Based on Snyk ToxicSkills study"
 echo ""
 
 # Scan all content directories
@@ -139,16 +139,17 @@ ISSUES=$((CRITICAL + WARNINGS))
 echo ""
 echo "====================================="
 echo "Files scanned: $TOTAL_FILES"
-echo -e "Critical:      ${CRITICAL}"
-echo -e "Warnings:      ${WARNINGS}"
+echo "Critical:      ${CRITICAL}"
+echo "Warnings:      ${WARNINGS}"
 echo ""
 if [ "$CRITICAL" -gt 0 ]; then
-  echo -e "${RED}❌ FAILED${NC} — $CRITICAL critical issue(s) must be fixed"
+  echo "FAILED -- $CRITICAL critical issue(s) must be fixed"
+  EXIT_CODE=1
 elif [ "$WARNINGS" -gt 0 ]; then
-  echo -e "${YELLOW}⚠️  PASSED WITH WARNINGS${NC} — $WARNINGS warning(s) to review"
+  echo "PASSED WITH WARNINGS -- $WARNINGS warning(s) to review"
   EXIT_CODE=0
 else
-  echo -e "${GREEN}✅ PASSED${NC} — $TOTAL_FILES files scanned, 0 issues"
+  echo "PASSED -- $TOTAL_FILES files scanned, 0 issues"
 fi
 
 exit $EXIT_CODE
