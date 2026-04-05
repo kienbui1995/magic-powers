@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Generate integrations
+        run: bash scripts/convert.sh all
       - name: Security audit
         run: bash scripts/security-audit.sh
       - name: Quality audit

@@ -3,9 +3,9 @@ name: Security Audit
 on:
   push:
     branches: [main]
-    paths: ['skills/**', 'agents/**', 'integrations/**', 'hooks/**', 'commands/**']
+    paths: ['skills/**', 'agents/**', 'hooks/**', 'commands/**']
   pull_request:
-    paths: ['skills/**', 'agents/**', 'integrations/**', 'hooks/**', 'commands/**']
+    paths: ['skills/**', 'agents/**', 'hooks/**', 'commands/**']
   schedule:
     - cron: '0 0 * * 1'
 
@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Generate integrations
+        run: bash scripts/convert.sh all
       - name: Security audit (14 checks)
         run: bash scripts/security-audit.sh
       - name: Skill quality audit
