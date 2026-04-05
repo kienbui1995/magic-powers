@@ -6,15 +6,23 @@ on:
       - 'v*'
 
 jobs:
-  security-audit:
+  audit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run security audit (14 checks)
+      - name: Security audit
         run: bash scripts/security-audit.sh
+      - name: Quality audit
+        run: bash scripts/quality-audit.sh
+      - name: Sync audit
+        run: bash scripts/sync-audit.sh
+      - name: Link audit
+        run: bash scripts/link-audit.sh
+      - name: Version audit
+        run: bash scripts/version-audit.sh
 
   publish:
-    needs: security-audit
+    needs: audit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

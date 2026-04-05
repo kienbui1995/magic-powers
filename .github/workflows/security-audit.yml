@@ -14,5 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run security audit (14 checks)
+      - name: Security audit (14 checks)
         run: bash scripts/security-audit.sh
+      - name: Skill quality audit
+        run: bash scripts/quality-audit.sh
+      - name: Integration sync audit
+        run: bash scripts/sync-audit.sh
+      - name: Link validation audit
+        run: bash scripts/link-audit.sh
