@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.1] - 2026-04-05
+
+### Added
+
+- Model routing guide (`docs/MODEL_ROUTING.md`) — CCR + OpenRouter setup for 80-95% cost savings
+- skills.sh install support (`npx skills add kienbui1995/magic-powers`)
+- 4 new CI audit scripts: quality, sync, link, version — all gate release
+- Full audit suite: 5 audits, 333 files, 95 cross-refs, 5 integrations
+
+### Fixed
+
+- Security audit: `grep -P` → `grep -E` for CI compatibility
+
 ## [0.9.0] - 2026-04-05
 
 ### Added
@@ -140,6 +153,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Google Stitch SDK integration for UI design generation
 - Multi-tool support: Claude Code (native plugin), Cursor, GitHub Copilot, Aider, Windsurf, Gemini CLI
 
+[0.9.1]: https://github.com/kienbui1995/magic-powers/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/kienbui1995/magic-powers/compare/v0.8.2...v0.9.0
 [0.8.2]: https://github.com/kienbui1995/magic-powers/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/kienbui1995/magic-powers/compare/v0.8.0...v0.8.1

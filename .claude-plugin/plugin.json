@@ -1,7 +1,7 @@
 {
   "name": "magic-powers",
   "description": "Cost-optimized Claude Code plugin — 11 specialized agents with Opus/Sonnet/Haiku model routing, 43 workflow skills, and 9-tool support. Built for AI startups shipping fast with small teams.",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "author": {
     "name": "kienbui1995"
   },
