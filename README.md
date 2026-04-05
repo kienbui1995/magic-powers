@@ -2,11 +2,12 @@
 
 [![npm version](https://img.shields.io/npm/v/magic-powers)](https://www.npmjs.com/package/magic-powers)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![Security Audit](https://img.shields.io/badge/security_audit-passing-brightgreen)](SECURITY.md)
 [![Tools](https://img.shields.io/badge/tools-9-green)](README.md#multi-tool-support)
 [![Agents](https://img.shields.io/badge/agents-11-purple)](README.md#10-agents-by-division)
 [![Website](https://img.shields.io/badge/website-magic--powers.pmai.space-orange)](https://magic-powers.pmai.space)
 
-**[magic-powers.pmai.space](https://magic-powers.pmai.space)** — A Claude Code plugin with cost-optimized model routing, 24 workflow skills, 11 specialized agents, and Stitch + Pencil design integration. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
+**[magic-powers.pmai.space](https://magic-powers.pmai.space)** — A Claude Code plugin with cost-optimized model routing, 43 workflow skills, 11 specialized agents, and Stitch + Pencil design integration. Built for AI startups shipping fast with small teams. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
 
 ## Why Magic Powers?
 
@@ -90,19 +91,27 @@ Installs 11 agent steering files to `.kiro/steering/`. Each file uses `inclusion
 | Sonnet | 6 (debugger, db-optimizer, sre, git-workflow, ui-designer, product-strategist) | $$ |
 | Haiku | 4 (reviewer, security-reviewer, technical-writer, copywriter) | $ |
 
-## 24 Skills
+## 43 Skills
 
 **Core Workflow:** `using-magic-powers` · `brainstorming` · `writing-plans` · `executing-plans`
 
-**Planning:** `spec-driven-development`
+**Planning:** `spec-driven-development` · `mvp-rapid-development`
 
-**Development:** `test-driven-development` · `systematic-debugging` · `verification-before-completion`
+**Development:** `test-driven-development` · `systematic-debugging` · `verification-before-completion` · `refactoring` · `api-design` · `performance-optimization` · `environment-setup`
 
-**Collaboration:** `requesting-code-review` · `receiving-code-review` · `subagent-driven-development` · `dispatching-parallel-agents`
+**DevOps:** `ci-cd-pipeline` · `docker-containerization` · `incident-response` · `dependency-management`
+
+**Collaboration:** `requesting-code-review` · `receiving-code-review` · `subagent-driven-development` · `dispatching-parallel-agents` · `pr-workflow`
 
 **Git:** `using-git-worktrees` · `finishing-a-development-branch`
 
-**Review:** `security-review` · `database-optimization` · `infrastructure-review` · `technical-writing`
+**Security & Auth:** `security-review` · `authentication-patterns` · `accessibility-compliance`
+
+**Infrastructure:** `database-optimization` · `infrastructure-review` · `caching-strategy`
+
+**AI Engineering:** `prompt-engineering` · `rag-architecture` · `agentic-ai-patterns` · `llm-evaluation` · `ai-safety-guardrails` · `llm-observability`
+
+**Review & Docs:** `technical-writing`
 
 **Meta:** `writing-skills` · `open-source-project` · `product-strategy`
 
@@ -142,8 +151,8 @@ See [`examples/`](examples/) for real-world scenarios:
 
 | Feature | Superpowers | Magic Powers |
 |---------|-------------|--------------|
-| Skills | 14 | 16 |
-| Agents | 1 | 10 |
+| Skills | 14 | 43 |
+| Agents | 1 | 11 |
 | Model routing | ❌ | ✅ Opus/Sonnet/Haiku |
 | Cost optimization | ❌ | ✅ ~75% reduction |
 | Design tools | ❌ | ✅ Google Stitch SDK |

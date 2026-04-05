@@ -5,6 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.0] - 2026-04-05
+
+### Added
+
+- **19 new skills** (24 → 43 total), organized by market demand:
+  - **Development:** `refactoring`, `api-design`, `performance-optimization`, `environment-setup`
+  - **DevOps:** `ci-cd-pipeline`, `docker-containerization`, `incident-response`, `dependency-management`
+  - **Security & Auth:** `authentication-patterns`, `accessibility-compliance`
+  - **Collaboration:** `pr-workflow`, `caching-strategy`
+  - **AI Engineering (new category):** `prompt-engineering`, `rag-architecture`, `agentic-ai-patterns`, `llm-evaluation`, `ai-safety-guardrails`, `llm-observability`, `mvp-rapid-development`
+- **Security audit v2** — 14 checks based on Snyk ToxicSkills study (2026)
+  - 6 critical: hardcoded secrets, dangerous shell, prompt injection, env exfiltration, sensitive path writes, crypto wallet patterns
+  - 8 warning: broad file access, data exfiltration, eval/exec, encoded payloads, malicious package install, network recon, obfuscated strings, permissive instructions
+  - Scans skills, agents, integrations, hooks, and commands (238 files)
+- `SECURITY.md` — security policy documenting all 14 audit checks
+- Security audit badge in README
+- Security audit blocks npm publish — CI runs audit before release
+
+### Changed
+
+- Positioning: "Built for AI startups shipping fast with small teams"
+- README: 43 Skills section with AI Engineering category
+- All integrations synced: 54 files (11 agents + 43 skills) across all 9 tools
+- package.json: description, keywords (`agentic-ai`, `llm`, `rag`), SECURITY.md in files
+- CI: `publish.yml` now requires `security-audit` job to pass before npm publish
+- `security-audit.yml` scope expanded to integrations, hooks, commands
+
 ## [0.8.2] - 2026-03-24
 
 ### Fixed
@@ -113,6 +140,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Google Stitch SDK integration for UI design generation
 - Multi-tool support: Claude Code (native plugin), Cursor, GitHub Copilot, Aider, Windsurf, Gemini CLI
 
+[0.9.0]: https://github.com/kienbui1995/magic-powers/compare/v0.8.2...v0.9.0
 [0.8.2]: https://github.com/kienbui1995/magic-powers/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/kienbui1995/magic-powers/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/kienbui1995/magic-powers/compare/v0.7.0...v0.8.0
