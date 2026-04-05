@@ -13,11 +13,16 @@
 
 Claude Code defaults to using the most expensive model for everything. Magic Powers routes tasks to the right model — **~75% cost reduction** with no quality loss on routine tasks.
 
+For actual API-level savings, combine with [Claude Code Router or OpenRouter](docs/MODEL_ROUTING.md) for **80-95% cost reduction**.
+
 ## Install
 
 ```bash
 # Claude Code (recommended)
 /plugin install github:your-username/magic-powers
+
+# skills.sh (works with 43+ agents)
+npx skills add kienbui1995/magic-powers
 
 # All other tools — npx (auto-detects your tool)
 npx magic-powers@latest
