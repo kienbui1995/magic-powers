@@ -22,37 +22,37 @@ audit_file() {
   # === CRITICAL ===
 
   # 1. Hardcoded secrets/keys/tokens
-  if grep -qiE '(api[_-]?key|secret[_-]?key|access[_-]?token|password)\s*[:=]\s*"[A-Za-z0-9+/=_-]{16,}' "$file"; then
+  if grep -qiE '(api[_-]?key|secret[_-]?key|access[_-]?token|password)[[:space:]]*[:=][[:space:]]*"[A-Za-z0-9+/=_-]{16,}' "$file"; then
     echo -e "${RED}CRITICAL${NC} $file: Hardcoded secret/key"
     CRITICAL=$((CRITICAL + 1)); issues=$((issues + 1))
   fi
 
   # 2. Dangerous shell commands
-  if grep -qiE '(rm\s+-rf\s+/[^a-z]|sudo\s|chmod\s+777|curl.*\|\s*bash|wget.*\|\s*sh)' "$file"; then
+  if grep -qiE '(rm[[:space:]]+-rf[[:space:]]+/[^a-z]|sudo[[:space:]]|chmod[[:space:]]+777|curl.*\|[[:space:]]*bash|wget.*\|[[:space:]]*sh)' "$file"; then
     echo -e "${RED}CRITICAL${NC} $file: Dangerous shell command"
     CRITICAL=$((CRITICAL + 1)); issues=$((issues + 1))
   fi
 
   # 3. Prompt injection patterns
-  if grep -qiE '(ignore\s+(previous|above|all)\s+instructions|you\s+are\s+now|disregard\s+(your|all)|override\s+system\s+prompt)' "$file"; then
+  if grep -qiE '(ignore[[:space:]]+(previous|above|all)[[:space:]]+instructions|you[[:space:]]+are[[:space:]]+now|disregard[[:space:]]+(your|all)|override[[:space:]]+system[[:space:]]+prompt)' "$file"; then
     echo -e "${RED}CRITICAL${NC} $file: Prompt injection pattern"
     CRITICAL=$((CRITICAL + 1)); issues=$((issues + 1))
   fi
 
   # 4. Environment variable exfiltration
-  if grep -qiE '(process\.env[^_A-Z]|os\.environ|printenv|env\s*\|\s*(grep|sort|curl|wget))' "$file"; then
+  if grep -qiE '(process\.env[^_A-Z]|os\.environ|printenv|env[[:space:]]*\|[[:space:]]*(grep|sort|curl|wget))' "$file"; then
     echo -e "${RED}CRITICAL${NC} $file: Env variable exfiltration pattern"
     CRITICAL=$((CRITICAL + 1)); issues=$((issues + 1))
   fi
 
   # 5. Write to sensitive paths (backdoor/persistence)
-  if grep -qiE '(>>?\s*~/\.(bashrc|bash_profile|profile|zshrc)|>>?\s*/etc/(crontab|sudoers|rc\.local)|>>?\s*/usr/local/bin/)' "$file"; then
+  if grep -qiE '(>>?[[:space:]]*~/\.(bashrc|bash_profile|profile|zshrc)|>>?[[:space:]]*/etc/(crontab|sudoers|rc\.local)|>>?[[:space:]]*/usr/local/bin/)' "$file"; then
     echo -e "${RED}CRITICAL${NC} $file: Write to sensitive system path"
     CRITICAL=$((CRITICAL + 1)); issues=$((issues + 1))
   fi
 
   # 6. Crypto wallet / private key patterns
-  if grep -qiE '(wallet\.dat|seed\s*phrase|mnemonic|private[_-]?key\s*[:=]\s*"0x[0-9a-f]{64}|keystore/UTC)' "$file"; then
+  if grep -qiE '(wallet\.dat|seed[[:space:]]*phrase|mnemonic|private[_-]?key[[:space:]]*[:=][[:space:]]*"0x[0-9a-f]{64}|keystore/UTC)' "$file"; then
     echo -e "${RED}CRITICAL${NC} $file: Crypto wallet/private key pattern"
     CRITICAL=$((CRITICAL + 1)); issues=$((issues + 1))
   fi
@@ -60,19 +60,19 @@ audit_file() {
   # === WARNINGS ===
 
   # 7. Overly broad file access
-  if grep -qiE '(read|write|access|open)\s+any\s+file|/etc/(passwd|shadow)|~/\.(ssh|aws|gnupg|kube)' "$file"; then
+  if grep -qiE '(read|write|access|open)[[:space:]]+any[[:space:]]+file|/etc/(passwd|shadow)|~/\.(ssh|aws|gnupg|kube)' "$file"; then
     echo -e "${YELLOW}WARNING${NC} $file: Broad file access pattern"
     WARNINGS=$((WARNINGS + 1)); issues=$((issues + 1))
   fi
 
   # 8. Data exfiltration (POST to external URLs)
-  if grep -qiE 'curl\s+(-X\s+POST|--data)\s+https?://' "$file"; then
+  if grep -qiE 'curl[[:space:]]+(-X[[:space:]]+POST|--data)[[:space:]]+https?://' "$file"; then
     echo -e "${YELLOW}WARNING${NC} $file: Data exfiltration pattern"
     WARNINGS=$((WARNINGS + 1)); issues=$((issues + 1))
   fi
 
   # 9. Eval/exec calls (word boundary via space/paren)
-  if grep -qE '(^|[^a-zA-Z_])(eval|exec)\s*\(' "$file"; then
+  if grep -qE '(^|[^a-zA-Z_])(eval|exec)[[:space:]]*\(' "$file"; then
     echo -e "${YELLOW}WARNING${NC} $file: eval/exec usage"
     WARNINGS=$((WARNINGS + 1)); issues=$((issues + 1))
   fi
@@ -84,7 +84,7 @@ audit_file() {
   fi
 
   # 11. Malicious package install (from URL/git, not registry)
-  if grep -qiE '(npm\s+install|pip\s+install)\s+(https?://|git\+|git://)' "$file"; then
+  if grep -qiE '(npm[[:space:]]+install|pip[[:space:]]+install)[[:space:]]+(https?://|git\+|git://)' "$file"; then
     echo -e "${YELLOW}WARNING${NC} $file: Package install from URL/git"
     WARNINGS=$((WARNINGS + 1)); issues=$((issues + 1))
   fi
@@ -102,7 +102,7 @@ audit_file() {
   fi
 
   # 14. Overly permissive instructions (jailbreak enablers)
-  if grep -qiE '(no\s+restrictions|do\s+anything\s+(the\s+)?user\s+asks|bypass\s+(all\s+)?safety|ignore\s+(all\s+)?guardrails|unlimited\s+access)' "$file"; then
+  if grep -qiE '(no[[:space:]]+restrictions|do[[:space:]]+anything[[:space:]]+(the[[:space:]]+)?user[[:space:]]+asks|bypass[[:space:]]+(all[[:space:]]+)?safety|ignore[[:space:]]+(all[[:space:]]+)?guardrails|unlimited[[:space:]]+access)' "$file"; then
     echo -e "${YELLOW}WARNING${NC} $file: Overly permissive instruction"
     WARNINGS=$((WARNINGS + 1)); issues=$((issues + 1))
   fi
