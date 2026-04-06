@@ -1,0 +1,17 @@
+{
+  "name": "magic-powers",
+  "owner": {
+    "name": "kienbui1995"
+  },
+  "metadata": {
+    "description": "Cost-optimized Claude Code plugin — 11 agents, 43 skills, model routing"
+  },
+  "plugins": [
+    {
+      "name": "magic-powers",
+      "source": "./",
+      "description": "Cost-optimized Claude Code plugin with 11 specialized agents, 43 workflow skills, and Opus/Sonnet/Haiku model routing.",
+      "version": "0.9.3"
+    }
+  ]
+}
