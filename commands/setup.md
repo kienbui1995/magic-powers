@@ -1,5 +1,5 @@
 ---
-description: "Personalize magic-powers for this project — detect stack, choose role & priority, generate agents & skills"
+description: "Personalize magic-powers for this project — detect stack, choose role & priority, install optional features (hooks, MCP, stack-specific skills)"
 ---
 
 Run the magic-powers setup wizard for this project. Follow these steps exactly:
@@ -28,15 +28,33 @@ Ask the user:
 ## Step 3: Ask Priority
 Ask the user:
 > Priority?
-> 1. Ship nhanh
-> 2. Chất lượng cao
-> 3. Tiết kiệm cost
+> 1. 🚀 Ship nhanh
+> 2. ✅ Chất lượng cao
+> 3. 💰 Tiết kiệm cost
 
-## Step 4: Generate Files
+## Step 4: Optional Features
+Ask the user which optional features to install. Show checkboxes with recommendations based on their priority:
 
-Based on answers, create these files:
+> **Optional features** (cài vào `.claude/` của project):
+>
+> **Hooks:**
+> - [ ] 🛡️ Safety guard — block ghi file nguy hiểm (.env, secrets, node_modules) ← **recommended**
+> - [ ] 🔍 Auto-lint — chạy linter sau mỗi lần edit file ← recommended nếu "Chất lượng cao"
+> - [ ] 🧪 Auto-test — chạy test liên quan sau code change ← recommended nếu "Chất lượng cao"
+>
+> **MCP Servers:**
+> - [ ] 🎨 Stitch Design — generate UI designs (cần STITCH_API_KEY) ← show nếu detect frontend
+> - [ ] 📚 Context7 — fetch latest library docs tự động
+>
+> **Stack-specific:**
+> - [ ] 📋 Project conventions skill — coding rules dựa trên stack detected
+> - [ ] 🏗️ Stack-aware agents — architect & debugger biết stack của bạn
+>
+> Chọn số (vd: 1,2,6,7) hoặc "all" / "skip":
 
-### CLAUDE.md
+## Step 5: Generate Files
+
+### Always generate: CLAUDE.md
 Generate with:
 - Detected stack info
 - Recommended agents based on role:
@@ -51,13 +69,106 @@ Generate with:
   - Cost: "Start with Haiku agents. Escalate to Sonnet/Opus only when stuck."
 - Project conventions from detected stack
 
-### .claude/skills/project-conventions/SKILL.md
-Generate a skill with:
+### If Safety guard selected:
+Create `.claude/hooks/hooks.json` with PreToolUse hook:
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/safety-guard.sh \"$CLAUDE_FILE_PATH\"",
+            "async": false
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+Copy safety-guard.sh from `${CLAUDE_PLUGIN_ROOT}/hooks/optional/safety-guard.sh` to `.claude/hooks/safety-guard.sh` and make executable.
+
+### If Auto-lint selected:
+Add PostToolUse entry to `.claude/hooks/hooks.json`:
+```json
+{
+  "matcher": "Write|Edit",
+  "hooks": [
+    {
+      "type": "command",
+      "command": ".claude/hooks/auto-lint.sh \"$CLAUDE_FILE_PATH\"",
+      "async": true
+    }
+  ]
+}
+```
+Copy auto-lint.sh from `${CLAUDE_PLUGIN_ROOT}/hooks/optional/auto-lint.sh` to `.claude/hooks/auto-lint.sh` and make executable.
+
+### If Auto-test selected:
+Add PostToolUse entry to `.claude/hooks/hooks.json`:
+```json
+{
+  "matcher": "Write|Edit",
+  "hooks": [
+    {
+      "type": "command",
+      "command": ".claude/hooks/auto-test.sh \"$CLAUDE_FILE_PATH\"",
+      "async": true
+    }
+  ]
+}
+```
+Copy auto-test.sh from `${CLAUDE_PLUGIN_ROOT}/hooks/optional/auto-test.sh` to `.claude/hooks/auto-test.sh` and make executable.
+
+### If Stitch Design MCP selected:
+Add to `.claude/settings.json`:
+```json
+{
+  "mcpServers": {
+    "stitch-design": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/stitch.mjs", "serve"]
+    }
+  }
+}
+```
+Remind user to set `STITCH_API_KEY` environment variable.
+
+### If Context7 MCP selected:
+Add to `.claude/settings.json`:
+```json
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    }
+  }
+}
+```
+
+### If Project conventions selected:
+Create `.claude/skills/project-conventions/SKILL.md` with:
 - Detected language, framework, database
 - Rules: match existing code style, follow framework conventions, use parameterized queries if DB detected
 
-### .claude/agents/ (stack-specific overrides)
-If a stack was detected, create overrides for key agents (architect, debugger) that include stack-specific context in their prompts. Copy the base agent format but add the detected tech stack to the system prompt.
+### If Stack-aware agents selected:
+Create `.claude/agents/` with architect.md and debugger.md that include stack-specific context in their prompts.
 
-## Step 5: Confirm
-Show the user what was generated and remind them they can run `/setup` again anytime to reconfigure.
+## Step 6: Confirm
+Show summary of everything generated:
+```
+✅ Setup complete!
+
+Generated:
+  📄 CLAUDE.md (role: Backend, priority: Quality)
+  🛡️ .claude/hooks/safety-guard.sh
+  🔍 .claude/hooks/auto-lint.sh
+  📋 .claude/skills/project-conventions/SKILL.md
+  🏗️ .claude/agents/architect.md, debugger.md
+
+Run /setup again anytime to reconfigure.
+```

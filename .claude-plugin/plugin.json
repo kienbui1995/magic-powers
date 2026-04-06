@@ -1,12 +1,15 @@
 {
   "name": "magic-powers",
-  "description": "Cost-optimized Claude Code plugin — 11 specialized agents with Opus/Sonnet/Haiku model routing, 43 workflow skills, and 9-tool support. Built for AI startups shipping fast with small teams.",
-  "version": "0.9.3",
+  "description": "Cost-optimized Claude Code plugin — 11 specialized agents with Opus/Sonnet/Haiku model routing, 43 workflow skills, and 11 slash commands. Built for AI startups shipping fast with small teams.",
+  "version": "1.0.0",
   "author": {
     "name": "kienbui1995"
   },
   "homepage": "https://magic-powers.pmai.space",
   "repository": "https://github.com/kienbui1995/magic-powers",
   "license": "MIT",
-  "keywords": ["agents", "skills", "model-routing", "cost-optimization", "multi-tool", "agentic-ai", "llm", "rag", "prompt-engineering"]
+  "keywords": ["agents", "skills", "model-routing", "cost-optimization", "multi-tool", "agentic-ai", "llm", "rag", "prompt-engineering"],
+  "commands": "./commands/",
+  "agents": "./agents/",
+  "hooks": "./hooks/hooks.json"
 }
