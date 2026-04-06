@@ -9,6 +9,8 @@ description: Use when you have a spec or requirements for a multi-step task, bef
 
 Write comprehensive implementation plans assuming the engineer has zero context. Document everything: which files to touch, code, testing, how to verify. Bite-sized tasks. DRY. YAGNI. TDD. Frequent commits.
 
+Assume they are a skilled developer, but know almost nothing about our toolset or problem domain. Assume they don't know good test design very well.
+
 **Announce at start:** "I'm using the writing-plans skill to create the implementation plan."
 
 **Save plans to:** `docs/plans/YYYY-MM-DD-<feature-name>.md`
@@ -16,15 +18,18 @@ Write comprehensive implementation plans assuming the engineer has zero context.
 
 ## Scope Check
 
-If the spec covers multiple independent subsystems, suggest breaking into separate plans — one per subsystem. Each plan should produce working, testable software on its own.
+If the spec covers multiple independent subsystems, it should have been broken into sub-project specs during brainstorming. If it wasn't, suggest breaking into separate plans — one per subsystem. Each plan should produce working, testable software on its own.
 
 ## File Structure
 
-Before defining tasks, map out which files will be created or modified:
-- Clear boundaries and well-defined interfaces per file
-- Prefer smaller, focused files over large ones
-- Files that change together should live together
-- In existing codebases, follow established patterns
+Before defining tasks, map out which files will be created or modified and what each one is responsible for. This is where decomposition decisions get locked in.
+
+- Design units with clear boundaries and well-defined interfaces. Each file should have one clear responsibility.
+- Prefer smaller, focused files over large ones that do too much.
+- Files that change together should live together. Split by responsibility, not by technical layer.
+- In existing codebases, follow established patterns. If a file has grown unwieldy, including a split in the plan is reasonable.
+
+This structure informs the task decomposition. Each task should produce self-contained changes that make sense independently.
 
 ## Bite-Sized Task Granularity
 
@@ -40,7 +45,7 @@ Each step is one action (2-5 minutes):
 ```markdown
 # [Feature Name] Implementation Plan
 
-> **For agentic workers:** Use magic-powers:subagent-driven-development (recommended) or magic-powers:executing-plans to implement this plan task-by-task.
+> **For agentic workers:** Use magic-powers:subagent-driven-development (recommended) or magic-powers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** [One sentence]
 **Architecture:** [2-3 sentences]
@@ -60,19 +65,59 @@ Each step is one action (2-5 minutes):
 - Test: `tests/exact/path/to/test.py`
 
 - [ ] **Step 1: Write the failing test**
+
+```python
+def test_specific_behavior():
+    result = function(input)
+    assert result == expected
+```
+
 - [ ] **Step 2: Run test to verify it fails**
+
+Run: `pytest tests/path/test.py::test_name -v`
+Expected: FAIL with "function not defined"
+
 - [ ] **Step 3: Write minimal implementation**
+
+```python
+def function(input):
+    return expected
+```
+
 - [ ] **Step 4: Run test to verify it passes**
+
+Run: `pytest tests/path/test.py::test_name -v`
+Expected: PASS
+
 - [ ] **Step 5: Commit**
+
+```bash
+git add tests/path/test.py src/path/file.py
+git commit -m "feat: add specific feature"
+```
 ````
 
-## Plan Review Loop
+## No Placeholders
 
-After writing the plan:
-1. Dispatch reviewer subagent with plan path and spec path
-2. If issues found: fix, re-dispatch
-3. If approved: proceed to execution handoff
-4. Max 3 iterations, then surface to human
+Every step must contain the actual content an engineer needs. These are **plan failures** — never write them:
+- "TBD", "TODO", "implement later", "fill in details"
+- "Add appropriate error handling" / "add validation" / "handle edge cases"
+- "Write tests for the above" (without actual test code)
+- "Similar to Task N" (repeat the code — the engineer may read tasks out of order)
+- Steps that describe what to do without showing how (code blocks required for code steps)
+- References to types, functions, or methods not defined in any task
+
+## Self-Review
+
+After writing the complete plan, review it yourself — not a subagent dispatch.
+
+**1. Spec coverage:** Skim each section/requirement in the spec. Can you point to a task that implements it? List any gaps.
+
+**2. Placeholder scan:** Search your plan for red flags — any of the patterns from the "No Placeholders" section above. Fix them.
+
+**3. Type consistency:** Do the types, method signatures, and property names you used in later tasks match what you defined in earlier tasks? A function called `clearLayers()` in Task 3 but `clearFullLayers()` in Task 7 is a bug.
+
+If you find issues, fix them inline. No need to re-review — just fix and move on. If you find a spec requirement with no task, add the task.
 
 ## Execution Handoff
 
@@ -89,6 +134,10 @@ After saving the plan:
 
 ## Remember
 - Exact file paths always
-- Complete code in plan (not "add validation")
+- Complete code in every step — if a step changes code, show the code
 - Exact commands with expected output
 - DRY, YAGNI, TDD, frequent commits
+
+## Model Routing
+
+This skill works well with default Sonnet. For complex architectural plans, consider the **architect agent** (Opus).

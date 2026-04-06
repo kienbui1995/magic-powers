@@ -4,10 +4,11 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Security Audit](https://img.shields.io/badge/security_audit-passing-brightgreen)](SECURITY.md)
 [![Tools](https://img.shields.io/badge/tools-9-green)](README.md#multi-tool-support)
-[![Agents](https://img.shields.io/badge/agents-11-purple)](README.md#10-agents-by-division)
+[![Agents](https://img.shields.io/badge/agents-11-purple)](README.md#11-agents-by-division)
+[![Commands](https://img.shields.io/badge/commands-11-blue)](README.md#11-slash-commands)
 [![Website](https://img.shields.io/badge/website-magic--powers.pmai.space-orange)](https://magic-powers.pmai.space)
 
-**[magic-powers.pmai.space](https://magic-powers.pmai.space)** — A Claude Code plugin with cost-optimized model routing, 43 workflow skills, 11 specialized agents, and Stitch + Pencil design integration. Built for AI startups shipping fast with small teams. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
+**[magic-powers.pmai.space](https://magic-powers.pmai.space)** — A Claude Code plugin with cost-optimized model routing, 43 workflow skills, 11 specialized agents, 11 slash commands, and optional hooks/MCP integration. Built for AI startups shipping fast with small teams. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
 
 ## Why Magic Powers?
 
@@ -18,8 +19,9 @@ For actual API-level savings, combine with [Claude Code Router or OpenRouter](do
 ## Install
 
 ```bash
-# Claude Code (recommended)
-/plugin install github:your-username/magic-powers
+# Claude Code — marketplace (recommended)
+/plugin marketplace add kienbui1995/magic-powers
+/plugin install magic-powers@magic-powers
 
 # skills.sh (works with 43+ agents)
 npx skills add kienbui1995/magic-powers
@@ -36,26 +38,65 @@ The installer auto-detects Cursor, Windsurf, Kiro, Codex, OpenCode, Gemini CLI, 
 ### Codex
 
 ```bash
-git clone https://github.com/your-username/magic-powers.git
+git clone https://github.com/kienbui1995/magic-powers.git
 cd magic-powers && bash scripts/install.sh
 # Select option 7 — Codex
 ```
 
-Installs 11 agent skills to `~/.codex/skills/` and `AGENTS.md` to `~/.codex/AGENTS.md`. Restart Codex after installing.
-
-Invoke skills explicitly with `$magic-<name>` (e.g. `$magic-architect`, `$magic-debugger`), or just describe your task and Codex picks the right one.
-
 ### Kiro
 
 ```bash
-git clone https://github.com/your-username/magic-powers.git
+git clone https://github.com/kienbui1995/magic-powers.git
 cd magic-powers && bash scripts/install.sh
 # Select option 8 — Kiro
 ```
 
-Installs 11 agent steering files to `.kiro/steering/`. Each file uses `inclusion: auto` — Kiro automatically loads the right agent when your task matches. Also available as slash commands (e.g. `/magic-architect`, `/magic-debugger`).
+## Built-in vs Optional
 
-## 10 Agents by Division
+Magic Powers uses a two-tier architecture:
+
+### Built-in (auto with plugin install)
+
+Everything works out of the box — no setup required:
+
+- **11 slash commands** — `/brainstorming`, `/plan`, `/review`, `/debug`, `/deploy`, etc.
+- **11 agents** — architect, debugger, reviewer, ui-designer, etc.
+- **43 skills** — brainstorming, TDD, debugging, security review, etc.
+- **SessionStart hook** — auto-loads skill routing on every session
+
+### Optional (via `/setup`)
+
+Run `/setup` to personalize for your project. Detects your stack, asks your role & priority, then offers:
+
+| Feature | Type | Description |
+|---------|------|-------------|
+| 🛡️ Safety guard | Hook | Block writes to `.env`, secrets, `node_modules` |
+| 🔍 Auto-lint | Hook | Run linter after every file edit |
+| 🧪 Auto-test | Hook | Run related tests after code changes |
+| 🎨 Stitch Design | MCP | Generate UI designs (needs `STITCH_API_KEY`) |
+| 📚 Context7 | MCP | Fetch latest library docs automatically |
+| 📋 Project conventions | Skill | Coding rules based on detected stack |
+| 🏗️ Stack-aware agents | Agent | Architect & debugger with stack context |
+
+Optional features install to `.claude/` in your project — they don't affect the global plugin.
+
+## 11 Slash Commands
+
+| Command | Skill | Purpose |
+|---------|-------|---------|
+| `/setup` | — | Personalize plugin, install optional features |
+| `/brainstorming` | brainstorming | Explore ideas → design → spec → approval |
+| `/plan` | writing-plans | Break feature into implementation steps |
+| `/review` | requesting-code-review | Quick code review for bugs & issues |
+| `/debug` | systematic-debugging | Reproduce → isolate → fix → verify |
+| `/security-scan` | security-review | Scan for vulnerabilities & auth issues |
+| `/db-review` | database-optimization | Schema, queries, indexes, migrations |
+| `/deploy` | ci-cd-pipeline | Deployment readiness checklist |
+| `/pr` | pr-workflow | Prepare changes for pull request |
+| `/refactor` | refactoring | Improve structure, reduce complexity |
+| `/tdd` | test-driven-development | Red → green → refactor cycle |
+
+## 11 Agents by Division
 
 ### 🔧 Engineering
 
@@ -126,7 +167,7 @@ Installs 11 agent steering files to `.kiro/steering/`. Each file uses `inclusion
 
 | Tool | Format | Install |
 |------|--------|---------|
-| Claude Code | Plugin (native) | `/plugin install github:user/magic-powers` |
+| Claude Code | Plugin (native) | `/plugin marketplace add kienbui1995/magic-powers` |
 | Cursor | `.mdc` rules | `bash scripts/install.sh` → select Cursor |
 | GitHub Copilot | Agent `.md` files | `bash scripts/install.sh` → select Copilot |
 | Aider | `CONVENTIONS.md` | `bash scripts/install.sh` → select Aider |
@@ -158,11 +199,13 @@ See [`examples/`](examples/) for real-world scenarios:
 |---------|-------------|--------------|
 | Skills | 14 | 43 |
 | Agents | 1 | 11 |
+| Commands | 0 | 11 |
 | Model routing | ❌ | ✅ Opus/Sonnet/Haiku |
 | Cost optimization | ❌ | ✅ ~75% reduction |
+| Optional hooks | ❌ | ✅ Safety, lint, test |
 | Design tools | ❌ | ✅ Google Stitch SDK |
 | Multi-tool | ❌ | ✅ 9 tools |
-| Examples | ❌ | ✅ 4 scenarios |
+| Built-in/Optional arch | ❌ | ✅ |
 
 ## Changelog
 

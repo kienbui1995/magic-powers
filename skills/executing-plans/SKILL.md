@@ -23,9 +23,10 @@ Load plan, review critically, execute all tasks, report when complete.
 
 For each task:
 1. Mark as in_progress
-2. Follow each step exactly
+2. Follow each step exactly (plan has bite-sized steps)
 3. Run verifications as specified
-4. Mark as completed
+4. **Use magic-powers:verification-before-completion** before marking done
+5. Mark as completed
 
 ### Step 3: Complete Development
 
@@ -33,14 +34,23 @@ After all tasks verified:
 - Use magic-powers:finishing-a-development-branch
 - Verify tests, present options, execute choice
 
-## When to Stop
+## When to Stop and Ask for Help
 
-**STOP immediately when:**
+**STOP executing immediately when:**
 - Hit a blocker (missing dependency, test fails, unclear instruction)
-- Plan has critical gaps
+- Plan has critical gaps preventing starting
+- You don't understand an instruction
 - Verification fails repeatedly
 
 **Ask for clarification rather than guessing.**
+
+## When to Revisit Earlier Steps
+
+**Return to Review (Step 1) when:**
+- User updates the plan based on your feedback
+- Fundamental approach needs rethinking
+
+**Don't force through blockers** — stop and ask.
 
 ## Remember
 - Review plan critically first
@@ -50,6 +60,9 @@ After all tasks verified:
 - Never start implementation on main/master without explicit user consent
 
 ## Integration
+
+**Required workflow skills:**
 - **magic-powers:using-git-worktrees** — set up isolated workspace before starting
 - **magic-powers:writing-plans** — creates the plan this skill executes
 - **magic-powers:finishing-a-development-branch** — complete development after all tasks
+- **magic-powers:verification-before-completion** — verify before claiming done

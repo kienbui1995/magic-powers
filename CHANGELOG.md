@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2026-04-06
+
+### Added
+
+- **11 slash commands** — `/brainstorming`, `/plan`, `/review`, `/debug`, `/security-scan`, `/db-review`, `/deploy`, `/pr`, `/refactor`, `/tdd` (built-in, auto with plugin install)
+- **Built-in vs Optional architecture** — core features auto-install, optional features via `/setup`
+- **Optional hooks** — safety guard (block dangerous writes), auto-lint (PostToolUse), auto-test (PostToolUse)
+- **Optional MCP servers** — Stitch Design, Context7 (installed via `/setup`)
+- **marketplace.json** — enables `plugin marketplace add kienbui1995/magic-powers` install flow
+- **plugin.json component declarations** — commands, agents, hooks paths for proper plugin discovery
+
+### Changed
+
+- **Brainstorming skill** — merged improvements from Superpowers: Visual Companion, scope decomposition, spec self-review inline, design for isolation
+- **Writing-plans skill** — added No Placeholders section, self-review (spec coverage, placeholder scan, type consistency), file structure mapping
+- **Executing-plans skill** — added batch execution with review checkpoints, when to revisit earlier steps
+- **Verification skill** — added regression test red-green pattern, requirements checklist, agent delegation verification
+- **`/setup` command** — now includes Step 4 optional features menu (hooks, MCP, stack-specific skills/agents)
+
 ## [0.9.3] - 2026-04-05
 
 ### Fixed
