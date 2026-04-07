@@ -8,7 +8,7 @@
 [![Commands](https://img.shields.io/badge/commands-11-blue)](README.md#11-slash-commands)
 [![Website](https://img.shields.io/badge/website-magic--powers.pmai.space-orange)](https://magic-powers.pmai.space)
 
-**[magic-powers.pmai.space](https://magic-powers.pmai.space)** — A Claude Code plugin with cost-optimized model routing, 43 workflow skills, 11 specialized agents, 11 slash commands, and optional hooks/MCP integration. Built for AI startups shipping fast with small teams. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
+**[magic-powers.pmai.space](https://magic-powers.pmai.space)** — A Claude Code plugin with cost-optimized model routing, 43 built-in skills + 67 optional skills (110 total), 11 specialized agents, 12 slash commands, and optional hooks/MCP integration. Built for all professional roles — dev, product, data, marketing, sales, design, and more. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
 
 ## Why Magic Powers?
 
@@ -61,7 +61,7 @@ Everything works out of the box — no setup required:
 
 - **11 slash commands** — `/brainstorming`, `/plan`, `/review`, `/debug`, `/deploy`, etc.
 - **11 agents** — architect, debugger, reviewer, ui-designer, etc.
-- **43 skills** — brainstorming, TDD, debugging, security review, etc.
+- **43 built-in skills** — brainstorming, TDD, debugging, security review, etc.
 - **SessionStart hook** — auto-loads skill routing on every session
 
 ### Optional (via `/setup`)
@@ -77,14 +77,36 @@ Run `/setup` to personalize for your project. Detects your stack, asks your role
 | 📚 Context7 | MCP | Fetch latest library docs automatically |
 | 📋 Project conventions | Skill | Coding rules based on detected stack |
 | 🏗️ Stack-aware agents | Agent | Architect & debugger with stack context |
+| 📦 Optional skill packs | Skills | 67 role-specific skills across 11 categories |
 
 Optional features install to `.claude/` in your project — they don't affect the global plugin.
+
+### Optional Skills (67 skills, 11 categories)
+
+Browse and install with `/install-skills`. Quick role-based install during `/setup`.
+
+| Category | Skills | Who it's for |
+|----------|--------|-------------|
+| 🎯 Product | 6 | Product managers, founders |
+| 📊 Data/ML | 9 | Data scientists, ML engineers |
+| ⚙️ Platform/SRE | 6 | SRE, platform, DevOps |
+| 🎨 Design/UX | 4 | Product designers, UX researchers |
+| 👥 Team Processes | 9 | Team leads, eng managers |
+| 📣 Marketing | 8 | Marketers, growth engineers |
+| 💼 Sales | 5 | Sales, BD, account executives |
+| 🧪 Testing | 5 | QA engineers, SDETs |
+| 🎮 Game Dev | 5 | Game designers, developers |
+| 🌐 Spatial Computing | 3 | XR/AR/VR, visionOS developers |
+| 🔬 Specialist | 7 | Legal, finance, devrel, solutions arch |
+
+See [docs/OPTIONAL_SKILLS.md](docs/OPTIONAL_SKILLS.md) for the full catalog.
 
 ## 11 Slash Commands
 
 | Command | Skill | Purpose |
 |---------|-------|---------|
-| `/setup` | — | Personalize plugin, install optional features |
+| `/setup` | — | Personalize plugin, install optional features (12 roles) |
+| `/install-skills` | — | Browse and install optional skills by category |
 | `/brainstorming` | brainstorming | Explore ideas → design → spec → approval |
 | `/plan` | writing-plans | Break feature into implementation steps |
 | `/review` | requesting-code-review | Quick code review for bugs & issues |

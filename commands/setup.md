@@ -19,11 +19,18 @@ Report what you found: language, framework, database.
 ## Step 2: Ask Role
 Ask the user:
 > What's your role?
-> 1. Solo Builder (full stack, làm hết)
-> 2. Frontend Developer
-> 3. Backend Developer
-> 4. Product Manager
-> 5. Team Lead
+>  1. Solo Builder (full stack, làm hết)
+>  2. Frontend Developer
+>  3. Backend Developer
+>  4. Product Manager
+>  5. Team Lead
+>  6. Data Scientist / ML Engineer
+>  7. Data Engineer
+>  8. SRE / Platform Engineer
+>  9. Product Designer
+> 10. Marketer / Growth
+> 11. Sales / BD
+> 12. Game Developer
 
 ## Step 3: Ask Priority
 Ask the user:
@@ -50,6 +57,25 @@ Ask the user which optional features to install. Show checkboxes with recommenda
 > - [ ] 📋 Project conventions skill — coding rules dựa trên stack detected
 > - [ ] 🏗️ Stack-aware agents — architect & debugger biết stack của bạn
 >
+> **Optional Skills:**
+> - [ ] 📦 Install recommended skill pack for your role (based on role selected above)
+>
+> Role → Recommended packs:
+>   Solo Builder      → Product + Platform/SRE
+>   Frontend Dev      → Design/UX + Testing
+>   Backend Dev       → Platform/SRE + Testing
+>   Product Manager   → Product + Team Processes
+>   Team Lead         → Team Processes + Product
+>   Data Scientist    → Data/ML
+>   Data Engineer     → Data/ML + Platform/SRE
+>   SRE / Platform    → Platform/SRE + Team Processes
+>   Product Designer  → Design/UX + Product
+>   Marketer / Growth → Marketing
+>   Sales / BD        → Sales + solutions-architecture (Specialist)
+>   Game Developer    → Game Dev
+>
+> Browse all 67 skills? Run /install-skills after setup.
+>
 > Chọn số (vd: 1,2,6,7) hoặc "all" / "skip":
 
 ## Step 5: Generate Files
@@ -63,6 +89,13 @@ Generate with:
   - Backend: architect, debugger, database-optimizer, sre, reviewer, security-reviewer
   - Product Manager: product-strategist, copywriter, technical-writer, architect
   - Team Lead: architect, reviewer, product-strategist, sre, git-workflow
+  - Data Scientist / ML Engineer: architect, debugger, technical-writer
+  - Data Engineer: architect, sre, debugger
+  - SRE / Platform Engineer: sre, debugger, architect
+  - Product Designer: ui-designer, reviewer, product-strategist
+  - Marketer / Growth: copywriter, product-strategist, technical-writer
+  - Sales / BD: product-strategist, copywriter
+  - Game Developer: architect, technical-writer, reviewer
 - Model guide based on priority:
   - Speed: "Prefer Haiku for quick tasks. Use Sonnet only when reasoning matters."
   - Quality: "Use full review pipeline: @reviewer → @security-reviewer before every commit."
@@ -158,6 +191,23 @@ Create `.claude/skills/project-conventions/SKILL.md` with:
 ### If Stack-aware agents selected:
 Create `.claude/agents/` with architect.md and debugger.md that include stack-specific context in their prompts.
 
+### If skill pack selected:
+Install recommended skills based on role:
+- Solo Builder: copy all skills from `${CLAUDE_PLUGIN_ROOT}/skills/` for Product + Platform/SRE categories
+- Frontend Developer: Design/UX + Testing
+- Backend Developer: Platform/SRE + Testing
+- Product Manager: Product + Team Processes
+- Team Lead: Team Processes + Product
+- Data Scientist / ML Engineer: Data/ML
+- Data Engineer: Data/ML + Platform/SRE
+- SRE / Platform Engineer: Platform/SRE + Team Processes
+- Product Designer: Design/UX + Product
+- Marketer / Growth: Marketing
+- Sales / BD: Sales + solutions-architecture
+- Game Developer: Game Dev
+
+For each skill in the pack: copy `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` → `.claude/skills/<name>/SKILL.md`
+
 ## Step 6: Confirm
 Show summary of everything generated:
 ```
@@ -169,6 +219,7 @@ Generated:
   🔍 .claude/hooks/auto-lint.sh
   📋 .claude/skills/project-conventions/SKILL.md
   🏗️ .claude/agents/architect.md, debugger.md
+  📦 .claude/skills/<category>/ (N skills installed)
 
 Run /setup again anytime to reconfigure.
 ```
