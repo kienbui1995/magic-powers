@@ -24,8 +24,9 @@ Choose a category to browse:
  9. Game Dev (5 skills)              — GDD, level design, narrative, audio
 10. Spatial Computing (3 skills)     — XR, spatial UX, visionOS
 11. Specialist (7 skills)            — legal, finance, devrel, solutions arch
+12. ☁️  Cloud Divisions              — GCP, AWS, Azure professional cert agents + skills
 
-Enter number (1–11), "all" to see all skills at once, or "done" to exit:
+Enter number (1–12), "all" to see all skills at once, or "done" to exit:
 ```
 
 ## Step 2: Show Skills in Selected Category
@@ -143,6 +144,43 @@ When user picks a number, show the skills in that category:
  7. technical-documentation  — API docs, runbooks, user guides
 ```
 
+**12. Cloud Divisions:**
+```
+Choose a cloud provider:
+
+  1. GCP — 7 agents + 14 skills (Professional Cloud certs)
+  2. AWS — 7 agents + 14 skills (AWS Professional/Associate certs)  [coming soon]
+  3. Azure — 7 agents + 14 skills (Azure Associate/Expert certs)     [coming soon]
+
+Enter number (1-3):
+```
+
+If user selects GCP (1), show:
+
+```
+GCP Division — Professional Cloud Certifications
+
+Agents (installed to .claude/agents/):
+  📊 gcp-data-engineer      — Professional Data Engineer (GCP-PDE)
+  💻 gcp-cloud-developer    — Professional Cloud Developer
+  🌐 gcp-network-engineer   — Professional Cloud Network Engineer
+  🤖 gcp-ml-engineer        — Professional Machine Learning Engineer
+  ⚙️  gcp-devops-engineer    — Professional Cloud DevOps Engineer
+  🔒 gcp-security-engineer  — Professional Cloud Security Engineer
+  🏗️  gcp-cloud-architect    — Professional Cloud Architect (Opus model)
+
+Skills (installed to .claude/skills/):
+  bigquery-optimization     dataflow-pipeline
+  pubsub-messaging          cloud-storage
+  data-quality-validation   vertex-ai-mlops
+  cloud-run-functions       gke-kubernetes
+  cloud-iam                 cloud-build-deploy
+  cloud-networking          vpc-service-controls
+  cloud-monitoring          security-command-center
+
+Type "install" to install GCP Division, or "back" to return:
+```
+
 Then prompt:
 ```
 Enter skill numbers (e.g. 1,3,5), "all" to install all in this category, or "back" to return:
@@ -156,6 +194,43 @@ For each selected skill:
 3. Copy SKILL.md to `.claude/skills/<name>/SKILL.md`
 
 If skill already installed, show `(already installed)` and skip.
+
+### Cloud Division Install (for category 12)
+
+For each selected cloud provider:
+1. Copy agent files from `${CLAUDE_PLUGIN_ROOT}/agents/cloud/<provider>/` to `.claude/agents/`
+   - Create `.claude/agents/` directory in current project if needed
+2. Copy skill files from `${CLAUDE_PLUGIN_ROOT}/skills/cloud/<provider>/*/SKILL.md` to `.claude/skills/<skill-name>/SKILL.md`
+   - Create each `.claude/skills/<skill-name>/` directory as needed
+
+If already installed, show `(already installed)` and skip.
+
+Confirm:
+```
+✅ Installed GCP Division to current project:
+
+  Agents (.claude/agents/):
+    📊 gcp-data-engineer.md
+    💻 gcp-cloud-developer.md
+    🌐 gcp-network-engineer.md
+    🤖 gcp-ml-engineer.md
+    ⚙️  gcp-devops-engineer.md
+    🔒 gcp-security-engineer.md
+    🏗️  gcp-cloud-architect.md
+
+  Skills (.claude/skills/):
+    📋 bigquery-optimization/   📋 dataflow-pipeline/
+    📋 pubsub-messaging/        📋 cloud-storage/
+    📋 data-quality-validation/ 📋 vertex-ai-mlops/
+    📋 cloud-run-functions/     📋 gke-kubernetes/
+    📋 cloud-iam/               📋 cloud-build-deploy/
+    📋 cloud-networking/        📋 vpc-service-controls/
+    📋 cloud-monitoring/        📋 security-command-center/
+
+Use @gcp-data-engineer, @gcp-cloud-architect, etc. to invoke cloud agents.
+Invoke @gcp-data-engineer in your project to start using GCP Data Engineer assistance.
+```
+```
 
 Confirm installation:
 ```
