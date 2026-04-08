@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] — 2026-04-08
+
+### Added
+- ☁️ **Cloud Divisions** — GCP Professional certification-aligned agents and skills
+  - 7 GCP agents: `gcp-data-engineer`, `gcp-cloud-developer`, `gcp-network-engineer`, `gcp-ml-engineer`, `gcp-devops-engineer`, `gcp-security-engineer`, `gcp-cloud-architect`
+  - 14 GCP skills mapped to official exam domains (GCP-PDE, Cloud Developer, Network Engineer, ML Engineer, DevOps Engineer, Security Engineer, Cloud Architect)
+  - `/install-skills` extended with Cloud Divisions category (12)
+  - `agents/cloud/CLOUD_DIVISION.md` framework for adding more cloud providers (AWS, Azure coming soon)
+- 🔧 `validate-skills.sh` updated to skip namespace directories
+
+### Changed
+- Version bumped from 1.1.0 to 1.2.0
+
+### Certification targets aligned to 2025-2026 exam guides
+- GCP-PDE: cloud.google.com/learn/certification/data-engineer
+- AWS MLA-C01 (new, replaces retiring MLS-C01 March 2026)
+- Azure DP-700 (new, replaces retired DP-203)
+
 ## [1.0.0] - 2026-04-06
 
 ### Added

@@ -135,3 +135,27 @@ Skills live in `magic-powers/skills/`. When installed, they're copied to `.claud
 | Marketer / Growth | Marketing |
 | Sales / BD | Sales + solutions-architecture |
 | Game Developer | Game Dev |
+
+---
+
+## ☁️ Cloud Divisions (NEW — v1.2.0)
+
+Role-specific agents and skills aligned to official cloud professional certifications.
+Install via `/install-skills` → Category 12.
+
+### GCP Division (7 agents + 14 skills)
+
+**Target certs:** GCP Professional Cloud certifications (2025/2026 exam guides)
+
+| Agent | Certification | Key Skills |
+|-------|--------------|------------|
+| `@gcp-data-engineer` | Professional Data Engineer (GCP-PDE) | bigquery-optimization, dataflow-pipeline, pubsub-messaging, cloud-storage, data-quality-validation, vertex-ai-mlops |
+| `@gcp-cloud-developer` | Professional Cloud Developer | cloud-run-functions, gke-kubernetes, cloud-iam, cloud-build-deploy |
+| `@gcp-network-engineer` | Professional Cloud Network Engineer | cloud-networking, cloud-iam, vpc-service-controls |
+| `@gcp-ml-engineer` | Professional Machine Learning Engineer | vertex-ai-mlops, bigquery-optimization, dataflow-pipeline, data-quality-validation |
+| `@gcp-devops-engineer` | Professional Cloud DevOps Engineer | cloud-build-deploy, cloud-monitoring, cloud-iam, gke-kubernetes |
+| `@gcp-security-engineer` | Professional Cloud Security Engineer | cloud-iam, cloud-networking, vpc-service-controls, security-command-center |
+| `@gcp-cloud-architect` | Professional Cloud Architect (**Opus**) | all 14 GCP skills |
+
+### AWS Division (7 agents + 14 skills) — Coming in v1.2.1
+### Azure Division (7 agents + 14 skills) — Coming in v1.2.2
