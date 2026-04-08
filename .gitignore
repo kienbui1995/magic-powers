@@ -7,3 +7,4 @@ integrations/
 .DS_Store
 package-lock.json
 .playwright-mcp/
+.worktrees/
