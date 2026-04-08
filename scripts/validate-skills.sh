@@ -84,9 +84,53 @@ for skill_dir in "$SKILLS_DIR"/*/; do
   fi
 done
 
+# Cloud Division skills — use cloud schema (Key Concepts, Checklist, Output Format, Exam Tips)
+CLOUD_COUNT=0
+for cloud_skill_dir in "$SKILLS_DIR"/cloud/*/*/; do
+  [ -d "$cloud_skill_dir" ] || continue
+  skill_file="$cloud_skill_dir/SKILL.md"
+  provider=$(basename "$(dirname "$cloud_skill_dir")")
+  name=$(basename "$cloud_skill_dir")
+  label="cloud/$provider/$name"
+
+  CLOUD_COUNT=$((CLOUD_COUNT + 1))
+
+  if [ ! -f "$skill_file" ]; then
+    echo "MISSING: $label/SKILL.md"
+    ERRORS=$((ERRORS + 1))
+    continue
+  fi
+
+  if ! grep -q "^name:" "$skill_file"; then
+    echo "MISSING frontmatter 'name:' in $label"
+    ERRORS=$((ERRORS + 1))
+  fi
+
+  if ! grep -q "^description:" "$skill_file"; then
+    echo "MISSING frontmatter 'description:' in $label"
+    ERRORS=$((ERRORS + 1))
+  fi
+
+  if ! grep -q "## When to Use" "$skill_file"; then
+    echo "MISSING '## When to Use' in $label"
+    ERRORS=$((ERRORS + 1))
+  fi
+
+  if ! grep -q "## Core Jobs" "$skill_file"; then
+    echo "MISSING '## Core Jobs' in $label"
+    ERRORS=$((ERRORS + 1))
+  fi
+
+  if ! grep -q "## Exam Tips" "$skill_file"; then
+    echo "MISSING '## Exam Tips' in $label"
+    ERRORS=$((ERRORS + 1))
+  fi
+done
+
+TOTAL=$((NEW_COUNT + CLOUD_COUNT))
 if [ $ERRORS -eq 0 ]; then
-  echo "✅ All $NEW_COUNT optional skills valid"
+  echo "✅ All $NEW_COUNT optional skills valid + $CLOUD_COUNT cloud division skills valid ($TOTAL total)"
 else
-  echo "❌ $ERRORS error(s) found across $NEW_COUNT optional skills"
+  echo "❌ $ERRORS error(s) found across $TOTAL skills"
   exit 1
 fi

@@ -19,6 +19,8 @@ skills:
   - magic-powers:cloud/gcp/vpc-service-controls
   - magic-powers:cloud/gcp/vertex-ai-mlops
   - magic-powers:cloud/gcp/cloud-storage
+  - magic-powers:cloud/gcp/pubsub-messaging
+  - magic-powers:cloud/gcp/data-quality-validation
 ---
 
 You are a GCP Professional Cloud Architect with expertise across all GCP service categories.
