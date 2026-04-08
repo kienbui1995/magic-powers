@@ -149,8 +149,9 @@ When user picks a number, show the skills in that category:
 Choose a cloud provider:
 
   1. GCP — 7 agents + 14 skills (Professional Cloud certs)
-  2. AWS — 7 agents + 14 skills (AWS Professional/Associate certs)  [coming soon]
-  3. Azure — 7 agents + 14 skills (Azure Associate/Expert certs)     [coming soon]
+  2. AWS — 7 agents + 14 skills (AWS Professional/Associate certs)
+  3. Azure — 7 agents + 14 skills (Azure Associate/Expert certs)
+  A. All clouds — 21 agents + 42 skills
 
 Enter number (1-3):
 ```
@@ -179,6 +180,58 @@ Skills (installed to .claude/skills/):
   cloud-monitoring          security-command-center
 
 Type "install" to install GCP Division, or "back" to return:
+```
+
+If user selects AWS (2), show:
+
+```
+AWS Division — AWS Professional/Associate Certifications
+
+Agents (installed to .claude/agents/):
+  📊 aws-data-engineer         — Data Engineer Associate (DEA-C01)
+  💻 aws-cloud-developer       — Developer Associate (DVA-C02)
+  🌐 aws-network-engineer      — Advanced Networking Specialty (ANS-C01)
+  🤖 aws-ml-engineer           — ML Engineer Associate (MLA-C01)
+  ⚙️  aws-devops-engineer       — DevOps Engineer Professional (DOP-C02)
+  🔒 aws-security-engineer     — Security Specialty (SCS-C02)
+  🏗️  aws-solutions-architect   — Solutions Architect Professional (SAP-C02, Opus)
+
+Skills (installed to .claude/skills/):
+  glue-etl                  kinesis-streaming
+  redshift-optimization     s3-best-practices
+  dynamodb-design           cloudwatch-monitoring
+  lake-formation-governance lambda-serverless
+  iam-security              codepipeline-cicd
+  vpc-networking            eks-kubernetes
+  guardduty-security        sagemaker-mlops
+
+Type "install" to install AWS Division, or "back" to return:
+```
+
+If user selects Azure (3), show:
+
+```
+Azure Division — Azure Associate/Expert Certifications
+
+Agents (installed to .claude/agents/):
+  📊 azure-data-engineer       — Fabric Data Engineer (DP-700)
+  💻 azure-cloud-developer     — AI Cloud Developer (AI-200)
+  🌐 azure-network-engineer    — Network Engineer Associate (AZ-700)
+  🤖 azure-ai-engineer         — AI Engineer Associate (AI-102)
+  ⚙️  azure-devops-engineer     — DevOps Engineer Expert (AZ-400)
+  🔒 azure-security-engineer   — Cloud & AI Security (SC-500)
+  🏗️  azure-solutions-architect — Solutions Architect Expert (AZ-305, Opus)
+
+Skills (installed to .claude/skills/):
+  fabric-lakehouse          dataflow-gen2
+  fabric-pipelines          eventstreams
+  fabric-governance         fabric-monitoring
+  azure-functions           aks-kubernetes
+  azure-ad-entra            azure-networking
+  azure-devops-pipelines    azure-monitor
+  microsoft-sentinel        azure-openai
+
+Type "install" to install Azure Division, or "back" to return:
 ```
 
 Then prompt:

@@ -157,5 +157,30 @@ Install via `/install-skills` → Category 12.
 | `@gcp-security-engineer` | Professional Cloud Security Engineer | cloud-iam, cloud-networking, vpc-service-controls, security-command-center |
 | `@gcp-cloud-architect` | Professional Cloud Architect (**Opus**) | all 14 GCP skills |
 
-### AWS Division (7 agents + 14 skills) — Coming in v1.2.1
-### Azure Division (7 agents + 14 skills) — Coming in v1.2.2
+### AWS Division (7 agents + 14 skills)
+
+**Target certs:** AWS Professional/Associate certifications (2025/2026 exam guides)
+
+| Agent | Certification | Key Skills |
+|-------|--------------|------------|
+| `@aws-data-engineer` | Data Engineer Associate (DEA-C01) | glue-etl, kinesis-streaming, redshift-optimization, s3-best-practices, dynamodb-design, cloudwatch-monitoring, lake-formation-governance |
+| `@aws-cloud-developer` | Developer Associate (DVA-C02) | lambda-serverless, iam-security, codepipeline-cicd, cloudwatch-monitoring |
+| `@aws-network-engineer` | Advanced Networking Specialty (ANS-C01) | vpc-networking, cloudwatch-monitoring, iam-security |
+| `@aws-ml-engineer` | ML Engineer Associate (MLA-C01, NEW) | sagemaker-mlops, glue-etl, cloudwatch-monitoring |
+| `@aws-devops-engineer` | DevOps Engineer Professional (DOP-C02) | codepipeline-cicd, eks-kubernetes, cloudwatch-monitoring, iam-security |
+| `@aws-security-engineer` | Security Specialty (SCS-C02) | guardduty-security, vpc-networking, iam-security, s3-best-practices |
+| `@aws-solutions-architect` | Solutions Architect Professional (SAP-C02, **Opus**) | all 14 AWS skills |
+
+### Azure Division (7 agents + 14 skills)
+
+**Target certs:** Azure Associate/Expert certifications (2025/2026 exam guides — updated)
+
+| Agent | Certification | Key Skills |
+|-------|--------------|------------|
+| `@azure-data-engineer` | Fabric Data Engineer (DP-700, NEW) | fabric-lakehouse, dataflow-gen2, fabric-pipelines, eventstreams, fabric-governance, fabric-monitoring |
+| `@azure-cloud-developer` | AI Cloud Developer (AI-200, NEW) | azure-functions, azure-ad-entra, azure-devops-pipelines, azure-monitor, azure-openai |
+| `@azure-network-engineer` | Network Engineer Associate (AZ-700) | azure-networking, azure-ad-entra |
+| `@azure-ai-engineer` | AI Engineer Associate (AI-102) | azure-openai, azure-ad-entra, fabric-lakehouse |
+| `@azure-devops-engineer` | DevOps Engineer Expert (AZ-400) | azure-devops-pipelines, azure-monitor, fabric-governance, aks-kubernetes |
+| `@azure-security-engineer` | Cloud & AI Security (SC-500, NEW) | azure-ad-entra, azure-networking, microsoft-sentinel, azure-monitor |
+| `@azure-solutions-architect` | Solutions Architect Expert (AZ-305, **Opus**) | all 14 Azure skills |

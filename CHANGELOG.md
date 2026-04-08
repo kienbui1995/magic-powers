@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] — 2026-04-08
+
+### Added
+- ☁️ **AWS Division** — 7 agents + 14 skills aligned to AWS Professional/Associate certs
+  - Agents: `aws-data-engineer` (DEA-C01), `aws-cloud-developer` (DVA-C02), `aws-network-engineer` (ANS-C01), `aws-ml-engineer` (MLA-C01), `aws-devops-engineer` (DOP-C02), `aws-security-engineer` (SCS-C02), `aws-solutions-architect` (SAP-C02, Opus)
+  - Skills: glue-etl, kinesis-streaming, redshift-optimization, s3-best-practices, dynamodb-design, cloudwatch-monitoring, lake-formation-governance, lambda-serverless, iam-security, codepipeline-cicd, vpc-networking, eks-kubernetes, guardduty-security, sagemaker-mlops
+- ☁️ **Azure Division** — 7 agents + 14 skills aligned to Azure Associate/Expert certs (2025-2026 updated)
+  - Agents: `azure-data-engineer` (DP-700), `azure-cloud-developer` (AI-200), `azure-network-engineer` (AZ-700), `azure-ai-engineer` (AI-102), `azure-devops-engineer` (AZ-400), `azure-security-engineer` (SC-500), `azure-solutions-architect` (AZ-305, Opus)
+  - Skills: fabric-lakehouse, dataflow-gen2, fabric-pipelines, eventstreams, fabric-governance, fabric-monitoring, azure-functions, aks-kubernetes, azure-ad-entra, azure-networking, azure-devops-pipelines, azure-monitor, microsoft-sentinel, azure-openai
+- `/install-skills` Cloud Divisions now supports AWS (option 2) and Azure (option 3)
+
+### Changed
+- Version bumped from 1.2.0 to 1.3.0
+
+---
+
 ## [1.2.0] — 2026-04-08
 
 ### Added
