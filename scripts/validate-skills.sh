@@ -40,6 +40,11 @@ for skill_dir in "$SKILLS_DIR"/*/; do
     continue
   fi
 
+  # Skip namespace directories (contain subdirectories but no SKILL.md)
+  if [ ! -f "$skill_file" ] && ls -d "$skill_dir"*/ 2>/dev/null | head -1 | grep -q .; then
+    continue
+  fi
+
   NEW_COUNT=$((NEW_COUNT + 1))
 
   if [ ! -f "$skill_file" ]; then
