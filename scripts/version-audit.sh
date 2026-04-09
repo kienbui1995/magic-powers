@@ -29,7 +29,7 @@ check_version "site/index.html"            'v[0-9]+\.[0-9]+\.[0-9]+'
 check_version "CHANGELOG.md"               '\['"$SOURCE_VERSION"'\]'
 
 # Check skill count consistency
-SKILL_COUNT=$(ls skills/ | wc -l)
+SKILL_COUNT=$(find skills/ -name "SKILL.md" | wc -l)
 README_COUNT=$(grep -oE '[0-9]+ Skills' README.md | head -1 | grep -oE '[0-9]+')
 SITE_COUNT=$(grep -oE 'stat-num">[0-9]+' site/index.html | head -2 | tail -1 | grep -oE '[0-9]+')
 
