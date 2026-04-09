@@ -35,6 +35,22 @@ Magic Powers includes specialized agents with cost-optimized model assignments:
 
 **Default model (you) = Sonnet.** Dispatch to specialized agents when their expertise applies. This saves cost — Haiku reviews are 60x cheaper than Opus.
 
+## Optional Divisions (install with `/install-skills`)
+
+Beyond the 11 built-in agents, Magic Powers has optional divisions for specialized domains. Install per-project:
+
+**☁️ Cloud Divisions** — `/install-skills` → Category 12
+- GCP: `@gcp-data-engineer`, `@gcp-cloud-architect`, `@gcp-ml-engineer` (+ 4 more)
+- AWS: `@aws-data-engineer`, `@aws-solutions-architect` (+ 5 more)
+- Azure: `@azure-data-engineer`, `@azure-solutions-architect` (+ 5 more)
+
+**📊 Amplitude Division** — `/install-skills` → Category 13 (requires Amplitude MCP)
+- `@amplitude-analyst` — charts, dashboards, daily/weekly briefings
+- `@amplitude-experimenter` — A/B tests, opportunities, user journeys
+- `@amplitude-engineer` — instrumentation, event taxonomy, tracking specs
+- `@amplitude-ux-researcher` — session replay, error diagnosis, UX audit
+- `@amplitude-ai-monitor` — AI/LLM quality monitoring
+
 ## Using Skills
 
 ### The Rule
