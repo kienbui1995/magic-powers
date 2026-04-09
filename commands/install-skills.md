@@ -25,8 +25,9 @@ Choose a category to browse:
 10. Spatial Computing (3 skills)     — XR, spatial UX, visionOS
 11. Specialist (7 skills)            — legal, finance, devrel, solutions arch
 12. ☁️  Cloud Divisions              — GCP, AWS, Azure professional cert agents + skills
+13. 📊 Amplitude Division            — Product analytics, experimentation, session replay, AI monitoring
 
-Enter number (1–12), "all" to see all skills at once, or "done" to exit:
+Enter number (1–13), "all" to see all skills at once, or "done" to exit:
 ```
 
 ## Step 2: Show Skills in Selected Category
@@ -283,6 +284,42 @@ Confirm:
 Use @gcp-data-engineer, @gcp-cloud-architect, etc. to invoke cloud agents.
 Invoke @gcp-data-engineer in your project to start using GCP Data Engineer assistance.
 ```
+```
+
+### Amplitude Division Install (for category 13)
+
+**Requires:** Amplitude MCP server configured (see `agents/amplitude/AMPLITUDE_DIVISION.md` for setup).
+
+1. Copy agent files from `${CLAUDE_PLUGIN_ROOT}/agents/amplitude/` (excluding AMPLITUDE_DIVISION.md) to `.claude/agents/`
+2. Copy skill files from `${CLAUDE_PLUGIN_ROOT}/skills/amplitude/*/SKILL.md` to `.claude/skills/<skill-name>/SKILL.md`
+
+Show agent+skill list before installing:
+```
+📊 Amplitude Division — Product Analytics (Requires Amplitude MCP)
+
+Agents (.claude/agents/):
+  📈 amplitude-analyst        — Charts, dashboards, daily/weekly briefings
+  🧪 amplitude-experimenter   — A/B tests, opportunities, user journeys
+  🔧 amplitude-engineer       — Instrumentation, event taxonomy, tracking specs
+  🔍 amplitude-ux-researcher  — Session replay, error diagnosis, UX audit
+  🤖 amplitude-ai-monitor     — AI/LLM quality, topics, session investigation
+
+Skills (.claude/skills/):
+  create-chart            analyze-chart
+  create-dashboard        analyze-dashboard
+  daily-brief             weekly-brief
+  what-would-lenny-do     analyze-experiment
+  discover-opportunities  compare-user-journeys
+  analyze-account-health  analyze-feedback
+  diff-intake             discover-event-surfaces
+  discover-analytics-patterns  instrument-events
+  add-analytics-instrumentation  taxonomy
+  debug-replay            replay-ux-audit
+  diagnose-errors         monitor-reliability
+  analyze-ai-topics       investigate-ai-session
+  monitor-ai-quality      review-agent-insights
+
+Type "install" to install, or "back" to return:
 ```
 
 Confirm installation:

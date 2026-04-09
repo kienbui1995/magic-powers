@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] — 2026-04-09
+
+### Added
+- 📊 **Amplitude Division** — 5 agents + 26 skills powered by Amplitude MCP server
+  - Agents: `amplitude-analyst`, `amplitude-experimenter`, `amplitude-engineer`, `amplitude-ux-researcher`, `amplitude-ai-monitor`
+  - 26 skills adapted from [Amplitude mcp-marketplace](https://github.com/amplitude/mcp-marketplace)
+  - `/install-skills` extended with Amplitude Division (category 13)
+  - Skills cover: charts, dashboards, briefings, A/B experiments, instrumentation, session replay, error diagnosis, AI quality monitoring
+- 🔧 `validate-skills.sh` extended to validate amplitude skill schema (## MCP Tools required)
+
+### Changed
+- Version bumped from 1.3.0 to 1.4.0
+
+---
+
 ## [1.3.0] — 2026-04-08
 
 ### Added

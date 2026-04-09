@@ -184,3 +184,22 @@ Install via `/install-skills` → Category 12.
 | `@azure-devops-engineer` | DevOps Engineer Expert (AZ-400) | azure-devops-pipelines, azure-monitor, fabric-governance, aks-kubernetes |
 | `@azure-security-engineer` | Cloud & AI Security (SC-500, NEW) | azure-ad-entra, azure-networking, microsoft-sentinel, azure-monitor |
 | `@azure-solutions-architect` | Solutions Architect Expert (AZ-305, **Opus**) | all 14 Azure skills |
+
+---
+
+## 📊 Amplitude Division (NEW — v1.4.0)
+
+Product analytics agents and skills powered by the Amplitude MCP server.
+Install via `/install-skills` → Category 13. **Requires Amplitude MCP configured.**
+
+### 5 Agents + 26 Skills
+
+| Agent | Role | Key Skills |
+|-------|------|-----------|
+| `@amplitude-analyst` | PM / General Analyst | create-chart, analyze-chart, create-dashboard, analyze-dashboard, daily-brief, weekly-brief, what-would-lenny-do |
+| `@amplitude-experimenter` | Growth / Experimentation | analyze-experiment, discover-opportunities, compare-user-journeys, analyze-account-health, analyze-feedback |
+| `@amplitude-engineer` | Data Engineer / Dev | diff-intake, discover-event-surfaces, discover-analytics-patterns, instrument-events, add-analytics-instrumentation, taxonomy |
+| `@amplitude-ux-researcher` | UX / Support | debug-replay, replay-ux-audit, diagnose-errors, monitor-reliability |
+| `@amplitude-ai-monitor` | AI/LLM Analytics | analyze-ai-topics, investigate-ai-session, monitor-ai-quality, review-agent-insights |
+
+**Skills based on:** [Amplitude mcp-marketplace](https://github.com/amplitude/mcp-marketplace) (official Amplitude skills, adapted to magic-powers format)
