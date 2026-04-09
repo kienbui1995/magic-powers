@@ -5,7 +5,7 @@
 [![Security Audit](https://img.shields.io/badge/security_audit-passing-brightgreen)](SECURITY.md)
 [![Tools](https://img.shields.io/badge/tools-9-green)](README.md#multi-tool-support)
 [![Agents](https://img.shields.io/badge/agents-11-purple)](README.md#11-agents-by-division)
-[![Commands](https://img.shields.io/badge/commands-11-blue)](README.md#11-slash-commands)
+[![Commands](https://img.shields.io/badge/commands-12-blue)](README.md#12-slash-commands)
 [![Website](https://img.shields.io/badge/website-magic--powers.pmai.space-orange)](https://magic-powers.pmai.space)
 
 **[magic-powers.pmai.space](https://magic-powers.pmai.space)** — A Claude Code plugin with cost-optimized model routing, 43 built-in skills + 67 optional skills + 42 cloud division skills (178 total), 11 specialized agents, 12 slash commands, and optional hooks/MCP integration. Built for all professional roles — dev, product, data, marketing, sales, design, and more. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
@@ -59,7 +59,7 @@ Magic Powers uses a two-tier architecture:
 
 Everything works out of the box — no setup required:
 
-- **11 slash commands** — `/brainstorming`, `/plan`, `/review`, `/debug`, `/deploy`, etc.
+- **12 slash commands** — `/brainstorming`, `/plan`, `/review`, `/debug`, `/deploy`, etc.
 - **11 agents** — architect, debugger, reviewer, ui-designer, etc.
 - **43 built-in skills** — brainstorming, TDD, debugging, security review, etc.
 - **SessionStart hook** — auto-loads skill routing on every session
@@ -101,7 +101,39 @@ Browse and install with `/install-skills`. Quick role-based install during `/set
 
 See [docs/OPTIONAL_SKILLS.md](docs/OPTIONAL_SKILLS.md) for the full catalog.
 
-## 11 Slash Commands
+### ☁️ Cloud Divisions (42 skills, 21 agents)
+
+Professional certification-aligned agents for GCP, AWS, and Azure. `/install-skills` → Category 12.
+
+| Division | Agents | Certifications |
+|----------|--------|---------------|
+| GCP | 7 | Professional Data Engineer, Cloud Developer, Network, ML, DevOps, Security, Architect |
+| AWS | 7 | Data Engineer (DEA-C01), Developer, Networking, ML Engineer (MLA-C01), DevOps, Security, Solutions Architect |
+| Azure | 7 | Fabric Data Engineer (DP-700), AI Developer (AI-200), Network, AI Engineer, DevOps, Security (SC-500), Architect |
+
+```
+/install-skills → 12 → GCP / AWS / Azure
+@gcp-data-engineer  Design a BigQuery streaming pipeline
+@aws-solutions-architect  Review our multi-account architecture
+@azure-ai-engineer  Build a RAG system with Azure OpenAI
+```
+
+### 📊 Amplitude Division (26 skills, 5 agents)
+
+Product analytics agents powered by the Amplitude MCP server. `/install-skills` → Category 13.
+**Requires:** [Amplitude MCP](https://github.com/amplitude/mcp-server-guide) configured.
+
+| Agent | Role |
+|-------|------|
+| `@amplitude-analyst` | Charts, dashboards, daily/weekly briefings |
+| `@amplitude-experimenter` | A/B tests, opportunity discovery, user journeys |
+| `@amplitude-engineer` | Analytics instrumentation, event taxonomy |
+| `@amplitude-ux-researcher` | Session replay, error diagnosis, UX audit |
+| `@amplitude-ai-monitor` | AI/LLM quality, topic analysis, session investigation |
+
+Skills ported from [amplitude/mcp-marketplace](https://github.com/amplitude/mcp-marketplace).
+
+## 12 Slash Commands
 
 | Command | Skill | Purpose |
 |---------|-------|---------|

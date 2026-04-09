@@ -76,6 +76,12 @@ Ask the user which optional features to install. Show checkboxes with recommenda
 >
 > Browse all 67 skills? Run /install-skills after setup.
 >
+> **Optional Divisions** (specialized agents + skills — install with /install-skills):
+>   ☁️  Cloud Divisions (Cat. 12) — GCP / AWS / Azure professional cert agents
+>     → Recommend if role is: Data Engineer, Cloud/Platform/SRE, or studying cloud certs
+>   📊 Amplitude Division (Cat. 13) — Product analytics agents (requires Amplitude MCP)
+>     → Recommend if role is: Data Scientist, Product Manager, Marketer/Growth
+>
 > Chọn số (vd: 1,2,6,7) hoặc "all" / "skip":
 
 ## Step 5: Generate Files
