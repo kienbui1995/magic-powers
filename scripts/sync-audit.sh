@@ -2,8 +2,8 @@
 # Sync audit — ensures integrations match skills/ + agents/ count
 set -euo pipefail
 
-SKILLS=$(ls skills/ | wc -l)
-AGENTS=$(ls agents/ | wc -l)
+SKILLS=$(find skills/ -name "SKILL.md" | wc -l)
+AGENTS=$(find agents/ -name "*.md" -type f | xargs grep -l "^name:" 2>/dev/null | wc -l)
 EXPECTED=$((SKILLS + AGENTS))
 ISSUES=0
 

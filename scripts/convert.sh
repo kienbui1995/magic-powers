@@ -3,7 +3,7 @@
 set -euo pipefail
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 
-find_agents() { find "$REPO/agents" -name "*.md" -type f | sort; }
+find_agents() { find "$REPO/agents" -name "*.md" -type f | xargs grep -l "^name:" 2>/dev/null | sort; }
 find_skills() { find "$REPO/skills" -name "SKILL.md" -type f | sort; }
 
 strip_frontmatter() { awk '/^---$/{c++; next} c>=2' "$1"; }
@@ -12,9 +12,9 @@ get_field() { grep "^$2:" "$1" 2>/dev/null | head -1 | sed "s/^$2: *\"*//;s/\"*$
 
 convert_cursor() {
   local out="$REPO/integrations/cursor/rules"
-  mkdir -p "$out"
+  rm -rf "$out" && mkdir -p "$out"
   for f in $(find_agents); do
-    local name=$(basename "$f" .md)
+    local name=$(get_field "$f" name)
     local desc=$(get_field "$f" description)
     { echo "---"; echo "description: $desc"; echo "globs: []"; echo "alwaysApply: false"; echo "---"; echo ""; strip_frontmatter "$f"; } > "$out/${name}.mdc"
   done
@@ -28,8 +28,11 @@ convert_cursor() {
 
 convert_copilot() {
   local out="$REPO/integrations/copilot/agents"
-  mkdir -p "$out"
-  for f in $(find_agents); do cp "$f" "$out/"; done
+  rm -rf "$out" && mkdir -p "$out"
+  for f in $(find_agents); do
+    local name=$(get_field "$f" name)
+    cp "$f" "$out/${name}.md"
+  done
   for f in $(find_skills); do
     local name=$(get_field "$f" name)
     cp "$f" "$out/${name}.md"
@@ -42,7 +45,7 @@ convert_aider() {
   { echo "# Magic Powers — Agent Conventions & Skills"; echo "";
     echo "## Agents"; echo ""
     for f in $(find_agents); do
-      echo "### $(basename "$f" .md)"; echo ""; strip_frontmatter "$f"; echo ""; echo "---"; echo ""
+      echo "### $(get_field "$f" name)"; echo ""; strip_frontmatter "$f"; echo ""; echo "---"; echo ""
     done
     echo "## Skills"; echo ""
     for f in $(find_skills); do
@@ -58,7 +61,7 @@ convert_windsurf() {
   { echo "# Magic Powers — Agents & Skills"; echo "";
     echo "## Agents"; echo ""
     for f in $(find_agents); do
-      echo "### $(basename "$f" .md)"; echo ""; strip_frontmatter "$f"; echo ""
+      echo "### $(get_field "$f" name)"; echo ""; strip_frontmatter "$f"; echo ""
     done
     echo "## Skills"; echo ""
     for f in $(find_skills); do
@@ -70,8 +73,9 @@ convert_windsurf() {
 }
 
 convert_gemini() {
+  rm -rf "$REPO/integrations/gemini-cli/skills" && mkdir -p "$REPO/integrations/gemini-cli/skills"
   for f in $(find_agents); do
-    local name=$(basename "$f" .md)
+    local name=$(get_field "$f" name)
     local desc=$(get_field "$f" description)
     local dir="$REPO/integrations/gemini-cli/skills/magic-${name}"
     mkdir -p "$dir"
@@ -88,9 +92,10 @@ convert_gemini() {
 }
 
 convert_codex() {
+  rm -rf "$REPO/integrations/codex/skills" && mkdir -p "$REPO/integrations/codex/skills"
   # Convert agents to Codex skills
   for f in $(find_agents); do
-    local name=$(basename "$f" .md)
+    local name=$(get_field "$f" name)
     local desc=$(get_field "$f" description)
     local dir="$REPO/integrations/codex/skills/magic-${name}"
     mkdir -p "$dir"
@@ -116,7 +121,7 @@ convert_codex() {
     echo "Invoke explicitly with \`\$magic-<name>\`, or describe your task and Codex picks the right one."
     echo ""
     for f in $(find_agents); do
-      local name=$(basename "$f" .md)
+      local name=$(get_field "$f" name)
       local desc=$(get_field "$f" description)
       echo "- **\$magic-${name}**: ${desc}"
     done
@@ -137,9 +142,9 @@ convert_codex() {
 
 convert_kiro() {
   local out="$REPO/integrations/kiro/steering"
-  mkdir -p "$out"
+  rm -rf "$out" && mkdir -p "$out"
   for f in $(find_agents); do
-    local name=$(basename "$f" .md)
+    local name=$(get_field "$f" name)
     local desc=$(get_field "$f" description)
     { echo "---"; echo "inclusion: auto"; echo "name: magic-${name}"; echo "description: $desc"; echo "---"; echo ""; strip_frontmatter "$f"; } > "$out/magic-${name}.md"
   done
@@ -209,7 +214,7 @@ convert_opencode() {
     echo "Invoke with \`@magic-<name>\` or describe your task and OpenCode picks the right one."
     echo ""
     for f in $(find_agents); do
-      local name=$(basename "$f" .md)
+      local name=$(get_field "$f" name)
       local desc=$(get_field "$f" description)
       echo "- **@magic-${name}**: ${desc}"
     done
