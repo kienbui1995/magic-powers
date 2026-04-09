@@ -83,6 +83,8 @@ Ask the user which optional features to install. Show checkboxes with recommenda
 >     → Recommend if role is: Data Scientist, Product Manager, Marketer/Growth
 >   🧩 Browser Extension (Cat. 14) — Chrome/Firefox MV3 dev, store publishing
 >     → Recommend if role is: Frontend Dev, Solo Builder (building a browser extension)
+>   🤖 AI Division (Cat. 15) — AI engineer, product, evaluator agents
+>     → Recommend if role is: Data Scientist, Backend Dev, Solo Builder (building AI features)
 >
 > Chọn số (vd: 1,2,6,7) hoặc "all" / "skip":
 

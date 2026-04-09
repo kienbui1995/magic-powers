@@ -27,8 +27,9 @@ Choose a category to browse:
 12. ☁️  Cloud Divisions              — GCP, AWS, Azure professional cert agents + skills
 13. 📊 Amplitude Division            — Product analytics, experimentation, session replay, AI monitoring
 14. 🧩 Browser Extension             — Chrome/Firefox extension dev, MV3, publishing to stores
+15. 🤖 AI Division                    — AI engineer, product, evaluator agents + harness + product-design skills
 
-Enter number (1–14), "all" to see all skills at once, or "done" to exit:
+Enter number (1–15), "all" to see all skills at once, or "done" to exit:
 ```
 
 ## Step 2: Show Skills in Selected Category
@@ -341,6 +342,32 @@ Skills (.claude/skills/):
   extension-security       cross-browser-compat
   extension-testing        chrome-store-publishing
   firefox-publishing
+
+Type "install" to install, or "back" to return:
+```
+
+### AI Division Install (for category 15)
+
+1. Copy `${CLAUDE_PLUGIN_ROOT}/agents/ai/*.md` to `.claude/agents/` (as ai-engineer.md, ai-product.md, ai-evaluator.md)
+2. Copy `${CLAUDE_PLUGIN_ROOT}/skills/ai-harness/SKILL.md` to `.claude/skills/ai-harness/SKILL.md`
+3. Copy `${CLAUDE_PLUGIN_ROOT}/skills/ai-product-design/SKILL.md` to `.claude/skills/ai-product-design/SKILL.md`
+   Note: Other AI skills (agentic-ai-patterns, prompt-engineering, etc.) are built-in and auto-available.
+
+Show before installing:
+```
+🤖 AI Division
+
+Agents (.claude/agents/):
+  🤖 ai-engineer      — LLM integration, RAG, agentic AI, prompts, eval harness
+  🎯 ai-product       — AI UX, streaming, fallbacks, reliability, responsible AI
+  🔬 ai-evaluator     — eval infrastructure, CI/CD for AI, golden datasets, regression
+
+New Skills (.claude/skills/):
+  ai-harness           ai-product-design
+
+Built-in AI skills (already available, no install needed):
+  agentic-ai-patterns  prompt-engineering  rag-architecture
+  llm-evaluation       llm-observability   ai-safety-guardrails
 
 Type "install" to install, or "back" to return:
 ```

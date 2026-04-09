@@ -51,6 +51,11 @@ Beyond the 11 built-in agents, Magic Powers has optional divisions for specializ
 - `@amplitude-ux-researcher` — session replay, error diagnosis, UX audit
 - `@amplitude-ai-monitor` — AI/LLM quality monitoring
 
+**🤖 AI Division** — `/install-skills` → Category 15
+- `@ai-engineer` — LLM integration, RAG, agentic AI, prompts, eval harness
+- `@ai-product` — AI UX, streaming, fallbacks, reliability, responsible AI
+- `@ai-evaluator` — eval infrastructure, CI/CD for AI, golden datasets, regression
+
 ## Using Skills
 
 ### The Rule
