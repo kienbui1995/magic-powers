@@ -1,7 +1,7 @@
 {
   "name": "magic-powers",
   "description": "Cost-optimized Claude Code plugin — 11 built-in agents (+ 37 optional cloud/amplitude agents), 178 workflow skills, and 12 slash commands. Built for AI startups shipping fast with small teams.",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "author": {
     "name": "kienbui1995"
   },

@@ -8,6 +8,8 @@ tools: Read, Grep, Glob, Bash, Write
 memory: project
 skills:
   - magic-powers:agentic-ai-patterns
+  - magic-powers:agentic-memory
+  - magic-powers:agentic-reliability
   - magic-powers:prompt-engineering
   - magic-powers:rag-architecture
   - magic-powers:llm-observability

@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] — 2026-04-10
+
+### Added
+- 🧠 **`agentic-memory`** — 4-tier memory (in-context/session/long-term/episodic), context window management, compression, multi-agent shared memory
+- ⚡ **`agentic-reliability`** — retry/backoff, circuit breakers, fallback chains, graceful degradation, timeout management, loop detection
+
+### Updated (2025-2026 SOTA)
+- **`llm-evaluation`** +85 lines: Ragas RAG metrics, latency/cost metrics, stratified eval
+- **`llm-observability`** +117 lines: drift detection, agent metrics, OpenTelemetry tracing, cost forecasting
+- **`prompt-engineering`** +109 lines: tool use prompts, extended thinking, multi-turn & RAG context
+- **`rag-architecture`** +111 lines: hybrid search (BM25+RRF), HyDE, agentic RAG, long-context tradeoffs
+
+### Agents updated
+- `@ai-engineer`: added `agentic-memory` + `agentic-reliability`
+
+---
+
 ## [1.7.0] — 2026-04-10
 
 ### Added

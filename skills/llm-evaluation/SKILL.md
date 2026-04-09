@@ -26,6 +26,34 @@ If you can't measure it, you can't improve it. LLM eval is the difference betwee
 5. Block deploys that regress
 ```
 
+### RAG-Specific Metrics (Ragas)
+
+For RAG systems, use [Ragas](https://github.com/explodinggradients/ragas) for component-level eval:
+
+| Metric | Measures | Target |
+|--------|---------|--------|
+| **Faithfulness** | Does answer contain only info from retrieved context? | > 0.85 |
+| **Answer Relevance** | Is the answer relevant to the question? | > 0.80 |
+| **Context Precision** | What % of retrieved chunks are actually useful? | > 0.70 |
+| **Context Recall** | Did retrieval capture all relevant info? | > 0.75 |
+
+```python
+from ragas import evaluate
+from ragas.metrics import faithfulness, answer_relevancy, context_precision, context_recall
+
+results = evaluate(
+    dataset=eval_dataset,  # questions, answers, contexts, ground_truths
+    metrics=[faithfulness, answer_relevancy, context_precision, context_recall]
+)
+# results.to_pandas() → per-question breakdown
+```
+
+**Diagnosing RAG failures:**
+- Low faithfulness → hallucination; fix retrieval or generation prompt
+- Low context precision → too many irrelevant chunks retrieved; tune top-K or reranker
+- Low context recall → missing relevant docs; fix chunking or embedding model
+- Low answer relevance → answer drifts from question; tighten generation prompt
+
 ## Eval Types
 
 ### 1. Golden Set Eval (must-have)
@@ -54,6 +82,64 @@ Reference: {expected}
 - Route 10% traffic to new prompt/model
 - Compare metrics: quality score, latency, cost, user satisfaction
 - Promote winner after statistical significance
+
+### Latency & Cost Metrics
+
+Track alongside quality — they're part of the eval contract:
+
+| Metric | Good | Warning | Critical |
+|--------|------|---------|---------|
+| Time to first token | < 500ms | 500ms-2s | > 2s |
+| Total latency (P50) | < 3s | 3-10s | > 10s |
+| Total latency (P95) | < 8s | 8-20s | > 20s |
+| Cost per 1K requests | baseline | +25% | +50% |
+| Token efficiency | baseline | -15% | -30% |
+
+```python
+# Include latency in golden set evaluation
+def eval_with_latency(test_case, fn):
+    start = time.monotonic()
+    result = fn(test_case.input)
+    latency_ms = (time.monotonic() - start) * 1000
+    
+    return EvalResult(
+        quality_score=score(result, test_case.expected),
+        latency_ms=latency_ms,
+        input_tokens=result.usage.input_tokens,
+        output_tokens=result.usage.output_tokens,
+        cost_usd=calculate_cost(result.usage, model=result.model)
+    )
+```
+
+### Stratified Evaluation
+
+Aggregate scores hide per-category regressions. Always stratify:
+
+```python
+# Segment test cases by complexity, domain, input length
+test_cases = [
+    TestCase(input="...", expected="...", category="simple", domain="billing"),
+    TestCase(input="...", expected="...", category="complex", domain="technical"),
+    # ...
+]
+
+# Evaluate per segment
+results_by_segment = {}
+for category in ["simple", "complex", "edge_case"]:
+    subset = [t for t in test_cases if t.category == category]
+    results_by_segment[category] = run_eval(subset)
+
+# Alert if any segment drops > 5% vs baseline
+for segment, results in results_by_segment.items():
+    if results.pass_rate < baseline[segment] - 0.05:
+        alert(f"Regression in {segment}: {results.pass_rate:.0%} vs {baseline[segment]:.0%}")
+```
+
+**Recommended segments:**
+- By complexity: simple / medium / complex / edge case
+- By domain: billing / technical / general
+- By input length: short (<100 tokens) / medium / long (>1000 tokens)
+- By user type: new_user / power_user / enterprise
 
 ## Key Metrics
 
