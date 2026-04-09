@@ -26,8 +26,9 @@ Choose a category to browse:
 11. Specialist (7 skills)            — legal, finance, devrel, solutions arch
 12. ☁️  Cloud Divisions              — GCP, AWS, Azure professional cert agents + skills
 13. 📊 Amplitude Division            — Product analytics, experimentation, session replay, AI monitoring
+14. 🧩 Browser Extension             — Chrome/Firefox extension dev, MV3, publishing to stores
 
-Enter number (1–13), "all" to see all skills at once, or "done" to exit:
+Enter number (1–14), "all" to see all skills at once, or "done" to exit:
 ```
 
 ## Step 2: Show Skills in Selected Category
@@ -318,6 +319,28 @@ Skills (.claude/skills/):
   diagnose-errors         monitor-reliability
   analyze-ai-topics       investigate-ai-session
   monitor-ai-quality      review-agent-insights
+
+Type "install" to install, or "back" to return:
+```
+
+### Browser Extension Install (for category 14)
+
+1. Copy `${CLAUDE_PLUGIN_ROOT}/agents/browser-extension/developer.md` to `.claude/agents/browser-extension-developer.md`
+2. Copy skill files from `${CLAUDE_PLUGIN_ROOT}/skills/browser-extension/*/SKILL.md` to `.claude/skills/<skill-name>/SKILL.md`
+
+Show before installing:
+```
+🧩 Browser Extension Division
+
+Agent (.claude/agents/):
+  🧩 browser-extension-developer — MV3, content scripts, APIs, UI, security, publishing
+
+Skills (.claude/skills/):
+  manifest-v3              content-scripts
+  extension-apis           extension-ui
+  extension-security       cross-browser-compat
+  extension-testing        chrome-store-publishing
+  firefox-publishing
 
 Type "install" to install, or "back" to return:
 ```

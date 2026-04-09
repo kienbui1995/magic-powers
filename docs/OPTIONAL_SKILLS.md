@@ -203,3 +203,19 @@ Install via `/install-skills` → Category 13. **Requires Amplitude MCP configur
 | `@amplitude-ai-monitor` | AI/LLM Analytics | analyze-ai-topics, investigate-ai-session, monitor-ai-quality, review-agent-insights |
 
 **Skills based on:** [Amplitude mcp-marketplace](https://github.com/amplitude/mcp-marketplace) (official Amplitude skills, adapted to magic-powers format)
+
+---
+
+## 🧩 Browser Extension Division (NEW — v1.5.0)
+
+Skills and agent for developing and publishing Chrome/Firefox browser extensions.
+Install via `/install-skills` → Category 14.
+
+### 1 Agent + 9 Skills
+
+| | |
+|--|--|
+| **Agent** | `@browser-extension-developer` (Sonnet) |
+| **Skills** | manifest-v3, content-scripts, extension-apis, extension-ui, extension-security, cross-browser-compat, extension-testing, chrome-store-publishing, firefox-publishing |
+
+**Use for:** Manifest V3 architecture, content scripts, extension APIs (storage/tabs/alarms), popup/options/side panel UI, Chrome Web Store publishing, Firefox AMO publishing, Playwright testing.
