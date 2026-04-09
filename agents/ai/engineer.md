@@ -12,6 +12,7 @@ skills:
   - magic-powers:rag-architecture
   - magic-powers:llm-observability
   - magic-powers:ai-safety-guardrails
+  - magic-powers:agentic-security
   - magic-powers:ai-harness
 ---
 

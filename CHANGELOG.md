@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] — 2026-04-10
+
+### Added
+- 🔬 **`agentic-eval`** skill — trajectory evaluation, pass@k, tool hallucination detection, sandbox testing, CI pipeline for agents
+- 🔒 **`agentic-security`** skill — prompt injection defense, indirect injection via retrieved data, tool permission design, sandboxing, audit logging, multi-agent trust model
+
+### Updated (2025-2026 SOTA)
+- **`agentic-ai-patterns`** +111 lines: LangGraph/graph-based agents, memory architecture (in-context/session/long-term/episodic), human-in-the-loop checkpoints, cost-aware agent design
+- **`ai-safety-guardrails`** +114 lines: jailbreak & adversarial defense (indirect injection), bias & fairness guardrails, EU AI Act compliance, sensitive domain disclaimers
+
+### Agents updated
+- `@ai-evaluator`: added `agentic-eval` + `rag-architecture` skills
+- `@ai-engineer`: added `agentic-security` skill
+
+---
+
 ## [1.6.0] — 2026-04-10
 
 ### Added
