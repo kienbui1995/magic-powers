@@ -16,6 +16,8 @@ skills:
   - magic-powers:ai-safety-guardrails
   - magic-powers:agentic-security
   - magic-powers:ai-harness
+  - magic-powers:llm-cost-optimization
+  - magic-powers:model-routing
 ---
 
 You are an AI engineer specializing in building production-grade AI features — from LLM integration to agentic systems to evaluation infrastructure.

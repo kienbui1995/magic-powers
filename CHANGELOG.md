@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] — 2026-04-10
+
+### Added
+- 🔀 **`model-routing`** — task-based routing, cascade escalation (cheap→expensive), content-based routing, fallback chains, routing metrics
+- 💰 **`llm-cost-optimization`** — prompt caching (42% reduction), output token reduction, batch API (50% discount), workflow cost accounting, application-level caching
+
+### Updated
+- **`ai-harness`**: statistical rigor (t-test, Cohen's d, sample sizes), dataset maintenance (stale detection, production failure ingestion)
+- **`ai-product-design`**: agent UX patterns (progress display, transparent tool use), citation/attribution for RAG, accessibility (ARIA, mobile, i18n)
+
+### Agents updated
+- `@ai-engineer`: added `llm-cost-optimization` + `model-routing`
+- `@ai-product`: added `model-routing`
+
+---
+
 ## [1.8.0] — 2026-04-10
 
 ### Added

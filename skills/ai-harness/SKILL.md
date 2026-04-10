@@ -120,6 +120,73 @@ winner = select_winner(results, primary_metric="accuracy", cost_constraint=1.2)
 - Running eval only before major releases (too late to catch drift)
 - One aggregated score hiding category regressions
 
+## Statistical Rigor
+
+Avoid declaring "improvement" without statistical evidence:
+
+```python
+from scipy import stats
+
+def is_statistically_significant(baseline_scores, new_scores, alpha=0.05):
+    """Two-sample t-test for eval score comparison"""
+    t_stat, p_value = stats.ttest_ind(baseline_scores, new_scores)
+    
+    effect_size = (mean(new_scores) - mean(baseline_scores)) / std(baseline_scores)
+    
+    return StatResult(
+        significant=p_value < alpha,
+        p_value=p_value,
+        effect_size=effect_size,  # Cohen's d
+        practical_significant=abs(effect_size) > 0.2,  # small effect
+        recommendation="ship" if (p_value < alpha and effect_size > 0.2) else "no change"
+    )
+
+# Minimum sample sizes for reliable conclusions:
+# Small effect (d=0.2): n ≥ 197 per group
+# Medium effect (d=0.5): n ≥ 52 per group
+# Large effect (d=0.8): n ≥ 26 per group
+```
+
+**Key rules:**
+- Never compare single-run scores — always run 5-10 times minimum
+- Report confidence intervals, not just averages
+- Distinguish statistical significance (p<0.05) from practical significance (effect size matters)
+- A 1% quality improvement usually isn't worth shipping complexity
+
+## Dataset Maintenance
+
+Golden datasets degrade — keep them fresh:
+
+```python
+class EvalDatasetManager:
+    def review_test_cases(self, dataset: Dataset, threshold_days=30):
+        stale = [tc for tc in dataset if tc.last_reviewed_days > threshold_days]
+        low_signal = [tc for tc in dataset if tc.pass_rate in (0.0, 1.0)]
+        # Pass rate 0% = always fails (broken test or impossible), 1% = always passes (too easy)
+        
+        return DatasetHealthReport(
+            stale_count=len(stale),
+            low_signal_count=len(low_signal),
+            action="review_and_update" if len(stale) + len(low_signal) > len(dataset) * 0.2 else "ok"
+        )
+    
+    def add_from_production_failures(self, prod_failures: list[Failure]):
+        """Convert production failures into eval test cases"""
+        for failure in prod_failures:
+            if failure.confirmed_bug:  # human verified
+                dataset.add(TestCase(
+                    input=failure.input,
+                    expected=failure.expected_output,
+                    source="production_failure",
+                    added_date=today()
+                ))
+```
+
+**Dataset health signals:**
+- >20% of tests always pass → too easy, add harder cases
+- >10% of tests never pass → broken tests or capability gap, investigate
+- Last reviewed >30 days → likely stale, review against recent prod distribution
+
 ## Integration
 
 - Use with `llm-evaluation` (frameworks) and `llm-observability` (production monitoring)

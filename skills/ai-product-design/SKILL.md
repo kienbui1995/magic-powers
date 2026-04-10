@@ -104,12 +104,123 @@ Quality:
   Error rate by type (timeout, refusal, safety)
 ```
 
+## Agent UX Patterns
+
+Showing agent work to users requires different UX than single-call AI:
+
+**Displaying agent progress:**
+```
+┌─────────────────────────────────────────┐
+│ 🤖 Researching your question...         │
+│                                         │
+│ ✅ Searched documentation (0.8s)        │
+│ ✅ Found 3 relevant sections (0.3s)     │
+│ ⏳ Analyzing and synthesizing...        │
+│                                         │
+│ Step 3 of 4 — ~10s remaining           │
+└─────────────────────────────────────────┘
+```
+
+**Agent UX principles:**
+- Show steps in real-time (users trust agents they can see working)
+- Reveal tools used: "I searched 3 sources" builds transparency
+- Show intermediate results progressively (don't wait until full completion)
+- Provide cancel option — users need control over long-running agents
+- On failure: explain what was tried before failing ("I searched docs, tried 2 approaches, couldn't find...")
+
+**Displaying tool use transparently:**
+```
+Agent used: 🔍 web_search("Q3 revenue report 2024")
+Agent used: 📄 read_file("annual_report.pdf")
+Agent used: 🧮 calculate(formula="revenue * 0.15")
+```
+Collapsible by default — show on hover/expand for curious users.
+
+## Citation & Attribution
+
+For RAG-generated content, attribution builds trust:
+
+```
+Answer: The product launch is scheduled for Q2 2025.
+
+Sources used:
+  [1] Product Roadmap 2025.pdf — p.3: "Q2 2025 launch target"
+  [2] Engineering Timeline.xlsx — Sheet: Milestones
+```
+
+**Implementation:**
+```javascript
+// Track citations during RAG generation
+const response = await generateWithCitations(query, retrievedChunks);
+// response: { answer: "...", citations: [{source, page, quote}] }
+
+// Render with inline citation markers
+renderWithCitations(response.answer, response.citations);
+// → "The launch is scheduled for Q2 [1]" with expandable citation [1]
+```
+
+**When to show citations:**
+- Always for factual claims (dates, numbers, names)
+- Always for medical/legal/financial content
+- Optional for stylistic/creative responses
+- Always when user can verify the underlying source
+
 ## Key Outputs
 
 - UX spec: streaming behavior, loading states, error messages, fallback flow
 - Reliability design: circuit breaker thresholds, timeout values, caching strategy
 - Disclosure copy: AI labels, opt-out mechanism, data usage statement
 - Metrics dashboard definition: acceptance rate, task completion, regeneration rate
+
+## Accessibility & Mobile
+
+**Accessibility for AI-specific UI elements:**
+```javascript
+// Streaming text — announce completion to screen readers
+<div 
+  role="log"               // live region for screen readers
+  aria-live="polite"       // don't interrupt, announce when idle
+  aria-label="AI response"
+>
+  {streamingText}
+</div>
+
+// Loading state — meaningful label, not just spinner
+<div role="status" aria-label="AI is generating a response, please wait">
+  <Spinner />
+  <span className="sr-only">Generating response...</span>
+</div>
+
+// Confidence indicator — explain what percentage means
+<span 
+  title="AI confidence: 85% - This answer is likely accurate but verify for important decisions"
+  aria-label="85% confidence"
+>
+  ●●●●○
+</span>
+```
+
+**Mobile patterns:**
+- Streaming on mobile: throttle updates to 100ms (not every token) — reduces reflow
+- Loading states: skeleton screens better than spinners on small screens
+- Error messages: use native alert dialogs (not toasts) on mobile — more visible
+- Latency expectation: mobile users tolerate 5-8s more than desktop users (2-3s)
+- Offline handling: queue AI requests when offline, process when reconnected
+
+**Internationalization of AI responses:**
+```javascript
+// AI error messages need translation
+const AI_ERROR_MESSAGES = {
+  rate_limit: t('ai.error.rateLimitMessage'),        // localized
+  timeout: t('ai.error.timeoutMessage'),
+  safety_refusal: t('ai.error.safetyMessage'),
+};
+
+// RTL support for streaming text
+<div dir="auto" lang={userLocale}>  {/* auto-detects RTL */}
+  {streamingText}
+</div>
+```
 
 ## Anti-Patterns
 
