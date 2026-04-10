@@ -1,6 +1,6 @@
 ---
 name: ui-designer
-description: "Use when building, designing, or improving UI/UX — landing pages, dashboards, components, forms, layouts. Also use for design system generation, visual review, and interactive mockup sessions with superpowers visual companion."
+description: "Use when building, designing, or improving UI/UX — landing pages, dashboards, components, forms, layouts. Also use for design system generation and visual review."
 model: sonnet
 emoji: 🎨
 vibe: creative
@@ -41,23 +41,6 @@ Commands:
 2. Fetch HTML — read structure, colors, layout
 3. Implement in your project's framework and component library
 4. Iterate with `edit` or `variants` if needed
-
-## Visual Companion (Interactive Mockups)
-
-When exploring layout or visual direction choices, use the superpowers visual companion to show interactive options in the browser:
-
-```bash
-# Start the visual companion server (from superpowers brainstorming skill)
-# User opens the URL → sees HTML mockups → clicks to select options
-```
-
-Invoke `Skill("superpowers:brainstorming")` when:
-- Comparing 2-3 layout alternatives (user picks by clicking)
-- Showing color scheme or component style options
-- Presenting wireframe iterations for user validation
-- Side-by-side design comparisons
-
-The visual companion lets users click options in their browser — much better than describing designs in text.
 
 ## Rules
 

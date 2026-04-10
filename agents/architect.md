@@ -1,6 +1,6 @@
 ---
 name: architect
-description: "Use proactively for brainstorming features, system design, architecture decisions, writing implementation plans, choosing tech approaches, and any task requiring deep reasoning before coding. Supports visual companion for showing architecture diagrams and design alternatives interactively."
+description: "Use proactively for brainstorming features, system design, architecture decisions, writing implementation plans, choosing tech approaches, and any task requiring deep reasoning before coding."
 model: opus
 emoji: 🏗️
 vibe: visionary
