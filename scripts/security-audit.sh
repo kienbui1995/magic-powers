@@ -13,11 +13,42 @@ TOTAL_FILES=0
 CRITICAL=0
 WARNINGS=0
 
+# Security documentation files — discuss dangerous patterns to TEACH defense, not to implement
+# These files intentionally contain examples of attacks/dangerous commands as educational content
+is_security_doc() {
+  local file="$1"
+  local security_docs=(
+    "skills/agentic-security"
+    "skills/ai-safety-guardrails"
+    "skills/browser-extension/extension-security"
+    "skills/claude-project-settings"
+    "skills/claude-hooks"
+  )
+  for pattern in "${security_docs[@]}"; do
+    [[ "$file" == *"$pattern"* ]] && return 0
+  done
+  # Also skip generated integration copies of security docs
+  if echo "$file" | grep -qE "(agentic-security|ai-safety-guardrails|extension-security|claude-project-settings|claude-hooks)\.(md|mdc)$"; then
+    return 0
+  fi
+  # Skip aggregate files that concatenate all skills (including security docs)
+  if echo "$file" | grep -qE "(integrations/opencode/AGENTS\.md|integrations/aider/CONVENTIONS\.md|integrations/windsurf/\.windsurfrules)$"; then
+    return 0
+  fi
+  return 1
+}
+
 audit_file() {
   local file="$1"
   local issues=0
 
   TOTAL_FILES=$((TOTAL_FILES + 1))
+
+  # Skip security documentation files for pattern-based critical checks
+  # (they intentionally document attack patterns as examples for defense)
+  if is_security_doc "$file"; then
+    return 0
+  fi
 
   # === CRITICAL ===
 
