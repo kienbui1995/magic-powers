@@ -3,11 +3,22 @@ name: Security Audit
 on:
   push:
     branches: [main]
-    paths: ['skills/**', 'agents/**', 'hooks/**', 'commands/**']
+    paths:
+      - 'skills/**'
+      - 'agents/**'
+      - 'hooks/**'
+      - 'commands/**'
+      - 'scripts/**'
   pull_request:
-    paths: ['skills/**', 'agents/**', 'hooks/**', 'commands/**']
+    paths:
+      - 'skills/**'
+      - 'agents/**'
+      - 'hooks/**'
+      - 'commands/**'
+      - 'scripts/**'
   schedule:
     - cron: '0 0 * * 1'
+  workflow_dispatch:
 
 jobs:
   audit:

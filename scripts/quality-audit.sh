@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Quality audit — validates skill format, structure, and completeness
+# Covers flat skills (skills/*/SKILL.md) AND nested division skills
 set -euo pipefail
 
 EXIT_CODE=0
@@ -8,7 +9,7 @@ ISSUES=0
 
 check_skill() {
   local file="$1"
-  local dir=$(basename $(dirname "$file"))
+  local dir=$(basename "$(dirname "$file")")
   TOTAL=$((TOTAL + 1))
 
   # 1. Has name in frontmatter
@@ -24,7 +25,8 @@ check_skill() {
   fi
 
   # 3. Name matches folder name
-  local name=$(grep '^name:' "$file" | head -1 | sed 's/^name: *//')
+  local name
+  name=$(grep '^name:' "$file" | head -1 | sed 's/^name: *//')
   if [ "$name" != "$dir" ]; then
     echo "FAIL $file: name '$name' != folder '$dir'"
     ISSUES=$((ISSUES + 1))
@@ -37,7 +39,8 @@ check_skill() {
   fi
 
   # 5. Not too short (<100 bytes = likely empty/stub)
-  local size=$(wc -c < "$file")
+  local size
+  size=$(wc -c < "$file")
   if [ "$size" -lt 100 ]; then
     echo "FAIL $file: Too short (${size} bytes)"
     ISSUES=$((ISSUES + 1))
@@ -47,7 +50,23 @@ check_skill() {
 echo "Skill Quality Audit"
 echo "==================="
 
+# Flat optional skills
 for file in skills/*/SKILL.md; do
+  [ -f "$file" ] && check_skill "$file"
+done
+
+# Cloud division skills (skills/cloud/{gcp,aws,azure}/*/SKILL.md)
+for file in skills/cloud/*/*/SKILL.md; do
+  [ -f "$file" ] && check_skill "$file"
+done
+
+# Amplitude division skills
+for file in skills/amplitude/*/SKILL.md; do
+  [ -f "$file" ] && check_skill "$file"
+done
+
+# Browser extension skills
+for file in skills/browser-extension/*/SKILL.md; do
   [ -f "$file" ] && check_skill "$file"
 done
 
