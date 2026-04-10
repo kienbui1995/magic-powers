@@ -85,6 +85,10 @@ Ask the user which optional features to install. Show checkboxes with recommenda
 >     → Recommend if role is: Frontend Dev, Solo Builder (building a browser extension)
 >   🤖 AI Division (Cat. 15) — AI engineer, product, evaluator agents
 >     → Recommend if role is: Data Scientist, Backend Dev, Solo Builder (building AI features)
+>   🚀 Solo AI Builder (Cat. 16) — Validation, positioning, GTM, monetization, retention
+>     → Recommend if role is: Solo Builder, Indie Hacker, AI Founder, Product Manager launching AI product
+>   🖥️  Claude Code (Cat. 17) — CLAUDE.md, hooks, MCP setup, memory, project settings
+>     → Recommend for ALL users — gets more out of Claude Code itself
 >
 > Chọn số (vd: 1,2,6,7) hoặc "all" / "skip":
 

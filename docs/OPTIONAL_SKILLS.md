@@ -219,3 +219,37 @@ Install via `/install-skills` → Category 14.
 | **Skills** | manifest-v3, content-scripts, extension-apis, extension-ui, extension-security, cross-browser-compat, extension-testing, chrome-store-publishing, firefox-publishing |
 
 **Use for:** Manifest V3 architecture, content scripts, extension APIs (storage/tabs/alarms), popup/options/side panel UI, Chrome Web Store publishing, Firefox AMO publishing, Playwright testing.
+
+---
+
+## 🚀 Solo AI Builder Division (NEW — v2.0.0)
+
+Business skills for solo AI founders — from idea to paying customers.
+Install via `/install-skills` → Category 16.
+
+| Skill | Purpose |
+|-------|---------|
+| `ai-product-validation` | Validate problem BEFORE building — Reddit mining, interviews, fake door test |
+| `ai-product-positioning` | Differentiation, moat score (0-12), outcome messaging, ICP sharpening |
+| `solo-founder-gtm` | GTM for 1 person <5h/week — Twitter/Reddit/PH + AI-powered outreach |
+| `ai-product-monetization` | LLM cost accounting, hybrid pricing, unit economics, freemium design |
+| `vibe-coding` | 4-hour prototypes with Bolt/v0/Cursor — when to vibe vs spec |
+| `ai-product-retention` | Stickiness framework, habit loops, activation optimization, AI-specific metrics |
+| `ai-data-moat` | Data defensibility, fine-tune vs RAG decision, dataset building strategy |
+
+**Agent:** `@solo-ai-builder` — CEO-in-a-box across all stages (idea → launch → retain)
+
+---
+
+## 🖥️ Claude Code Division (NEW — v2.0.0)
+
+Skills for leveraging Claude Code's native built-in features.
+Install via `/install-skills` → Category 17.
+
+| Skill | Purpose |
+|-------|---------|
+| `claude-md-authoring` | Write effective CLAUDE.md — project context, conventions, Do Not rules |
+| `claude-hooks` | Configure PreToolUse/PostToolUse/Stop hooks for automation and safety |
+| `claude-mcp-setup` | Connect MCP servers (DB, GitHub, APIs) — tool descriptions that work |
+| `claude-memory` | Auto-memory system — what to save, MEMORY.md index, memory types |
+| `claude-project-settings` | .claude/settings.json — permissions, model routing, team vs personal |

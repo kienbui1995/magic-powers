@@ -5,6 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] — 2026-04-10
+
+### Added — Solo AI Builder Division (7 skills + 1 agent)
+- 🚀 **`@solo-ai-builder`** agent — CEO-in-a-box for solo AI founders across all stages
+- **`ai-product-validation`** — validate problem before building (Reddit mining, interviews, fake-door test)
+- **`ai-product-positioning`** — moat score, outcome messaging, ICP sharpening, feature vs product
+- **`solo-founder-gtm`** — GTM for 1 person <5h/week (Twitter/Reddit/PH + AI-powered outreach)
+- **`ai-product-monetization`** — LLM cost accounting, hybrid pricing, unit economics
+- **`vibe-coding`** — 4-hour AI prototypes with Bolt/v0/Cursor; when to vibe vs spec
+- **`ai-product-retention`** — stickiness score, habit loops, activation optimization
+- **`ai-data-moat`** — data defensibility, fine-tune vs RAG decision, dataset building
+
+### Added — Claude Code Native Skills (5 skills)
+- **`claude-md-authoring`** — effective CLAUDE.md files (project context, conventions, Do Not rules)
+- **`claude-hooks`** — PreToolUse/PostToolUse/Stop hooks for automation and safety nets
+- **`claude-mcp-setup`** — MCP server configuration with tool descriptions that work
+- **`claude-memory`** — auto-memory system, MEMORY.md index, memory types
+- **`claude-project-settings`** — .claude/settings.json, permissions, model routing
+
+### Updated
+- **`@ui-designer`** — visual companion awareness (interactive mockup sessions via superpowers)
+- **`@architect`** — visual companion for architecture diagrams and design alternatives
+- `/install-skills` categories 16 (Solo AI Builder) and 17 (Claude Code) added
+- `/setup` surfaces Solo AI Builder for Solo Builder/Indie Hacker roles; Claude Code for ALL users
+
+### Changed
+- Version bumped from 1.9.0 to 2.0.0 (major: comprehensive AI builder + Claude Code native coverage)
+
+---
+
 ## [1.9.0] — 2026-04-10
 
 ### Added
