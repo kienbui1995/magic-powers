@@ -37,7 +37,7 @@ Magic Powers includes specialized agents with cost-optimized model assignments:
 
 ## Optional Divisions (install with `/install-skills`)
 
-Beyond the 11 built-in agents, Magic Powers has optional divisions for specialized domains. Install per-project:
+Beyond the 12 built-in agents, Magic Powers has optional divisions for specialized domains. Install per-project:
 
 **☁️ Cloud Divisions** — `/install-skills` → Category 12
 - GCP: `@gcp-data-engineer`, `@gcp-cloud-architect`, `@gcp-ml-engineer` (+ 4 more)
@@ -51,10 +51,19 @@ Beyond the 11 built-in agents, Magic Powers has optional divisions for specializ
 - `@amplitude-ux-researcher` — session replay, error diagnosis, UX audit
 - `@amplitude-ai-monitor` — AI/LLM quality monitoring
 
+**🧩 Browser Extension** — `/install-skills` → Category 14
+- `@browser-extension-developer` — MV3, content scripts, publishing
+
 **🤖 AI Division** — `/install-skills` → Category 15
 - `@ai-engineer` — LLM integration, RAG, agentic AI, prompts, eval harness
 - `@ai-product` — AI UX, streaming, fallbacks, reliability, responsible AI
 - `@ai-evaluator` — eval infrastructure, CI/CD for AI, golden datasets, regression
+
+**🚀 Solo AI Builder** — `/install-skills` → Category 16
+- `@solo-ai-builder` — validation → positioning → GTM → monetization → retain
+
+**🖥️ Claude Code Skills** — `/install-skills` → Category 17
+- Skills: claude-md-authoring, claude-hooks, claude-mcp-setup, claude-memory, claude-project-settings
 
 ## Using Skills
 

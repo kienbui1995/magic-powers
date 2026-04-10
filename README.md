@@ -60,7 +60,7 @@ Magic Powers uses a two-tier architecture:
 Everything works out of the box — no setup required:
 
 - **12 slash commands** — `/brainstorming`, `/plan`, `/review`, `/debug`, `/deploy`, etc.
-- **11 agents** — architect, debugger, reviewer, ui-designer, etc.
+- \*\*12 agents\*\* — architect, debugger, reviewer, ui-designer, etc.
 - **43 built-in skills** — brainstorming, TDD, debugging, security review, etc.
 - **SessionStart hook** — auto-loads skill routing on every session
 
