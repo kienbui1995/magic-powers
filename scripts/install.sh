@@ -96,8 +96,17 @@ case "$choice" in
     mkdir -p "$dest"
     bash "$REPO/scripts/convert.sh" kiro
     cp "$REPO/integrations/kiro/steering/"*.md "$dest/"
-    echo "Installed to $dest"
-    echo "Steering files load automatically when relevant (inclusion: auto)." ;;
+    echo "Steering files installed to $dest (load automatically when relevant)"
+    # Install native Kiro agent JSON files
+    kiro_home="${KIRO_HOME:-$HOME/.kiro}"
+    bash "$REPO/scripts/convert.sh" kiro-agents
+    if [ -d "$kiro_home/agents" ]; then
+      cp "$REPO/integrations/kiro/agents/"*.json "$kiro_home/agents/"
+      echo "Native agents installed to $kiro_home/agents/ — invoke with @magic-architect, @magic-debugger, @magic-solo-ai-builder, etc."
+    else
+      echo "Tip: Create $kiro_home/agents/ to enable native @magic-* agents:"
+      echo "  mkdir -p $kiro_home/agents && cp $REPO/integrations/kiro/agents/*.json $kiro_home/agents/"
+    fi ;;
   9)
     dest="${OPENCODE_CONFIG:-$HOME/.config/opencode}"
     mkdir -p "$dest/commands"

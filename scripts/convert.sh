@@ -159,6 +159,54 @@ convert_kiro() {
   echo "Kiro: $(( $(find_agents | wc -l) + $(find_skills | wc -l) )) steering files → integrations/kiro/steering/"
 }
 
+convert_kiro_agents() {
+  local out="$REPO/integrations/kiro/agents"
+  rm -rf "$out" && mkdir -p "$out"
+  local count=0
+  for f in $(find_agents); do
+    local name=$(get_field "$f" name)
+    local desc=$(get_field "$f" description)
+    local tools_raw=$(get_field "$f" tools)
+    local prompt_content=$(strip_frontmatter "$f")
+
+    # Map Claude Code tool names → Kiro tool names
+    local allowed=""
+    if [ -n "$tools_raw" ]; then
+      allowed=$(echo "$tools_raw" | tr ',' '\n' | while read -r t; do
+        t=$(echo "$t" | tr -d ' ')
+        case "$t" in
+          Read)        printf '"fs_read",' ;;
+          Write|Edit)  printf '"fs_write",' ;;
+          Bash)        printf '"execute_bash",' ;;
+          Grep)        printf '"grep",' ;;
+          Glob)        printf '"glob",' ;;
+          WebFetch)    printf '"web_fetch",' ;;
+          WebSearch)   printf '"web_search",' ;;
+        esac
+      done | sed 's/,$//')
+    fi
+    [ -z "$allowed" ] && allowed='"fs_read","grep","glob","thinking"'
+
+    # JSON-escape via python3
+    local prompt_escaped
+    prompt_escaped=$(printf '%s' "$prompt_content" | python3 -c "
+import sys, json
+content = sys.stdin.read()
+print(json.dumps(content)[1:-1])
+")
+
+    # Write JSON
+    printf '{"name":"magic-%s","description":"%s","prompt":"%s","tools":["fs_read","fs_write","execute_bash","grep","glob","code","web_search","web_fetch","knowledge","thinking","todo_list"],"allowedTools":[%s]}\n' \
+      "$name" \
+      "$(echo "$desc" | sed 's/"/\\"/g')" \
+      "$prompt_escaped" \
+      "$allowed" \
+      > "$out/magic-${name}.json"
+    count=$((count + 1))
+  done
+  echo "Kiro agents: $count JSON files → integrations/kiro/agents/"
+}
+
 convert_opencode_commands() {
   local out="$REPO/integrations/opencode/commands"
   mkdir -p "$out"
@@ -239,14 +287,15 @@ convert_opencode() {
 }
 
 case "${1:-all}" in
-  all)     convert_cursor; convert_copilot; convert_aider; convert_windsurf; convert_gemini; convert_codex; convert_kiro; convert_opencode ;;
+  all)     convert_cursor; convert_copilot; convert_aider; convert_windsurf; convert_gemini; convert_codex; convert_kiro; convert_kiro_agents; convert_opencode ;;
   cursor)  convert_cursor ;;
   copilot) convert_copilot ;;
   aider)   convert_aider ;;
   windsurf) convert_windsurf ;;
   gemini)  convert_gemini ;;
   codex)   convert_codex ;;
-  kiro)    convert_kiro ;;
+  kiro)        convert_kiro ;;
+  kiro-agents) convert_kiro_agents ;;
   opencode) convert_opencode ;;
   *) echo "Usage: $0 [all|cursor|copilot|aider|windsurf|gemini|codex|kiro|opencode]"; exit 1 ;;
 esac

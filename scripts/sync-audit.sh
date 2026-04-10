@@ -25,6 +25,16 @@ check_integration() {
 }
 
 check_integration "kiro"       "integrations/kiro/steering"
+
+# Kiro native agent JSONs (one per named agent)
+kiro_json_count=$(ls "integrations/kiro/agents/" 2>/dev/null | wc -l | tr -d ' ')
+if [ "$kiro_json_count" -ne "$AGENTS" ]; then
+  echo "FAIL kiro-agents: $kiro_json_count JSON files (expected $AGENTS)"
+  ISSUES=$((ISSUES + 1))
+else
+  echo "OK   kiro-agents: $kiro_json_count native agent JSON files"
+fi
+
 check_integration "cursor"     "integrations/cursor/rules"
 check_integration "copilot"    "integrations/copilot/agents"
 check_integration "gemini-cli" "integrations/gemini-cli/skills"
