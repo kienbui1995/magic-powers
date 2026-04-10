@@ -97,3 +97,4 @@ These thoughts mean STOP — you're rationalizing:
 **Flexible** (patterns): Adapt principles to context.
 
 The skill itself tells you which.
+
