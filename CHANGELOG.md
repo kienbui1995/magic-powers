@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] — 2026-04-11
+
+### Added — Workflow Optimization Division
+- 🎯 **`@workflow-orchestrator`** (Sonnet) — run feature/bugfix/refactor/research/incident templates end-to-end with correct agents+models per phase
+- 💾 **`@workflow-session`** (Haiku) — session lifecycle: /session-start loads context brief, /session-end saves progress + WIP commit
+- 🔀 **`@workflow-model-advisor`** (Haiku) — task description → Haiku/Sonnet/Opus recommendation with cost estimate
+- **`workflow-templates`** skill — 5 template definitions with phase sequences and model assignments
+- **`session-lifecycle`** skill — session start/end checklist, memory patterns, WIP commit format
+- **`model-selection-guide`** skill — decision tree for Haiku/Sonnet/Opus with cost estimates
+- **`/session-start`**, **`/session-end`**, **`/workflow`** commands
+
+### Changed
+- Version bumped from 2.0.0 to 2.1.0
+
+---
+
 ## [2.0.0] — 2026-04-10
 
 ### Added — Solo AI Builder Division (7 skills + 1 agent)
