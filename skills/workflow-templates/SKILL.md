@@ -26,6 +26,12 @@ Auto-detect from task description keywords:
 
 If ambiguous → ask user to confirm before executing.
 
+Always confirm (don't auto-detect) when description contains BOTH types:
+- "fix AND refactor the auth module" → bugfix or refactor?
+- "improve login performance" → feature (add optimization) or refactor (restructure)?
+- "clean up broken tests" → bugfix (tests failing) or refactor (tests messy but passing)?
+- "investigate and fix the memory leak" → research first, or straight to bugfix?
+
 ### 2. Template Definitions
 
 **Feature Template** — Adding new functionality:

@@ -109,6 +109,10 @@ When starting session and snapshot exists:
 2. Ask: "Continue from [next phase] or start fresh?"
 3. If continue → load phase context → dispatch next phase
 
+**Non-resumable phases (restart from beginning of template):**
+- Incident template: triage + hotfix phases must run atomically — if session ended mid-phase, restart from triage to ensure correct diagnosis
+- Any phase where partial execution could leave the system in an inconsistent state
+
 ## Key Concepts
 - **Session brief** — 3-line summary of last session, current git state, suggested next
 - **WIP commit** — git commit preserving incomplete work with context for next session

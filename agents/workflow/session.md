@@ -35,6 +35,7 @@ For mid-workflow snapshot (called by @workflow-orchestrator between phases):
 1. Write workflow progress to memory/session-snapshot.md (overwrite each time)
 2. Include: template type, completed phases, current phase, pending phases, key files changed
 3. Silent operation — output nothing, don't interrupt the workflow
+   If write fails (permissions, disk): log one line to stderr but continue — never block the workflow
 
 Rules:
 - Never output more than 5 lines for session-start brief

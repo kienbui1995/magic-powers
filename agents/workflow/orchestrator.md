@@ -30,7 +30,9 @@ When invoked with a task:
 
 Key rules:
 - Confirm template selection with user if task description is ambiguous before executing
-- If a phase fails: announce failure + reason, offer options (retry / adjust context / abandon / escalate to user)
+- Isolated context means: [1] original task, [2] phase instructions, [3] file paths, [4] previous phase output ONLY — never include conversation history, other phases' details, or session context
+- If a phase fails: announce failure + reason, offer: retry same phase / adjust context + retry / skip phase / abandon workflow
+- Incident template phases (triage, hotfix) must complete atomically — do NOT resume mid-phase if session ends; restart from triage
 - Use model-selection-guide to verify model assignments match task complexity
 - Parallel dispatch within a phase when subtasks are clearly independent (same message, multiple Agent calls)
 - Stop and surface blockers immediately — never silently fail a phase
