@@ -1,6 +1,6 @@
 {
   "name": "magic-powers",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Cost-optimized Claude Code plugin — 43 skills, 11 agents, 9-tool support. Built for AI startups shipping fast with small teams.",
   "type": "module",
   "bin": {
