@@ -30,8 +30,9 @@ Choose a category to browse:
 15. 🤖 AI Division                    — AI engineer, product, evaluator agents + harness + product-design skills
 16. 🚀 Solo AI Builder               — Validation, positioning, GTM, monetization, vibe-coding, retention, data moat
 17. 🖥️  Claude Code                   — CLAUDE.md authoring, hooks, MCP setup, memory system, project settings
+18. 🎯 Workflow Optimization          — /session-start, /session-end, /workflow + 3 agents + 3 skills
 
-Enter number (1–17), "all" to see all skills at once, or "done" to exit:
+Enter number (1–18), "all" to see all skills at once, or "done" to exit:
 ```
 
 ## Step 2: Show Skills in Selected Category
@@ -370,6 +371,32 @@ New Skills (.claude/skills/):
 Built-in AI skills (already available, no install needed):
   agentic-ai-patterns  prompt-engineering  rag-architecture
   llm-evaluation       llm-observability   ai-safety-guardrails
+
+Type "install" to install, or "back" to return:
+```
+
+### Workflow Optimization Install (for category 18)
+
+1. Copy `${CLAUDE_PLUGIN_ROOT}/agents/workflow/orchestrator.md` → `.claude/agents/workflow-orchestrator.md`
+2. Copy `${CLAUDE_PLUGIN_ROOT}/agents/workflow/session.md` → `.claude/agents/workflow-session.md`
+3. Copy `${CLAUDE_PLUGIN_ROOT}/agents/workflow/model-advisor.md` → `.claude/agents/workflow-model-advisor.md`
+4. Copy skills: workflow-templates, session-lifecycle, model-selection-guide → `.claude/skills/`
+
+Show before installing:
+```
+🎯 Workflow Optimization Division
+
+Agents (.claude/agents/):
+  🎯 workflow-orchestrator  — run feature/bugfix/refactor/research/incident workflows end-to-end
+  💾 workflow-session       — /session-start (load context) and /session-end (save progress)
+  🔀 workflow-model-advisor — "which model for this task?" advisor
+
+Skills (.claude/skills/):
+  workflow-templates        session-lifecycle
+  model-selection-guide
+
+Commands (always available after install):
+  /session-start    /session-end    /workflow [type] "task"
 
 Type "install" to install, or "back" to return:
 ```

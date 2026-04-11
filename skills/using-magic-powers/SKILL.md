@@ -32,6 +32,9 @@ Magic Powers includes specialized agents with cost-optimized model assignments:
 | reviewer | haiku | Code review, verification (fast + cheap) |
 | debugger | sonnet | Systematic debugging, root cause analysis |
 | ui-designer | sonnet | Frontend design, Stitch integration |
+| workflow-orchestrator | sonnet | Run structured workflows end-to-end |
+| workflow-session | haiku | Session lifecycle (start/end/snapshot) |
+| workflow-model-advisor | haiku | Model selection advice |
 
 **Default model (you) = Sonnet.** Dispatch to specialized agents when their expertise applies. This saves cost — Haiku reviews are 60x cheaper than Opus.
 
@@ -58,6 +61,11 @@ Beyond the 12 built-in agents, Magic Powers has optional divisions for specializ
 - `@ai-engineer` — LLM integration, RAG, agentic AI, prompts, eval harness
 - `@ai-product` — AI UX, streaming, fallbacks, reliability, responsible AI
 - `@ai-evaluator` — eval infrastructure, CI/CD for AI, golden datasets, regression
+
+**🎯 Workflow Optimization** — `/install-skills` → Category 18 (recommended for all)
+- `@workflow-orchestrator` — run feature/bugfix/refactor/research/incident workflows end-to-end
+- `@workflow-session` — /session-start (load context brief) and /session-end (save progress)
+- `@workflow-model-advisor` — which model for this task? Haiku/Sonnet/Opus recommendation
 
 **🚀 Solo AI Builder** — `/install-skills` → Category 16
 - `@solo-ai-builder` — validation → positioning → GTM → monetization → retain

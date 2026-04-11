@@ -85,6 +85,8 @@ Ask the user which optional features to install. Show checkboxes with recommenda
 >     → Recommend if role is: Frontend Dev, Solo Builder (building a browser extension)
 >   🤖 AI Division (Cat. 15) — AI engineer, product, evaluator agents
 >     → Recommend if role is: Data Scientist, Backend Dev, Solo Builder (building AI features)
+>   🎯 Workflow (Cat. 18) — session lifecycle, workflow templates, model routing
+>     → Recommend for ALL users — improves Claude Code workflow regardless of role
 >   🚀 Solo AI Builder (Cat. 16) — Validation, positioning, GTM, monetization, retention
 >     → Recommend if role is: Solo Builder, Indie Hacker, AI Founder, Product Manager launching AI product
 >   🖥️  Claude Code (Cat. 17) — CLAUDE.md, hooks, MCP setup, memory, project settings

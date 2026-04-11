@@ -253,3 +253,21 @@ Install via `/install-skills` → Category 17.
 | `claude-mcp-setup` | Connect MCP servers (DB, GitHub, APIs) — tool descriptions that work |
 | `claude-memory` | Auto-memory system — what to save, MEMORY.md index, memory types |
 | `claude-project-settings` | .claude/settings.json — permissions, model routing, team vs personal |
+
+---
+
+## 🎯 Workflow Optimization Division (NEW — v2.1.0)
+
+Agents and skills for optimizing Claude Code workflow — session management, structured templates, and model routing.
+Install via `/install-skills` → Category 18. **Recommended for ALL users.**
+
+| Component | Type | Purpose |
+|-----------|------|---------|
+| `@workflow-orchestrator` | Agent (Sonnet) | Run feature/bugfix/refactor/research/incident templates end-to-end |
+| `@workflow-session` | Agent (Haiku) | /session-start (load context) and /session-end (save progress + WIP commit) |
+| `@workflow-model-advisor` | Agent (Haiku) | Analyze any task → recommend Haiku/Sonnet/Opus with cost estimate |
+| `workflow-templates` | Skill | 5 template definitions with phase sequences and model assignments |
+| `session-lifecycle` | Skill | Session start/end checklist, memory patterns, WIP commit format |
+| `model-selection-guide` | Skill | Decision tree: task → Haiku/Sonnet/Opus with cost estimates |
+
+**New commands:** `/session-start`, `/session-end`, `/workflow [type] "task"`
