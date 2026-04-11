@@ -1,6 +1,6 @@
 {
   "name": "magic-powers",
-  "description": "Cost-optimized Claude Code plugin — 12 built-in agents + 30 optional agents (Cloud/Amplitude/AI/Solo divisions via /install-skills), 207 workflow skills, and 17 slash commands. Run /setup to get started.",
+  "description": "Cost-optimized Claude Code plugin — 12 built-in agents + 30 optional agents (Cloud/Amplitude/AI/Solo divisions via /install-skills), 210 workflow skills, and 15 slash commands. Run /setup to get started.",
   "version": "2.1.0",
   "author": {
     "name": "kienbui1995"

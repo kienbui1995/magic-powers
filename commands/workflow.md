@@ -19,3 +19,7 @@ The orchestrator will:
 5. Save progress snapshots after each major phase via @workflow-session
 
 Pass the task description as the argument. Template type is optional — orchestrator infers from keywords (add/implement → feature, fix/bug → bugfix, refactor/clean → refactor, research/evaluate → research, urgent/outage → incident).
+
+Ambiguous descriptions trigger a confirmation before executing:
+  /workflow "fix and refactor the auth module"  ← orchestrator asks: bugfix or refactor?
+  /workflow "improve performance of login"      ← orchestrator asks: feature or refactor?

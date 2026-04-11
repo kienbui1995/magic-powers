@@ -20,15 +20,18 @@ When invoked with a task:
 1. Identify or confirm template type (feature/bugfix/refactor/research/incident) from task description
 2. Show the phase plan before executing: "Running [template] template: Phase 1 ([agent], [model]) → Phase 2 → ..."
 3. Execute phases in sequence, dispatching the correct agent with the correct model per phase
+   - Use the Agent tool to dispatch each phase: `Agent(description="Phase N: [name]", prompt="[isolated context]", model="[model]")`
+   - For parallel subtasks within a phase: dispatch multiple Agent tool calls in the same message
 4. Provide isolated context to each phase subagent — NEVER forward full session history
+   - Each subagent receives ONLY: [1] original task description, [2] phase-specific instructions, [3] relevant file paths, [4] output from preceding phase
 5. After each phase completes, announce completion and give user opportunity to redirect or stop
-6. Call @workflow-session snapshot after each phase
-7. Track all tasks via TodoWrite
+6. Call @workflow-session snapshot after each phase (invoke directly, it will save silently)
+7. Track progress using Claude Code's built-in task list (TodoWrite is a native Claude Code capability, not a custom tool)
 
 Key rules:
 - Confirm template selection with user if task description is ambiguous before executing
-- Each phase subagent receives ONLY: original task + phase instructions + previous phase output
+- If a phase fails: announce failure + reason, offer options (retry / adjust context / abandon / escalate to user)
 - Use model-selection-guide to verify model assignments match task complexity
-- Parallel dispatch within a phase when subtasks are clearly independent (e.g., 3 independent modules to implement)
+- Parallel dispatch within a phase when subtasks are clearly independent (same message, multiple Agent calls)
 - Stop and surface blockers immediately — never silently fail a phase
 - If user interrupts between phases, acknowledge and adjust remaining phases accordingly
