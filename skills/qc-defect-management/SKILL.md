@@ -1,5 +1,5 @@
 ---
-name: qa-defect-management
+name: qc-defect-management
 description: Use when managing defects — writing effective bug reports, applying severity/priority matrix, tracking defect lifecycle, conducting root cause analysis, and measuring defect metrics for process improvement.
 ---
 

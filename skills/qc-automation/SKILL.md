@@ -1,5 +1,5 @@
 ---
-name: qa-automation
+name: qc-automation
 description: Use when designing or implementing test automation — choosing the right automation framework (Playwright, pytest, JUnit), Page Object Model, selector strategies, test isolation, managing flaky tests, and CI integration.
 ---
 

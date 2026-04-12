@@ -1,5 +1,5 @@
 ---
-name: qa-metrics
+name: qc-metrics
 description: Use when measuring and reporting QA quality — defect escape rate, test coverage analysis, flaky test rate, mean time to detect, shift-left metrics, and building quality dashboards for stakeholders.
 ---
 

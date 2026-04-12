@@ -10,7 +10,7 @@ skills:
   - magic-powers:qa-process-design
   - magic-powers:qa-audit
   - magic-powers:qa-risk-management
-  - magic-powers:qa-metrics
+  - magic-powers:qc-metrics
   - magic-powers:test-strategy
 ---
 

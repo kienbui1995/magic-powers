@@ -1,5 +1,5 @@
 ---
-name: qa-test-data
+name: qc-test-data
 description: Use when managing test data — designing test data strategies, using factories and builders, creating fixtures, generating synthetic data, masking PII for testing, and managing test database state.
 ---
 

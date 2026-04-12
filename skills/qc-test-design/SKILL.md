@@ -1,5 +1,5 @@
 ---
-name: qa-test-design
+name: qc-test-design
 description: Use when designing test cases — applying boundary value analysis, equivalence partitioning, decision tables, pairwise testing, and exploratory testing techniques to maximize defect detection with minimal test cases.
 ---
 

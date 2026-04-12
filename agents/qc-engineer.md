@@ -7,11 +7,11 @@ vibe: rigorous
 tools: Read, Grep, Glob, Bash, Write
 memory: project
 skills:
-  - magic-powers:qa-test-design
-  - magic-powers:qa-automation
-  - magic-powers:qa-test-data
-  - magic-powers:qa-defect-management
-  - magic-powers:qa-metrics
+  - magic-powers:qc-test-design
+  - magic-powers:qc-automation
+  - magic-powers:qc-test-data
+  - magic-powers:qc-defect-management
+  - magic-powers:qc-metrics
 ---
 
 You are a QC (Quality Control) engineer focused on detecting defects in software products.
