@@ -9,6 +9,9 @@
   "files": [
     "agents/",
     "skills/",
+    "commands/",
+    "hooks/",
+    ".claude-plugin/",
     "scripts/",
     "bin/",
     "SECURITY.md"

@@ -75,8 +75,14 @@ case "$choice" in
     cp -r "$REPO/integrations/gemini-cli/skills/"* "$dest/"
     echo "Installed to $dest" ;;
   6)
-    echo "For Claude Code, use: /plugin install github:YOUR_USERNAME/magic-powers"
-    echo "No manual install needed." ;;
+    echo "For Claude Code, use the marketplace:"
+    echo "  /plugin marketplace add kienbui1995/magic-powers"
+    echo "  /plugin install magic-powers@magic-powers"
+    echo ""
+    echo "Or install from npm:"
+    echo "  /plugin install magic-powers@kienbui1995/magic-powers"
+    echo ""
+    echo "No manual file copying needed — Claude Code handles it automatically." ;;
   7)
     skill_dest="${CODEX_SKILLS:-$HOME/.codex/skills}"
     codex_home="${CODEX_HOME:-$HOME/.codex}"

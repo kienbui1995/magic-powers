@@ -8,7 +8,7 @@ Browse and install optional skill packs from the magic-powers library into your 
 
 ## Step 1: Show Category Menu
 
-Display the 11 skill categories:
+Display the 18 skill categories:
 
 ```
 🎯 Optional Skills Library — magic-powers
