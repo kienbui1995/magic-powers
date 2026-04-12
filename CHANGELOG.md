@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] — 2026-04-12
+
+### Added — Azure DevOps CI/CD & Release Management
+- 🚀 **`@ado-cicd-engineer`** (Sonnet) — practical CI/CD implementation on Azure DevOps
+- **`ado-pipeline-design`** — multi-stage YAML, templates, conditions, matrix, stage outputs
+- **`ado-release-management`** — gates, approvals, deployment rings, rollback, freeze windows
+- **`ado-pipeline-optimization`** — caching, parallel jobs, test publishing, build-once artifact pattern
+- **`ado-pipeline-security`** — secret management, fork PR security, resource authorization, container isolation
+- **`ado-container-deployments`** — Docker+ACR, AKS/Helm, image promotion, vulnerability scanning
+
+### Changed
+- Version bumped from 2.2.0 to 2.3.0
+
+---
+
 ## [2.2.0] — 2026-04-12
 
 ### Added — Azure DevOps Administration
