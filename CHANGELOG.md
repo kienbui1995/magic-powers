@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] — 2026-04-12
+
+### Added — Azure DevOps Administration
+- 🔧 **`@azure-devops-admin`** (Sonnet) — Day-2 operations and governance of Azure DevOps services
+- **`ado-organization`** — org/project setup, AAD integration, team/user management, billing, extensions
+- **`ado-pipelines-ops`** — agent pools (self-hosted/VMSS), service connections, Key Vault-linked variable groups, environments with approvals
+- **`ado-security-policies`** — security groups, branch policies, PR policies, audit log review
+- **`ado-work-tracking`** — area paths, sprints, work item management, WIQL queries, inherited process
+- **`ado-artifacts`** — feed management, upstream sources, retention policies, package promotion
+- **`ado-api-cli`** — az devops CLI, REST API, PAT management, webhooks, Python SDK automation
+
+### Changed
+- Version bumped from 2.1.1 to 2.2.0
+
+---
+
 ## [2.1.1] — 2026-04-11
 
 ### Fixed
