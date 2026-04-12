@@ -8,7 +8,7 @@
 [![Commands](https://img.shields.io/badge/commands-12-blue)](README.md#12-slash-commands)
 [![Website](https://img.shields.io/badge/website-magic--powers.pmai.space-orange)](https://magic-powers.pmai.space)
 
-**[magic-powers.pmai.space](https://magic-powers.pmai.space)** — A Claude Code plugin with cost-optimized model routing, 43 built-in skills + 67 optional skills + 42 cloud division skills (221 total), 11 specialized agents, 12 slash commands, and optional hooks/MCP integration. Built for all professional roles — dev, product, data, marketing, sales, design, and more. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
+**[magic-powers.pmai.space](https://magic-powers.pmai.space)** — A Claude Code plugin with cost-optimized model routing, 43 built-in skills + 67 optional skills + 42 cloud division skills (229 total), 11 specialized agents, 12 slash commands, and optional hooks/MCP integration. Built for all professional roles — dev, product, data, marketing, sales, design, and more. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
 
 ## Why Magic Powers?
 
@@ -191,7 +191,7 @@ Skills ported from [amplitude/mcp-marketplace](https://github.com/amplitude/mcp-
 | Sonnet | 6 (debugger, db-optimizer, sre, git-workflow, ui-designer, product-strategist) | $$ |
 | Haiku | 4 (reviewer, security-reviewer, technical-writer, copywriter) | $ |
 
-## 221 Skills
+## 229 Skills
 
 **Core Workflow:** `using-magic-powers` · `brainstorming` · `writing-plans` · `executing-plans`
 

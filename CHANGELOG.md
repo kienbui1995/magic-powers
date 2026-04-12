@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.0] — 2026-04-12
+
+### Added — QA & QC Engineering (properly separated)
+
+**QC (Quality Control) — product-oriented, detection:**
+- 🔬 **`@qc-engineer`** — finding defects: test design, automation, test data, defect management
+- `qa-test-design` — EP, BVA, decision tables, pairwise, exploratory, state transition
+- `qa-automation` — Playwright/pytest/JUnit, POM, fixtures, flaky test management
+- `qa-test-data` — factories, builders, PII masking, transaction rollback
+- `qa-defect-management` — bug reports, severity/priority, lifecycle, RCA, triage
+- `qa-metrics` — escape rate, coverage trends, flaky rate, shift-left KPIs
+
+**QA (Quality Assurance) — process-oriented, prevention:**
+- 🛡️ **`@qa-engineer`** — preventing defects: process design, audits, risk management
+- `qa-process-design` — quality standards, DoD, SDLC integration, maturity model
+- `qa-audit` — process audit framework, test quality review, audit reports
+- `qa-risk-management` — risk register, risk-based testing, go/no-go assessment
+
+### Changed
+- Version bumped from 2.3.0 to 2.4.0
+
+---
+
 ## [2.3.0] — 2026-04-12
 
 ### Added — Azure DevOps CI/CD & Release Management
