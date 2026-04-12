@@ -187,5 +187,5 @@ Critical gaps: 3 | High gaps: 5 | Medium gaps: 4
 
 ## Integration
 - `qa-process-design` — audits compliance with the process designed there
-- `qa-metrics` — metrics provide evidence for audit findings
+- `qc-metrics` — metrics provide evidence for audit findings
 - `qa-risk-management` — audit findings feed risk assessment

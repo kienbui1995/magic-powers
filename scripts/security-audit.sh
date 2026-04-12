@@ -23,12 +23,14 @@ is_security_doc() {
     "skills/browser-extension/extension-security"
     "skills/claude-project-settings"
     "skills/claude-hooks"
+    "skills/ado-pipeline-security"
+    "skills/ado-pipelines-ops"
   )
   for pattern in "${security_docs[@]}"; do
     [[ "$file" == *"$pattern"* ]] && return 0
   done
   # Also skip generated integration copies of security docs
-  if echo "$file" | grep -qE "(agentic-security|ai-safety-guardrails|extension-security|claude-project-settings|claude-hooks)\.(md|mdc)$"; then
+  if echo "$file" | grep -qE "(agentic-security|ai-safety-guardrails|extension-security|claude-project-settings|claude-hooks|ado-pipeline-security|ado-pipelines-ops)\.(md|mdc)$"; then
     return 0
   fi
   # Skip aggregate files that concatenate all skills (including security docs)

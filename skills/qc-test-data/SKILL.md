@@ -3,7 +3,7 @@ name: qc-test-data
 description: Use when managing test data — designing test data strategies, using factories and builders, creating fixtures, generating synthetic data, masking PII for testing, and managing test database state.
 ---
 
-# QA Test Data Management
+# QC Test Data Management
 
 ## When to Use
 - Tests break because they depend on specific production data
@@ -197,6 +197,6 @@ def db_transaction(db_engine):
 - Factories with no randomization (unique constraint violations in parallel runs)
 
 ## Integration
-- `qa-automation` — fixtures use these data patterns
+- `qc-automation` — fixtures use these data patterns
 - `test-driven-development` — TDD tests need isolated data from the start
 - `ado-pipeline-optimization` — parallel test execution requires isolated test data

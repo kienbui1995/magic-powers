@@ -158,5 +158,5 @@ Decision matrix:
 ## Integration
 - `qa-process-design` — quality process should include risk assessment step
 - `qa-audit` — audit findings generate new risks for the risk register
-- `qa-metrics` — historical defect data informs risk likelihood estimates
+- `qc-metrics` — historical defect data informs risk likelihood estimates
 - `test-strategy` — risk register directly drives test strategy prioritization

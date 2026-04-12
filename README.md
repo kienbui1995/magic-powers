@@ -4,11 +4,11 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Security Audit](https://img.shields.io/badge/security_audit-passing-brightgreen)](SECURITY.md)
 [![Tools](https://img.shields.io/badge/tools-9-green)](README.md#multi-tool-support)
-[![Agents](https://img.shields.io/badge/agents-11-purple)](README.md#11-agents-by-division)
-[![Commands](https://img.shields.io/badge/commands-12-blue)](README.md#12-slash-commands)
+[![Agents](https://img.shields.io/badge/agents-16-purple)](README.md#16-built-in-agents)
+[![Commands](https://img.shields.io/badge/commands-15-blue)](README.md#15-slash-commands)
 [![Website](https://img.shields.io/badge/website-magic--powers.pmai.space-orange)](https://magic-powers.pmai.space)
 
-**[magic-powers.pmai.space](https://magic-powers.pmai.space)** — A Claude Code plugin with cost-optimized model routing, 43 built-in skills + 67 optional skills + 42 cloud division skills (232 total), 11 specialized agents, 12 slash commands, and optional hooks/MCP integration. Built for all professional roles — dev, product, data, marketing, sales, design, and more. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
+**[magic-powers.pmai.space](https://magic-powers.pmai.space)** — A Claude Code plugin with cost-optimized model routing, 43 built-in skills + 67 optional skills + 42 cloud division skills (232 total), 16 built-in agents + 33 optional agents, 15 slash commands, and optional hooks/MCP integration. Built for all professional roles — dev, product, data, marketing, sales, design, and more. Also works with Cursor, Copilot, Aider, Windsurf, Gemini CLI, Codex, Kiro, and OpenCode.
 
 ## Why Magic Powers?
 
@@ -59,8 +59,8 @@ Magic Powers uses a two-tier architecture:
 
 Everything works out of the box — no setup required:
 
-- **12 slash commands** — `/brainstorming`, `/plan`, `/review`, `/debug`, `/deploy`, etc.
-- \*\*12 agents\*\* — architect, debugger, reviewer, ui-designer, etc.
+- **15 slash commands** — `/brainstorming`, `/plan`, `/review`, `/debug`, `/deploy`, etc.
+- \*\*16 built-in agents\*\* — architect, debugger, reviewer, ui-designer, etc.
 - **43 built-in skills** — brainstorming, TDD, debugging, security review, etc.
 - **SessionStart hook** — auto-loads skill routing on every session
 
@@ -133,7 +133,7 @@ Product analytics agents powered by the Amplitude MCP server. `/install-skills` 
 
 Skills ported from [amplitude/mcp-marketplace](https://github.com/amplitude/mcp-marketplace).
 
-## 12 Slash Commands
+## 15 Slash Commands
 
 | Command | Skill | Purpose |
 |---------|-------|---------|
@@ -150,7 +150,7 @@ Skills ported from [amplitude/mcp-marketplace](https://github.com/amplitude/mcp-
 | `/refactor` | refactoring | Improve structure, reduce complexity |
 | `/tdd` | test-driven-development | Red → green → refactor cycle |
 
-## 11 Agents by Division
+## 16 Built-in Agents
 
 ### 🔧 Engineering
 
@@ -182,13 +182,28 @@ Skills ported from [amplitude/mcp-marketplace](https://github.com/amplitude/mcp-
 |-------|-------|-------|---------|
 | `product-strategist` | 📣 | Sonnet | Feature prioritization, PRDs, launch planning |
 | `copywriter` | ✍️ | Haiku | Landing pages, marketing copy, announcements |
+| `solo-ai-builder` | 🚀 | Sonnet | Validation, positioning, GTM, monetization, retention |
+
+### 🧪 Quality & Testing
+
+| Agent | Emoji | Model | Purpose |
+|-------|-------|-------|---------|
+| `qc-engineer` | 🧪 | Sonnet | Test design, automation, defect management, quality metrics |
+| `qa-engineer` | 🎯 | Sonnet | QA process design, test strategy, risk management, audits |
+
+### 🔷 Azure DevOps
+
+| Agent | Emoji | Model | Purpose |
+|-------|-------|-------|---------|
+| `ado-cicd-engineer` | ⚙️ | Sonnet | Azure DevOps pipelines, CI/CD, release management, containers |
+| `azure-devops-admin` | 🏢 | Sonnet | ADO org setup, access control, work tracking, artifacts |
 
 ### Cost by Model
 
 | Model | Agents | Cost |
 |-------|--------|------|
 | Opus | 1 (architect) | $$$$$ |
-| Sonnet | 6 (debugger, db-optimizer, sre, git-workflow, ui-designer, product-strategist) | $$ |
+| Sonnet | 11 (debugger, db-optimizer, sre, git-workflow, ui-designer, product-strategist, solo-ai-builder, qc-engineer, qa-engineer, ado-cicd-engineer, azure-devops-admin) | $$ |
 | Haiku | 4 (reviewer, security-reviewer, technical-writer, copywriter) | $ |
 
 ## 232 Skills
@@ -251,9 +266,9 @@ See [`examples/`](examples/) for real-world scenarios:
 
 | Feature | Superpowers | Magic Powers |
 |---------|-------------|--------------|
-| Skills | 14 | 43 |
-| Agents | 1 | 11 |
-| Commands | 0 | 11 |
+| Skills | 14 | 232 |
+| Agents | 1 | 16 built-in + 33 optional |
+| Commands | 0 | 15 |
 | Model routing | ❌ | ✅ Opus/Sonnet/Haiku |
 | Cost optimization | ❌ | ✅ ~75% reduction |
 | Optional hooks | ❌ | ✅ Safety, lint, test |

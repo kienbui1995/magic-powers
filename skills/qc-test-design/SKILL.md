@@ -180,5 +180,5 @@ Test matrix:
 
 ## Integration
 - `test-driven-development` — TDD drives test design; use these techniques to define the tests
-- `qa-automation` — automate test cases designed here using the framework patterns
+- `qc-automation` — automate test cases designed here using the framework patterns
 - `test-strategy` — these techniques feed into the overall test strategy

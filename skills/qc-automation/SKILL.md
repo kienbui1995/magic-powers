@@ -3,7 +3,7 @@ name: qc-automation
 description: Use when designing or implementing test automation — choosing the right automation framework (Playwright, pytest, JUnit), Page Object Model, selector strategies, test isolation, managing flaky tests, and CI integration.
 ---
 
-# QA Automation
+# QC Automation
 
 ## When to Use
 - Starting a new test automation project
@@ -211,7 +211,7 @@ Tracking flaky tests:
 - Automating every manual test case (automate regression, explore manually)
 
 ## Integration
-- `qa-test-design` — test cases designed there are automated here
-- `qa-test-data` — fixture patterns for test data creation
+- `qc-test-design` — test cases designed there are automated here
+- `qc-test-data` — fixture patterns for test data creation
 - `ado-pipeline-optimization` — publishing automation results in CI
 - `test-driven-development` — TDD and automation complement each other

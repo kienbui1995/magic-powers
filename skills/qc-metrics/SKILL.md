@@ -3,7 +3,7 @@ name: qc-metrics
 description: Use when measuring and reporting QA quality — defect escape rate, test coverage analysis, flaky test rate, mean time to detect, shift-left metrics, and building quality dashboards for stakeholders.
 ---
 
-# QA Metrics & Reporting
+# QC Metrics & Reporting
 
 ## When to Use
 - Building a QA metrics dashboard for stakeholders
@@ -168,6 +168,6 @@ Report: leading indicators weekly (actionable), lagging monthly (strategic)
 - Only lagging indicators (escape rate tells you after the fact; add leading indicators)
 
 ## Integration
-- `qa-defect-management` — defect data feeds escape rate and distribution metrics
+- `qc-defect-management` — defect data feeds escape rate and distribution metrics
 - `ado-pipeline-optimization` — test result publishing enables coverage trending
 - `test-strategy` — metrics validate and inform the overall test strategy

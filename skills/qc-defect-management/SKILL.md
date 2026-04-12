@@ -3,7 +3,7 @@ name: qc-defect-management
 description: Use when managing defects — writing effective bug reports, applying severity/priority matrix, tracking defect lifecycle, conducting root cause analysis, and measuring defect metrics for process improvement.
 ---
 
-# QA Defect Management
+# QC Defect Management
 
 ## When to Use
 - Writing a bug report that will actually get fixed
@@ -177,6 +177,6 @@ Triage criteria questions:
 - Fixing bugs without root cause analysis (same bug type recurs)
 
 ## Integration
-- `qa-metrics` — defect data feeds quality metrics
-- `qa-test-design` — root cause analysis drives new test cases to prevent recurrence
+- `qc-metrics` — defect data feeds quality metrics
+- `qc-test-design` — root cause analysis drives new test cases to prevent recurrence
 - `test-strategy` — defect density informs risk-based testing focus

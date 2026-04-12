@@ -32,6 +32,10 @@ Magic Powers includes specialized agents with cost-optimized model assignments:
 | reviewer | haiku | Code review, verification (fast + cheap) |
 | debugger | sonnet | Systematic debugging, root cause analysis |
 | ui-designer | sonnet | Frontend design, Stitch integration |
+| qc-engineer | sonnet | Test design, automation, defect management, quality metrics |
+| qa-engineer | sonnet | QA process design, test strategy, risk management, audits |
+| ado-cicd-engineer | sonnet | Azure DevOps pipelines, CI/CD, release management |
+| azure-devops-admin | sonnet | ADO org setup, access control, work tracking, artifacts |
 | workflow-orchestrator | sonnet | Run structured workflows end-to-end |
 | workflow-session | haiku | Session lifecycle (start/end/snapshot) |
 | workflow-model-advisor | haiku | Model selection advice |

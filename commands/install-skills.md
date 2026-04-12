@@ -4,6 +4,8 @@ description: "Browse and install optional skills from magic-powers into your pro
 
 Browse and install optional skill packs from the magic-powers library into your current project.
 
+**Already built-in (no install needed):** 16 agents are available out of the box — including `@qc-engineer`, `@qa-engineer`, `@ado-cicd-engineer`, `@azure-devops-admin`, `@architect`, `@debugger`, `@reviewer`, and more. Use them directly with `@agent-name`.
+
 ## Step 1: Show Category Menu
 
 Display the 11 skill categories:

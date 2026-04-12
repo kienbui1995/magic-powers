@@ -4,14 +4,14 @@
     "name": "kienbui1995"
   },
   "metadata": {
-    "description": "Cost-optimized Claude Code plugin — 11 built-in agents + 37 optional cloud/amplitude agents, 178 workflow skills, model routing"
+    "description": "Cost-optimized Claude Code plugin — 16 built-in agents + 33 optional agents (Cloud/Amplitude/AI/ADO/Solo divisions), 232 workflow skills, model routing"
   },
   "plugins": [
     {
       "name": "magic-powers",
       "source": "./",
-      "description": "Cost-optimized Claude Code plugin with 11 built-in agents (+ GCP/AWS/Azure/Amplitude divisions via /install-skills), 178 workflow skills, and Opus/Sonnet/Haiku model routing.",
-      "version": "1.4.0"
+      "description": "Cost-optimized Claude Code plugin with 16 built-in agents (+ GCP/AWS/Azure/Amplitude/ADO divisions via /install-skills), 232 workflow skills, and Opus/Sonnet/Haiku model routing.",
+      "version": "2.5.0"
     }
   ]
 }
