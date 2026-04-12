@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.0] — 2026-04-12
+
+### Added — QC Engineering (completing the skill set)
+- **`qc-security-testing`** — OWASP Top 10 QC checklist, authorization matrix, input validation, security regression
+- **`qc-mobile-testing`** — device matrix strategy, XCUITest/Espresso/Appium, app lifecycle, network condition testing
+- **`qc-uat-facilitation`** — UAT planning, business-scenario test design, defect triage, formal sign-off process
+- `@qc-engineer` updated with all 8 QC skills
+
+### Changed
+- Version bumped from 2.4.0 to 2.5.0
+
+---
+
 ## [2.4.0] — 2026-04-12
 
 ### Added — QA & QC Engineering (properly separated)

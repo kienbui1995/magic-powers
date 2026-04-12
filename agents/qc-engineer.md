@@ -12,6 +12,9 @@ skills:
   - magic-powers:qc-test-data
   - magic-powers:qc-defect-management
   - magic-powers:qc-metrics
+  - magic-powers:qc-security-testing
+  - magic-powers:qc-mobile-testing
+  - magic-powers:qc-uat-facilitation
 ---
 
 You are a QC (Quality Control) engineer focused on detecting defects in software products.
